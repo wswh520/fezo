@@ -29,6 +29,7 @@
 		<button id="btn_print_1" onclick="javascript:showDownloadConfirm('$J{id}');" class="Btn" type="button">下载后打印</button>
 		<button id="btn_print_2" onclick="javascript:showPrintConfirm('$J{id}');" class="Btn" type="button">在线打印</button>
 		<button id="btn_print_3" onclick="javascript:{window.open('${ctx}/resource/钟家村小学打印帮助.pdf');};" class="Btn" type="button">打印须知</button>
+		<button id="btn_print_4" onclick="javascript:showDownloadTestPdf('$J{id}');" class="Btn" type="button">打印报名表</button>
 {@/if}
 {@if currentYear!=year&&statusStr!="REVIEW_PASS"}<!--2016-6-23-->
 	<button onclick="javascript:forwardGrade('$J{id}',true);"  class="Btn" type="button">申请转$J{currentYear}级</button>
