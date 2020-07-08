@@ -412,6 +412,37 @@ public class StuApplyServiceImpl implements StuApplyService {
 		int uc = stuApplyDao.submit2Review(params);
 		return new Response(uc>0?ReturnCode.SUCCESS:ReturnCode.SERVER_INNER_ERROR);
 	}
+
+	@Override
+	public void downloadStuApplyService2(boolean pdf,String idStr, HttpServletRequest request, HttpServletResponse response) {
+		String docName = "钟家村寄宿学校2020年新生报名信息卡.pdf";
+		int id = 0;
+		try{
+			id = Integer.valueOf(idStr);
+		}catch(Exception e){}
+		StuApply stuApply = null;
+		if(id!=0){
+			stuApply = stuApplyDao.queryById(id);
+		}else{
+			stuApply = stuApplyDao.queryByUid(Utils.getCurrentUid());
+		}
+		CurrentUser cuser = ThreadLocalUtils.getCurrentUser();
+		if(stuApply==null
+				||(cuser.getType()==UserType.PATRIARCH&&stuApply.getUid()!=cuser.getUid())){
+			response.setStatus(404);
+			return ;
+		}
+		String xmlName = "stu_test.xml";
+		Map<String,String> dataMap = new HashMap<String,String>();
+		dataMap.put("cardNo",stuApply.getCardNo());
+		dataMap.put("name", stuApply.getName());
+		if(stuApply.getSex()==BooleanEnum.TRUE.val()){
+			dataMap.put("sex", "男");
+		}else{
+			dataMap.put("sex", "女");
+		}
+		this.doDownload(pdf,docName, xmlName, dataMap,request,response);
+	}
 	
 	@Override
 	public void downloadStuApplyService(boolean pdf,String idStr,HttpServletRequest request,HttpServletResponse response){

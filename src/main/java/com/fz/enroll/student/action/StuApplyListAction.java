@@ -115,4 +115,5 @@ public class StuApplyListAction extends QueryBaseAction<StuApply> {
 		Response res = stuApplyListService.submitAllInfoService();
 		return res;
 	}
+
 }

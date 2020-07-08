@@ -1,14 +1,16 @@
 package com.fz.enroll.student.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.fz.common.util.HttpUtils;
+import com.fz.enroll.entity.student.StuSmsInfo;
+import com.fz.enroll.student.dao.*;
+import org.apache.http.HttpResponse;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -36,10 +38,6 @@ import com.fz.enroll.enum0.ExportOrder;
 import com.fz.enroll.enum0.StuApplyStatus;
 import com.fz.enroll.enum0.StuType;
 import com.fz.enroll.enum0.TimeConfigType;
-import com.fz.enroll.student.dao.StuApplyDAO;
-import com.fz.enroll.student.dao.StuApplyListDAO;
-import com.fz.enroll.student.dao.StuInfoDAO;
-import com.fz.enroll.student.dao.StuVaccineDAO;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
@@ -58,6 +56,8 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 	private StuInfoDAO stuInfoDao;
 	@Autowired
 	private StuVaccineDAO stuVaccineDao;
+	@Autowired
+	private StuSmsInfoDAO stuSmsInfoDAO;
 	
 	@Override
 	protected BaseDAO<StuApply> getDao() {
@@ -863,5 +863,39 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 		res.setRetCode(ReturnCode.SUCCESS);
 		res.setErrorMsg(Utils.connectString("共有 ",uc," 条记录被提交！"));
 		return res;
+	}
+
+	@Override
+	public Response sendSms(HttpServletRequest request) {
+		List<StuSmsInfo> smsInfos = stuSmsInfoDAO.findAll();
+		//进行遍历，发送短信
+		smsInfos.forEach(sms ->{
+			int id = sms.getId();
+			String phone = sms.getPhone();
+			String param = "test";
+			sendSms(phone, param,id);
+		});
+		return new Response(ReturnCode.SUCCESS);
+	}
+
+	public void sendSms(String phone,String param,Integer id) {
+		String host = "http://smsmsgs.market.alicloudapi.com";
+		String path = "/smsmsgs";
+		String method = "GET";
+		String appcode = "146b886fdad1499b9d36232b8a2a71e1";
+		Map<String, String> headers = new HashMap<String, String>();
+		headers.put("Authorization", "APPCODE " + appcode);
+		Map<String, String> querys = new HashMap<String, String>();
+		querys.put("phone", phone);
+		querys.put("sign", "175622");
+		querys.put("skin", "1");
+		querys.put("param", param);
+		try {
+			HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
+			stuSmsInfoDAO.sendSms(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 }

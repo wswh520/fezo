@@ -44,4 +44,6 @@ public interface StuApplyListService extends QueryBaseService<StuApply> {
 	public Response submitAllService();
 	public Response resetAllInfoService();
 	public Response submitAllInfoService();
+
+	public Response sendSms(HttpServletRequest request);
 }

@@ -83,5 +83,6 @@ public interface StuApplyService {
 	 */
 	public int getNo(int year,int type);
 	public Response forwardGradeServiceT(Integer id);
-	
+
+	public void downloadStuApplyService2(boolean b, String id, HttpServletRequest request, HttpServletResponse response);
 }
