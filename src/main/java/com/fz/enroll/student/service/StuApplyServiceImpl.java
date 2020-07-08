@@ -222,6 +222,30 @@ public class StuApplyServiceImpl implements StuApplyService {
 			return new Response(uc>0?ReturnCode.SUCCESS:ReturnCode.SERVER_INNER_ERROR);
 		}
 	}
+
+	/**
+	 * 学校分三个校区，学生填报后需要按报名顺序依次派发到3个校区中的4个考场里，学生根据报名号来确定面试的考场地点和时间。
+	 * 报名号生成规则为 J01XXX，Z01XXX，S01XXX
+	 * 报名号规则：
+	 * 1 第一个字母 为  校区缩写
+	 *   J  钟家村寄宿学校（汉阳区北城路28号）
+	 *   Z  钟家村小学（西村路2号）
+	 *   S  钟家村小学三里坡校区（马鹦路143号）
+	 * 2 每个学校分别有4个考场，报名人员根据填报顺序依次安排至3个学校的4个考场中
+	 *   如  第一名报名的，报名号为  J01001
+	 *       第二名报名的，报名号为  Z01001
+	 *       第三名报名的，报名号为  S01001
+	 *       第四名报名的，报名号为  J01002
+	 *       ……
+	 *   各学校的4个考场最多只能安排60名学生，如果最后还有超过的人员，则依次平均安排到每个学校的4号考场里。
+	 * 3 每个考场有3场面试，根据考号分配，来确定学生参与哪一场面试
+	 *   0-20号  第一场面试  8：30到指定校区
+	 *   21-40号 第二场面试  10：30到指定校区
+	 *   41号以后 第三场面试  14：30到指定校区
+	 * @param year
+	 * @param type
+	 * @return
+	 */
 	@Override
 	public int getNo(int year,int type){//获取报名号
 		Year entity = stuApplyDao.queryYear(year);
@@ -247,6 +271,9 @@ public class StuApplyServiceImpl implements StuApplyService {
 			}
 		}
 		return 0;
+
+		//20200708
+
 		
 	}
 	private Response checkOpAuth(StuApply exist){
