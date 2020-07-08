@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fz.enroll.file.dao.FileDAO">
+	<resultMap type="FileMeta" id="resultFileMeta">
+		<id column="hash" property="hash" />
+		<result column="size" property="size" />
+		<result column="data" property="data" />
+	</resultMap>
+	
+	<select id="queryByHash" parameterType="java.lang.String"
+		resultMap="resultFileMeta">
+		select hash,size from tb_file
+			where hash=#{_parameter}
+	</select>
+	<select id="queryDataByHash" parameterType="java.lang.String"
+		resultMap="resultFileMeta">
+		select hash,size,data from tb_file
+			where hash=#{_parameter}
+	</select>
+	
+	<insert id="save" parameterType="FileMeta">
+		insert into tb_file(hash,size,data)
+			values(#{hash},#{size},#{data})
+	</insert>
+	
+	<update id="incRc" parameterType="java.lang.String">
+		update tb_file set rc=rc+1 where hash=#{hash}
+	</update>
+	<update id="decRc" parameterType="java.lang.String">
+		update tb_file set rc=rc-1 where hash=#{hash}
+	</update>
+</mapper>

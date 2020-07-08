@@ -1,0 +1,10 @@
+20170608未更新到数据库设计文档
+ALTER TABLE tb_user ADD ctime BIGINT(20) DEFAULT 0;
+ALTER TABLE tb_stuapply ADD other43 VARCHAR(255);
+ALTER TABLE tb_stuapply ADD other44 VARCHAR(255);
+ALTER TABLE tb_stuapply ADD other45 VARCHAR(255);
+ALTER TABLE tb_stuapply ADD other46 VARCHAR(255);
+ALTER TABLE tb_stuapply ADD other47 VARCHAR(255);
+
+20180517未更新到数据库设计文档
+ALTER TABLE tb_stuvaccine ADD other25 VARCHAR(255);

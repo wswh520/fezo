@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 注意存在逻辑删除的账号，status为2 -->
+<mapper namespace="com.fz.enroll.user.dao.UserDAO">
+	<resultMap type="User" id="resultUser">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="type" property="type" />
+		<result column="status" property="status" />
+		<result column="year" property="year"/>
+		<result column="bj" property="bj"/>
+	</resultMap>
+	
+	<select id="queryById" parameterType="int"
+		resultMap="resultUser">
+		select id,username,password,type,status,bj,year from tb_user
+			where tb_user.id=#{_parameter} and status!=2
+	</select>
+	
+	<select id="queryByUnique" parameterType="java.lang.String"
+		resultMap="resultUser">
+		select id,username,password,type,status,bj,year from tb_user
+			where username=#{_parameter} and status!=2
+	</select>
+	
+	<update id="updateUserAfterLogin" parameterType="User">
+		update tb_user set token=#{token} where id=#{id}
+	</update>
+	<!-- 返回自增主键“useGeneratedKeys="true"” -->
+	<insert id="save" parameterType="User" keyProperty="id" useGeneratedKeys="true">
+		insert into tb_user(username,name,password,type,bj,year,ctime)
+			values(#{username},#{name},#{password},#{type},#{bj},#{year},#{ctime})
+	</insert>
+	
+	<select id="query" parameterType="Map" resultMap="resultUser">
+		select user.id,user.username,user.type,user.name,user.status,user.year,user.bj,user.ctime from tb_user user
+		<if test="year!=null">
+			left join tb_stuapply apply on user.id=apply.uid
+		</if>
+		<where>
+			user.status!=2
+			<if test="keyword!=null">
+				and (user.username like CONCAT('%',#{keyword},'%') or user.name like CONCAT('%',#{keyword},'%'))
+			</if>
+			and user.type=#{type}
+			<if test="year!=null">
+				<choose>
+					<when test="year==0">and apply.year is null</when>
+					<otherwise>and apply.year=#{year}</otherwise>
+				</choose>
+			</if>
+		</where>
+		order by user.id desc
+	</select>
+	
+	<update id="update" parameterType="User">
+		update tb_user
+		<set>
+			<if test="name!=null">
+				name = #{name},
+			</if>
+			<if test="username!=null">
+				username = #{username},
+			</if>
+			<if test="password!=null">
+				password = #{password},
+			</if>
+			<if test="status!=null">
+				status = #{status},
+			</if>
+			<if test="dtime>0">
+				dtime = #{dtime},
+			</if>
+			<if test="year!=null">
+				year = #{year},
+			</if>
+			<if test="bj!=null">
+			     bj = #{bj},
+			</if>
+		</set>
+		where id=#{id} and type=#{type} and status!=2
+	</update>
+	<update id="modifyPassword" parameterType="Map">
+		update tb_user set password=#{newPwd} where id=#{id} and password=#{oldPwd}
+	</update>
+	
+	<delete id="delete" parameterType="User">
+		delete from tb_user where id=#{id} and type=#{type}
+	</delete>
+	
+</mapper>

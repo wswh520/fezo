@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 注意存在逻辑删除的账号，status为2 -->
+<mapper namespace="com.fz.enroll.student.dao.StuInfoDAO">
+	
+	<!-- 这里必须返回全字段，因为可能涉及到要存档 -->
+	<select id="queryById" parameterType="int" resultType="StuInfo">
+		select id,<include refid="stuInfoField" /> from tb_stuinfo where id=#{_parameter}
+	</select>
+	<select id="queryByStuId" parameterType="int" resultType="StuInfo">
+		select id,<include refid="stuInfoField" /> from tb_stuinfo where stuId=#{_parameter}
+	</select>
+	<select id="queryByStuIds" parameterType="List" resultType="StuInfo">
+		select id,<include refid="stuInfoField" /> from tb_stuinfo
+			where stuId in (
+				<foreach collection="list" item="stuId" separator=",">
+					#{stuId}
+				</foreach>
+			)
+	</select>
+	
+	<update id="update" parameterType="StuInfo">
+		update tb_stuinfo
+		<set>
+			addressOfBirth=#{addressOfBirth},
+			other1=#{other1},
+			other2=#{other2},
+			other3=#{other3},
+			other4=#{other4},
+			other5=#{other5},
+			other6=#{other6},
+			<!-- other7=#{other7}, -->
+			<!-- other8=#{other8}, -->
+			other9=#{other9},
+			<!-- other10=#{other10}, -->
+			other11=#{other11},
+			other12=#{other12},
+			other13=#{other13},
+			other14=#{other14},
+			other15=#{other15},
+			other16=#{other16},
+			other17=#{other17},
+			other18=#{other18},
+			other19=#{other19},
+			other20=#{other20},
+			other21=#{other21},
+			other22=#{other22},
+			other23=#{other23},
+			other24=#{other24},
+			other25=#{other25},
+			other26=#{other26},
+			other27=#{other27},
+			other28=#{other28},
+			other29=#{other29},
+			other30=#{other30},
+			other31=#{other31},
+			other32=#{other32},
+			other33=#{other33},
+			other34=#{other34},
+			other35=#{other35},
+			other36=#{other36},
+			other37=#{other37},
+			other38=#{other38},
+			other39=#{other39},
+			other40=#{other40},
+			other41=#{other41},
+			other42=#{other42},
+			other43=#{other43},
+			other44=#{other44},
+			other45=#{other45},
+			other46=#{other46},
+			other47=#{other47},
+			other48=#{other48},
+			other49=#{other49},
+			other50=#{other50},
+			other51=#{other51},
+			other52=#{other52},
+			other53=#{other53},
+			other54=#{other54},
+			other55=#{other55},
+			other56=#{other56},
+			other57=#{other57},
+			other58=#{other58},
+			other59=#{other59}
+		</set>
+		where id=#{id} and status=#{status}
+	</update>
+	<update id="submit" parameterType="Map">
+		update tb_stuinfo a join tb_stuapply b on a.stuId=b.id
+			set a.status=#{targetStatus}
+			where a.id=#{id} and b.uid=#{uid} and a.status=#{currentStatus}
+	</update>
+	<update id="submitAll" parameterType="Map">
+		update tb_stuinfo info,tb_stuapply apply set info.status=#{targetStatus} where info.stuId=apply.id and apply.year=#{year} and info.status=#{currentStatus}
+	</update>
+	<update id="importField" parameterType="Map">
+		update tb_stuinfo info,tb_stuapply apply
+			set info.${field}=#{value}
+		where apply.year=#{year} and apply.type=#{type} and apply.no=#{no} and apply.id=info.stuId
+	</update>
+	<update id="modifyOther10" parameterType="Map">
+		update tb_stuinfo set other10=#{no}
+		where stuId=#{stuId}
+	</update>
+	
+	<insert id="save" parameterType="StuInfo">
+		insert into tb_stuinfo(<include refid="stuInfoField" />)
+			values(<include refid="stuInfoValue" />)
+	</insert>
+	<!-- 转当本年对应的年级 -->
+	<update id="forwardGrade" parameterType="StuInfo">
+		update tb_stuinfo set status=#{status},other9=#{other9},other10=#{other10},other11=#{other11} 
+		where stuId=#{stuId}
+	</update>
+	<sql id="stuInfoField">
+		stuId,status,addressOfBirth,
+		other1,other2,other3,other4,other5,
+		other6,other7,other8,other9,other10,
+		other11,other12,other13,other14,other15,
+		other16,other17,other18,other19,other20,
+		other21,other22,other23,other24,other25,
+		other26,other27,other28,other29,other30,
+		other31,other32,other33,other34,other35,
+		other36,other37,other38,other39,other40,
+		other41,other42,other43,other44,other45,
+		other46,other47,other48,other49,other50,
+		other51,other52,other53,other54,other55,
+		other56,other57,other58,other59
+	</sql>
+	<sql id="stuInfoValue">
+		#{stuId},#{status},#{addressOfBirth},
+		#{other1},#{other2},#{other3},#{other4},#{other5},
+		#{other6},#{other7},#{other8},#{other9},#{other10},
+		#{other11},#{other12},#{other13},#{other14},#{other15},
+		#{other16},#{other17},#{other18},#{other19},#{other20},
+		#{other21},#{other22},#{other23},#{other24},#{other25},
+		#{other26},#{other27},#{other28},#{other29},#{other30},
+		#{other31},#{other32},#{other33},#{other34},#{other35},
+		#{other36},#{other37},#{other38},#{other39},#{other40},
+		#{other41},#{other42},#{other43},#{other44},#{other45},
+		#{other46},#{other47},#{other48},#{other49},#{other50},
+		#{other51},#{other52},#{other53},#{other54},#{other55},
+		#{other56},#{other57},#{other58},#{other59}
+	</sql>
+</mapper>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fz.enroll.student.dao.StuGraInfoDAO">
+
+	<!-- 这里必须返回全字段，因为可能涉及到要存档 -->
+	<select id="queryById" parameterType="int" resultType="GraStuInfo">
+		select <include refid="graStuInfoField" /> from tb_grastuinfo g where g.id=#{_parameter}
+	</select>
+	<select id="queryByUid" parameterType="int" resultType="GraStuInfo">
+		select <include refid="graStuInfoField" /> from tb_grastuinfo g where g.uid=#{_parameter}
+	</select>
+	<select id="queryByUsernames" parameterType="java.util.List" resultType="GraStuInfo">
+		select <include refid="graStuInfoField" /> from tb_grastuinfo g
+		join tb_user u on u.id=g.uid
+		where u.username in (<foreach collection="list" item="username" separator=",">#{username}</foreach>)
+	</select>
+	
+	<insert id="batchInsert" useGeneratedKeys="true" parameterType="java.util.List">
+		insert into tb_grastuinfo (uid,year,pinyin,xbxh,bj,
+									xm,xb,jg1,jg2,csd,
+									mz,hkxz,sfzh,dz,sl,
+									tl,zl,jzxz,jtzz,hkszd,
+									hkdz1,hkdz2,fuxm,fudw,fudh,
+									muxm,mudw,mudh,sylb) values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(#{item.uid},#{item.year},#{item.pinyin},#{item.xbxh},#{item.bj},
+				#{item.xm},#{item.xb},#{item.jg1},#{item.jg2},#{item.csd},
+				#{item.mz},#{item.hkxz},#{item.sfzh},#{item.dz},#{item.sl},
+				#{item.tl},#{item.zl},#{item.jzxz},#{item.jtzz},#{item.hkszd},
+				#{item.hkdz1},#{item.hkdz2},#{item.fuxm},#{item.fudw},#{item.fudh},
+				#{item.muxm},#{item.mudw},#{item.mudh},#{item.sylb})				
+			</foreach>
+	</insert>
+	
+	<insert id="saveHistory" parameterType="GraStuInfoHistory">
+		insert into tb_grastuinfo_history(mid,uid,data,time)
+			values(#{mid},#{uid},#{data},#{time})
+	</insert>
+	
+	<select id="queryHistory" parameterType="int" resultType="GraStuInfoHistory">
+		select a.id,a.time,b.name from tb_grastuinfo_history a
+			join tb_user b on a.uid=b.id
+			where a.mid=#{_parameter}
+			order by a.time desc
+	</select>
+	<select id="queryHistoryById" parameterType="int" resultType="GraStuInfoHistory">
+		select data from tb_grastuinfo_history where id=#{_parameter}
+	</select>
+	
+	<update id="submit" parameterType="Map">
+		update tb_grastuinfo set status=#{targetStatus} where id=#{id} and uid=#{uid} and status=#{currentStatus}
+	</update>
+	<update id="refuse" parameterType="Map">
+		update tb_grastuinfo set status=#{targetStatus} where id=#{id} and status=#{currentStatus}
+	</update>
+	
+	<select id="query" parameterType="Map" resultType="GraStuInfo">
+		select g.id,g.year,g.xbxh,g.xm,g.xb,g.sfzh,g.bj,g.status,g.sylb from tb_grastuinfo g
+		<where>
+			<if test="keyword!=null">
+				and (g.xm like CONCAT('%',#{keyword},'%') or g.xbxh like CONCAT('%',#{keyword},'%'))
+			</if>
+			<if test="sylb!=null"> and g.sylb=#{sylb}</if>
+			<if test="xb!=null"> and g.xb=#{xb}</if>
+			<if test="bj!=null">and g.bj=#{bj}</if>
+			<if test="status!=null"> and g.status=#{status}</if>
+			<if test="year!=unll">and g.year=#{year}</if>
+			
+		</where>
+	</select>
+	
+	<update id="verify" parameterType="GraStuInfo">
+		update tb_grastuinfo 
+		<set>
+			status=#{status}
+			,xmN=#{xmN},jg1N=#{jg1N},jg2N=#{jg2N},csdN=#{csdN},mzN=#{mzN}
+			,hkxzN=#{hkxzN},sfzhN=#{sfzhN},dzN=#{dzN},slN=#{slN},tlN=#{tlN}
+			,zlN=#{zlN},jzxzN=#{jzxzN},jtzzN=#{jtzzN},hkszdN=#{hkszdN},hkdz1N=#{hkdz1N}
+			,hkdz2N=#{hkdz2N},fuxmN=#{fuxmN},fudwN=#{fudwN},fudhN=#{fudhN},muxmN=#{muxmN}
+			,mudwN=#{mudwN},mudhN=#{mudhN},sylbN=#{sylbN},zw=#{zw},tc=#{tc}
+			,shs=#{shs},jl=#{jl}
+		</set>
+		where id=#{id} and status!=3<!-- SUBMIT_TWICE(3),//再次提交-->
+	</update>
+	
+	<update id="review" parameterType="GraStuInfo">
+		update tb_grastuinfo 
+		<set>
+			status=#{status}
+			,xmN=#{xmN},jg1N=#{jg1N},jg2N=#{jg2N},csdN=#{csdN},mzN=#{mzN}
+			,hkxzN=#{hkxzN},sfzhN=#{sfzhN},dzN=#{dzN},slN=#{slN},tlN=#{tlN}
+			,zlN=#{zlN},jzxzN=#{jzxzN},jtzzN=#{jtzzN},hkszdN=#{hkszdN},hkdz1N=#{hkdz1N}
+			,hkdz2N=#{hkdz2N},fuxmN=#{fuxmN},fudwN=#{fudwN},fudhN=#{fudhN},muxmN=#{muxmN}
+			,mudwN=#{mudwN},mudhN=#{mudhN},sylbN=#{sylbN},zw=#{zw},tc=#{tc}
+			,shs=#{shs},jl=#{jl}
+			<if test="xmN!=null">,xm=#{xmN},pinyin=#{pinyin}</if>
+			<if test="jg1N!=null">,jg1=#{jg1N}</if>
+			<if test="jg2N!=null">,jg2=#{jg2N}</if>
+			<if test="csdN!=null">,csd=#{csdN}</if>
+			<if test="mzN!=null">,mz=#{mzN}</if>
+			<if test="hkxzN!=null">,hkxz=#{hkxzN}</if>
+			<if test="sfzhN!=null">,sfzh=#{sfzhN}</if>
+			<if test="dzN!=null">,dz=#{dzN}</if>
+			<if test="slN!=null">,sl=#{slN}</if>
+			<if test="tlN!=null">,tl=#{tlN}</if>
+			<if test="zlN!=null">,zl=#{zlN}</if>
+			<if test="jzxzN!=null">,jzxz=#{jzxzN}</if>
+			<if test="jtzzN!=null">,jtzz=#{jtzzN}</if>
+			<if test="hkszdN!=null">,hkszd=#{hkszdN}</if>
+			<if test="hkdz1N!=null">,hkdz1=#{hkdz1N}</if>
+			<if test="hkdz2N!=null">,hkdz2=#{hkdz2N}</if>
+			<if test="fuxmN!=null">,fuxm=#{fuxmN}</if>
+			<if test="fudwN!=null">,fudw=#{fudwN}</if>
+			<if test="fudhN!=null">,fudh=#{fudhN}</if>
+			<if test="muxmN!=null">,muxm=#{muxmN}</if>
+			<if test="mudwN!=null">,mudw=#{mudwN}</if>
+			<if test="mudhN!=null">,mudh=#{mudhN}</if>
+			<if test="sylbN!=null">,sylb=#{sylbN}</if>
+		</set>
+		where id=#{id} and (status=2 or status=4)<!-- SUBMIT_ONCE(2),//初次提交 ；REVIEW_PASS(4),//拟录取、毕业生信息需要二次审核-->
+	</update>
+	
+	<sql id="graStuInfoField">
+		g.id,g.uid,g.year,g.pinyin,g.status,
+		g.xbxh,g.bj,g.xm,g.xb,g.jg1,
+		g.jg2,g.csd,g.mz,g.hkxz,g.sfzh,
+		g.dz,g.sl,g.tl,g.zl,g.jzxz,
+		g.jtzz,g.hkszd,g.hkdz1,g.hkdz2,g.fuxm,
+		g.fudw,g.fudh,g.muxm,g.mudw,g.mudh,g.sylb,
+		g.xmN,g.jg1N,g.jg2N,g.csdN,
+		g.mzN,g.hkxzN,g.sfzhN,g.dzN,g.slN,
+		g.tlN,g.zlN,g.jzxzN,g.jtzzN,g.hkszdN,
+		g.hkdz1N,g.hkdz2N,g.fuxmN,g.fudwN,g.fudhN,
+		g.muxmN,g.mudwN,g.mudhN,g.sylbN,
+		g.zw,g.tc,g.shs,g.jl
+	</sql>
+</mapper>

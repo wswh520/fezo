@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 注意存在逻辑删除的账号，status为2 -->
+<mapper namespace="com.fz.enroll.student.dao.StuVaccineDAO">
+	
+	<!-- 这里必须返回全字段，因为可能涉及到要存档 -->
+	<select id="queryById" parameterType="int" resultType="StuVaccine">
+		select id,<include refid="stuVaccineField" /> from tb_stuvaccine where id=#{_parameter}
+	</select>
+	<select id="queryByStuId" parameterType="int" resultType="StuVaccine">
+		select id,<include refid="stuVaccineField" /> from tb_stuvaccine where stuId=#{_parameter}
+	</select>
+	<select id="queryByStuIds" parameterType="List" resultType="StuVaccine">
+		select id,<include refid="stuVaccineField" /> from tb_stuvaccine
+			where stuId in (
+				<foreach collection="list" item="stuId" separator=",">
+					#{stuId}
+				</foreach>
+			)
+	</select>
+	
+	<update id="update" parameterType="StuVaccine">
+		update tb_stuvaccine
+		<set>
+			other1=#{other1},
+			other2=#{other2},
+			other3=#{other3},
+			other4=#{other4},
+			other5=#{other5},
+			other6=#{other6},
+			other7=#{other7},
+			other8=#{other8},
+			other9=#{other9},
+			other10=#{other10},
+			other11=#{other11},
+			other12=#{other12},
+			other13=#{other13},
+			other14=#{other14},
+			other15=#{other15},
+			other16=#{other16},
+			other17=#{other17},
+			other18=#{other18},
+			other19=#{other19},
+			other20=#{other20},
+			other21=#{other21},
+			other22=#{other22},
+			other23=#{other23},
+			other24=#{other24},
+			other25=#{other25}
+		</set>
+		where id=#{id} and status=#{status}
+	</update>
+	<update id="submit" parameterType="Map">
+		update tb_stuvaccine a join tb_stuapply b on a.stuId=b.id
+			set a.status=#{targetStatus}
+			where a.id=#{id} and b.uid=#{uid} and a.status=#{currentStatus}
+	</update>
+	
+	<insert id="save" parameterType="StuVaccine">
+		insert into tb_stuvaccine(<include refid="stuVaccineField" />)
+			values(<include refid="stuVaccineValue" />)
+	</insert>
+	<!-- 重置表的状态，目前仅供转级是使用 -->
+	<update id="resetStatus" parameterType="StuVaccine">
+		update tb_stuvaccine set status=#{status} where stuId=#{stuId}
+	</update>
+	<sql id="stuVaccineField">
+		stuId,status,
+		other1,other2,other3,other4,other5,
+		other6,other7,other8,other9,other10,
+		other11,other12,other13,other14,other15,
+		other16,other17,other18,other19,other20,
+		other21,other22,other23,other24,other25
+	</sql>
+	<sql id="stuVaccineValue">
+		#{stuId},#{status},
+		#{other1},#{other2},#{other3},#{other4},#{other5},
+		#{other6},#{other7},#{other8},#{other9},#{other10},
+		#{other11},#{other12},#{other13},#{other14},#{other15},
+		#{other16},#{other17},#{other18},#{other19},#{other20},
+		#{other21},#{other22},#{other23},#{other24},#{other25}
+	</sql>
+</mapper>

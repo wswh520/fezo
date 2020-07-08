@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 注意存在逻辑删除的账号，status为2 -->
+<mapper namespace="com.fz.enroll.student.dao.StuApplyDAO">
+	
+	<!-- 这里必须返回全字段，因为可能涉及到要存档 -->
+	<select id="queryById" parameterType="int" resultType="StuApply">
+		select id,<include refid="stuApplyField" /> from tb_stuapply where id=#{_parameter}
+	</select>
+	<select id="queryByUid" parameterType="int" resultType="StuApply">
+		select id,<include refid="stuApplyField" /> from tb_stuapply where uid=#{_parameter}
+	</select>
+	<select id="queryByUnique" parameterType="StuApply" resultType="StuApply">
+		select id,<include refid="stuApplyField" /> from tb_stuapply where cardNo=#{cardNo} and cardType=#{cardType}
+	</select>
+	
+	<update id="update" parameterType="StuApply">
+		update tb_stuapply
+		<set>
+			name=#{name},
+			pinyin=#{pinyin},
+			sex=#{sex},
+			dateOfBirth=#{dateOfBirth},
+			addressOfBirth=#{addressOfBirth},
+			birthplace=#{birthplace},
+			nation=#{nation},
+			citizenship=#{citizenship},
+			cardType=#{cardType},
+			cardNo=#{cardNo},
+			gatqw=#{gatqw},
+			jkzt=#{jkzt},
+			other1=#{other1},
+			other2=#{other2},
+			other3=#{other3},
+			other4=#{other4},
+			other5=#{other5},
+			other6=#{other6},
+			other7=#{other7},
+			other8=#{other8},
+			other9=#{other9},
+			other10=#{other10},
+			other11=#{other11},
+			other12=#{other12},
+			other13=#{other13},
+			other14=#{other14},
+			other15=#{other15},
+			other16=#{other16},
+			other17=#{other17},
+			other18=#{other18},
+			other19=#{other19},
+			other20=#{other20},
+			other21=#{other21},
+			other22=#{other22},
+			other23=#{other23},
+			other24=#{other24},
+			other25=#{other25},
+			other26=#{other26},
+			other27=#{other27},
+			other28=#{other28},
+			other29=#{other29},
+			other30=#{other30},
+			other31=#{other31},
+			other32=#{other32},
+			other33=#{other33},
+			other34=#{other34},
+			other35=#{other35},
+			other36=#{other36},
+			other37=#{other37},
+			other38=#{other38},
+			other39=#{other39},
+			other40=#{other40},
+			other41=#{other41},
+			other42=#{other42},
+			other43=#{other43},
+			other44=#{other44},
+			other45=#{other45},
+			other46=#{other46},
+			other47=#{other47},
+			other48=#{other48},
+			other49=#{other49},
+			other50=#{other50},
+			other51=#{other51}
+		</set>
+		where uid=#{uid} and status=#{status}
+	</update>
+	<update id="submit2Review" parameterType="Map">
+		update tb_stuapply set status=#{targetStatus} where id=#{id} and uid=#{uid} and status=#{currentStatus}
+	</update>
+	<update id="submitAll" parameterType="Map">
+		update tb_stuapply set status=#{targetStatus} where year=#{year} and status=#{currentStatus}
+	</update>
+	
+	<insert id="save" parameterType="StuApply">
+		insert into tb_stuapply(<include refid="stuApplyField" />)
+			values(<include refid="stuApplyValue" />)
+	</insert>
+	<select id="queryHistory" parameterType="int" resultType="StuApplyHistory">
+		select a.id,a.time,b.name from tb_stuapply_history a
+			join tb_user b on a.uid=b.id
+			where a.mid=#{_parameter}
+			order by a.time desc
+	</select>
+	<select id="queryHistoryById" parameterType="int" resultType="StuApplyHistory">
+		select data from tb_stuapply_history where id=#{_parameter}
+	</select>
+	<insert id="saveHistory" parameterType="StuApplyHistory">
+		insert into tb_stuapply_history(mid,uid,data,time)
+			values(#{mid},#{uid},#{data},#{time})
+	</insert>
+	
+	<sql id="stuApplyField">
+		uid,year,status,type,no,
+		name,pinyin,sex,dateOfBirth,addressOfBirth,birthplace,
+		nation,citizenship,cardType,cardNo,gatqw,
+		jkzt,reviewer,dateOfReview,note,message,
+		other1,other2,other3,other4,other5,
+		other6,other7,other8,other9,other10,
+		other11,other12,other13,other14,other15,
+		other16,other17,other18,other19,other20,
+		other21,other22,other23,other24,other25,
+		other26,other27,other28,other29,other30,
+		other31,other32,other33,other34,other35,other36,
+		other37,other38,other39,other40,other41,other42,
+		other43,other44,other45,other46,other47,
+		other48,other49,other50,other51
+	</sql>
+	<sql id="stuApplyValue">
+		#{uid},#{year},#{status},#{type},#{no},
+		#{name},#{pinyin},#{sex},#{dateOfBirth},#{addressOfBirth},#{birthplace},
+		#{nation},#{citizenship},#{cardType},#{cardNo},#{gatqw},
+		#{jkzt},#{reviewer},#{dateOfReview},#{note},#{message},
+		#{other1},#{other2},#{other3},#{other4},#{other5},
+		#{other6},#{other7},#{other8},#{other9},#{other10},
+		#{other11},#{other12},#{other13},#{other14},#{other15},
+		#{other16},#{other17},#{other18},#{other19},#{other20},
+		#{other21},#{other22},#{other23},#{other24},#{other25},
+		#{other26},#{other27},#{other28},#{other29},#{other30},
+		#{other31},#{other32},#{other33},#{other34},#{other35},#{other36},
+		#{other37},#{other38},#{other39},#{other40},#{other41},#{other42},
+		#{other43},#{other44},#{other45},#{other46},#{other47},
+		#{other48},#{other49},#{other50},#{other51}
+	</sql>
+	
+	<select id="queryYear" parameterType="int" resultType="Year">
+		select year,typeA,typeB,typeC from tb_year where year=#{_parameter}
+	</select>
+	<update id="incYearTypeA" parameterType="Year">
+		update tb_year set typeA=typeA+1 where year=#{year} and typeA=#{typeA}
+	</update>
+	<update id="incYearTypeB" parameterType="Year">
+		update tb_year set typeB=typeB+1 where year=#{year} and typeB=#{typeB}
+	</update>
+	<update id="incYearTypeC" parameterType="Year">
+		update tb_year set typeC=typeC+1 where year=#{year} and typeC=#{typeC}
+	</update>
+	<insert id="saveYear" parameterType="StuApplyHistory">
+		insert into tb_year(year)
+			values(#{year})
+	</insert>
+	
+	
+	<select id="query2InitPinyin" parameterType="int" resultType="StuApply">
+		select id,name from tb_stuapply order by id limit #{_parameter},100
+	</select>
+	<update id="initPinyin" parameterType="StuApply">
+		update tb_stuapply set pinyin=#{pinyin} where id=#{id}
+	</update>
+	<!-- 转当本年对应的年级 -->
+	<update id="forwardGrade" parameterType="StuApply">
+		update tb_stuapply set no=#{no},year=#{year},status=#{status},message=#{message}
+		where id=#{id} and uid=#{uid} and status!=4<!-- REVIEW_PASS(4),//拟录取、毕业生信息需要二次审核 -->
+	</update>
+	<!-- <update id="updateHistory" parameterType="StuApplyHistory">
+		update tb_stuapply_history set data=#{data},time=#{time} where uid=#{uid}
+	</update> -->
+</mapper>

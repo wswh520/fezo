@@ -1,0 +1,170 @@
+@charset "utf-8";
+/* wuhan login form cj */
+
+body{background:#fff;}
+.w1000{width:1000px; margin:0 auto}
+.w960{width:960px; margin:0 auto;}
+.W190{width:190px;}
+.w722{width:722px;}
+.w150{width:150px;}
+.w570{width:570px}
+.w320{width:320px}
+
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix {display:inline-block;}
+.clearfix {display:block;}
+
+.fl{float:left;}
+.fr{float:right;}
+.cl{clear:both;}
+.tc{text-align:center;}
+.hidden{display:none;}
+
+.f12{font-size:12px;font-family: 'Microsoft YaHei';}
+.f14{font-size:14px;font-family: 'Microsoft YaHei';}
+.f16{font-size:16px;font-family: 'Microsoft YaHei';}
+.f18{font-size:18px;font-family: 'Microsoft YaHei';}
+.f20{font-size:20px;font-family: 'Microsoft YaHei';}
+a,.blue,a.blue{color:#3f8ec5; text-decoration:none;}
+a:hover{text-decoration:underline;}
+.red,a.red{color:#a82929}
+.bigRed,a.bigRed{color:#f00;}
+.black,a.black{color:#222;}
+.cfff{color:#fff}
+.ca82929{color:#a82929}
+.c3b6baa{color:#3b6baa}
+.bgf4f8fb{ background:#f4f8fb}
+.cl3f8ec5{color:#3f8ec5}
+/*===============留白间距==============*/
+.mgl30{margin-left:30px;}
+.mgr30{margin-right:30px;}
+.mgt30{margin-top:30px;}
+.mgb30{margin-bottom:30px;}
+.mgl20{margin-left:20px;}
+.mgr20{margin-right:20px;}
+.mgt20{margin-top:20px;}
+.mgb20{margin-bottom:20px;}
+.mgt10{margin-top:10px;}
+.mgtb10{margin-top:10px; margin-bottom:10px}
+.mgtb5{margin-top:5px; margin-bottom:5px}
+.mgb10{margin-bottom:10px;}
+.mgb15{margin-bottom:15px;}
+.mgl10{margin-left:10px;}
+.mgr10{margin-right:10px;}
+
+.pdb20{ padding-bottom:20px}
+.pdb10{ padding-bottom:10px}
+
+.pdr10{ padding-right:10px}
+.pdr20{ padding-right:20px}
+.pdl10{ padding-left:10px}
+.pdl15{ padding-left:15px}
+.pdl20{ padding-left:20px}
+.pd10{ padding:10px}
+.pd15{ padding:15px}
+.pdt15{ padding-top:15px;}
+.pdt10{ padding-top:10px;}
+.pdlr6{ padding-left:6px; padding-right:6px}
+.pdtb10{ padding-top:10px; padding-bottom:10px}
+.pdtb20{ padding-top:20px; padding-bottom:20px}
+/*============边框测试===============*/
+.border1px{ border:1px solid #000}
+/*=============标题样式============*/
+
+
+
+
+
+/*=============单选按钮==============*/
+.r1 .radioTb .radioBtn,.radioTb .radioBtn_on{display:inline-block;background:url(../img/radio-0.png) 0% 0%;width:17px;height:18px;overflow:hidden;vertical-align:middle;margin-right:3px;cursor:pointer;cursor:pointer;}
+.r1 .radioTb .radioBtn_on{background:url(../img/radio-0.png) 0% 100%;width:17px;height:18px;}
+.r2 .radioTb .radioBtn,.radioTb .radioBtn_on{display:inline-block;background:url(../img/radio-1.png) 0% 0%;width:16px;height:16px;overflow:hidden;vertical-align:middle;margin-right:3px;cursor:pointer;cursor:pointer;}
+.r2 .radioTb .radioBtn_on{background:url(../img/radio-1.png) 0% 100%;width:16px;height:16px;}
+/*=============多选按钮==============*/
+.demoC1 .ckboxTb .ckboxBtn,.demoC1 .ckboxTb .ckboxBtn_on{display:inline-block;vertical-align:middle;width:17px;height:18px;overflow:hidden;background:url(../images/checkbox-0.png) 0% 0%;margin-right:3px;cursor:pointer; }
+.demoC1 .ckboxTb .ckboxBtn_on{width:17px;height:18px;background:url(../images/checkbox-0.png) 0% 100%; }
+
+/*reset*/
+body{color:#888;font-size:12px;line-height:1.8em; font-family:Arial,Helvetica,'Microsoft YaHei','宋体';}
+body,form,ul,ol,li,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,table,fieldset{margin:0; padding:0;}
+input,select,textarea{color:#888; font-size:12px;line-height:140%; font-family:'宋体';vertical-align: middle;resize:none;}
+img{border:0; vertical-align:middle;}
+em,i{font-style:normal;}
+ol,ul,li{ list-style:none;}
+h1,h2,h3,h4,h5{color:#2f75aa;}
+textarea{resize:none;}
+label{vertical-align:middle}
+
+/*===============首====页================*/
+body.login_index{ background:#fff; width:800px; margin:0px auto;}
+/*topbar*/
+
+.IndexHeader .logo{float:left; margin: 35px 0px 55px 10px}
+.IndexHeader .slogan{float:right; padding-top:30px}
+/*loginBox*/
+.LoginBox{ border:#d3d3d3 solid 1px;width:291px; height:250px}
+.LoginBox h2{color:#2f75aa; font-size:14px}
+.LoginBox .inpLogin{ width:291px;height:48px; background:url(../img/loginBox.gif) no-repeat 0 0; }
+.LoginBox .LoginSubmit {width: 289px;height:51px;background: url(../img/loginBox.gif) no-repeat 0 -96px;border: none;cursor: pointer;}
+.LoginBox .LoginSubmit-1 {width: 289px;height:51px;background: url(../img/loginBox.gif) no-repeat 0 -146px;border: none;cursor: pointer;}
+.LoginBox .RegistrationSubmit{width: 289px;height:51px;background: url(../img/Registration.jpg) no-repeat;border: none;cursor: pointer;}
+.LoginBox p.LoginTips{color:#e54b00; text-indent:0.2em;height:30px; line-height:30px}
+.LoginBox p.item{ font-size:14px;}
+.LoginBox p.item a.forget {color:#888; padding-left:20px}
+.LoginBox .inpLogin input{background: #fff;width: 237px;height: 42px;display: block;float: left;border: none;margin-top: 3px;margin-left: 3px;line-height: 1.8;padding: 0 5px;outline: none;font-size: 16px;font-family: 'Microsoft YaHei';color: #666;line-height: 42px; float:left}
+.LoginBox .inpLogin.hover{ background-position:0 -48px}
+.LoginBox .inpLogin .loginIco {width: 25px;height: 25px;display: block;float: left;background:url(../img/loginIco.png) no-repeat;margin: 13px 5px 0 0;}
+.LoginBox .inpLogin .form_user {background-position: 0px -10px;}
+.LoginBox .inpLogin .form_email{ background-position:0px -39px;}
+.LoginBox .inpLogin .form_psw {background-position: 0px -72px;}
+/*index checkBox*/
+.LoginBox .item .ckboxTb .ckboxBtn,.ckboxTb .ckboxBtn_on{display:inline-block;vertical-align:middle;width:17px;height:18px;overflow:hidden;background:url(../img/checkbox-0.png) 0% 0%;margin-right:3px;cursor:pointer; margin-bottom:6px;_margin-bottom:0px }
+.LoginBox .item .ckboxTb .ckboxBtn_on{width:17px;height:18px;background:url(../img/checkbox-0.png) 0% 100%; }
+
+
+.IndexFooter{ margin:75px 0px 40px;}
+
+
+/* skip */
+.new_skip{ width:705px; margin:35px auto 135px;}
+.new_skip .new_skip_tit{ border-bottom:#d3d3d3 solid 1px; line-height:60px; font-size:14px;}
+.new_skip .tc{ margin:40px 0px;}
+.new_skip .tc2{ margin:10px 0px 20px;}
+.new_skip .new_skip_other{}
+.new_skip .new_skip_other a{ padding-left:20px; margin-right:50px;}
+.new_skip .new_skip_other .new_skip_a1{ background:url(../img/skip/ship_03.png) no-repeat;}
+.new_skip .new_skip_other .new_skip_a2{background:url(../img/skip/ship_02.png) no-repeat;}
+.new_skip .new_skip_other .new_skip_a3{background:url(../img/skip/ship_01.png) no-repeat;}
+
+.FooterCon p{ font-size:14px;}
+
+
+/*弹出框 开始*/
+#popup_holder{ height:477px; position:absolute; z-index:999;}
+.clearfix:after{ clear:both; content:""; display:block; font-size:0; height:0; visibility:hidden;}
+.popup{ margin:0 auto; position:relative; width:850px;}
+.popup .left_popup{ width:16px; background:url(../img/left.png) no-repeat;}
+.part_popup{ float:left; height:557px;}
+.popup .middle_popup{ background:url(../img/middle.png) repeat-x; width:817px;}
+.popup .right_popup{ background:url(../img/right.png) no-repeat; width:12px;}
+#close_btn, #close_about_btn{  cursor:pointer; height:45px; left:796px; position:absolute; top:3px; width:46px; background:url(../img/close_btn.png) no-repeat -2px -2px;}
+.myfollow_list{ width:227px; height:102px; margin:0 10px 20px; border-radius:2px; border:1px solid; cursor:pointer; float:left; padding:10px; box-shadow: 0 1px 2px 0 #ededed;}
+.S_line2{ border-color:#e6e6e6;}
+.myfollow_list .face{ float:left; height:60px; overflow:hidden; width:60px;}
+.myfollow_list .face img{ border:0 none; height:60px; width:60px;}
+.myfollow_list .info{ height:60px; overflow:hidden; float:left; line-height:20px; margin:0 10px 0 9px;}
+.myfollow_list .info li{ width:143px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.myfollow_list .info li .S_func1{ display:inline-block; float:left; max-width:110px; overflow:hidden; text-overflow:ellipsis;}
+.myfollow_list .intro{ display:block; width:227px; clear:both; line-height:20px; padding:5px 0 0;}
+.middle_popup .hover{ border:2px solid #6fc0fa; height:100px; width:225px; background:url(../img/selected.gif) no-repeat top right;}
+.middle_popup .myfollow_list:hover{ border:2px solid #6fc0fa; height:100px; width:225px; background:url(../img/select.gif) no-repeat top right;}
+.left-btn{ float:right; background:url(../img/Confirmation.jpg) no-repeat; width:104px; height:39px; display:inline-block; padding-right:18px;}
+/*分页 开始*/
+.page_navi {height: 36px; line-height: 36px; overflow: hidden;/* padding-top: 1em;*/ /*text-align: center; width: 100%;*/ margin-left:10px; width:50%; float:left;}
+.page_navi a { border: 1px solid #d5d5d5; color: #333; margin: 2px; padding: 3px 8px; text-decoration: none; border-radius: 2px;}
+.page_navi a:hover, .page_navi a.current { border: 1px solid #3799d6; color: #3799d6;border-radius: 2px;}
+.page_navi span{color: #333; margin: 2px; padding: 4px 8px; text-decoration: none; background:#d5d5d5;border-radius: 2px;}
+/*分页 结束*/
+
+.file_down{float:right; height:40px; line-height:40px; margin:35px 10px 55px 10px; font-size:13px; color:#333;}
+.file_down i{ background:url(../img/file_down.png) no-repeat; width:16px; line-height:16px; display:inline-block; vertical-align:middle; padding:0 5px 0 0; margin-top:-1px;}

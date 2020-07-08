@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fz.enroll.file.dao.AttachmentDAO">
+	<resultMap type="Attachment" id="resultAttachment">
+		<id column="id" property="id" />
+		<result column="uid" property="uid" />
+		<result column="name" property="name" />
+		<result column="hash" property="hash" />
+		<result column="otype" property="otype" />
+		<result column="oid" property="oid" />
+		<result column="size" property="size" />
+	</resultMap>
+
+	<select id="query" parameterType="Map" resultMap="resultAttachment">
+		select att.id,att.uid,att.name,att.hash,att.otype,att.oid,file.size
+			from tb_attachment att
+			join tb_file file on file.hash=att.hash
+		where att.oid=#{oid} and att.otype=#{otype}
+	</select>
+	<select id="queryUsable" parameterType="Map" resultMap="resultAttachment">
+		select id from tb_attachment
+		where id in(
+				<foreach collection="ids" item="id" separator=",">
+					#{id}
+				</foreach>
+			) and uid=#{uid} and oid=0<!-- oid=0表示附件未使用 -->
+	</select>
+	<select id="queryById" parameterType="int" resultMap="resultAttachment">
+		select att.id,att.uid,att.name,att.hash,att.otype,att.oid,file.size
+			from tb_attachment att
+			join tb_file file on file.hash=att.hash
+		where att.id=#{_parameter}
+	</select>
+	<!-- 获取相关附件列表用于删除 -->
+	<select id="queryByOid" parameterType="java.util.Map" resultMap="resultAttachment" >
+		select id,hash from tb_attachment where oid=#{oid} and otype=#{otype}		
+	</select>
+	<!-- 获取新生报名相关附件列表用于删除，每个类型仅存一张图片，后期若无特殊要求可视情况删除otypes参数 -->
+	<select id="queryApplyAtt" parameterType="java.util.Map" resultMap="resultAttachment">
+		select id,uid,hash,otype,oid,name
+			from tb_attachment
+		where 
+			<choose>
+				<when test="oid!=null">oid=#{oid}</when>
+				<otherwise>uid=#{uid} and oid=0</otherwise><!--uid!=null oid=0表示没有提交过表单 -->
+			</choose>
+			and otype in
+				<foreach collection="otypes" item="otype" open="(" separator="," close=")">#{otype}</foreach>
+			order by otype
+	</select>
+	<!-- 返回自增主键“useGeneratedKeys="true"” -->
+	<insert id="save" parameterType="Attachment" keyProperty="id" useGeneratedKeys="true">
+		insert into tb_attachment(otype,oid,uid,hash,name)
+			values(#{otype},#{oid},#{uid},#{hash},#{name})
+	</insert>
+	
+	<update id="batchUpdateOwner" parameterType="Map">
+		update tb_attachment set otype=#{otype},oid=#{oid}
+		where id in(
+				<foreach collection="ids" item="id" separator=",">
+					#{id}
+				</foreach>
+			) and uid=#{uid} and oid=0<!-- oid=0表示附件未使用 -->
+	</update>
+	
+	<delete id="delete" parameterType="Attachment">
+		delete from tb_attachment where id=#{id} and uid=#{uid}
+	</delete>
+	<delete id="batchDelete" parameterType="java.util.List">  
+   		 delete from tb_attachment where id in
+    	<foreach collection="list" item="att" open="(" separator="," close=")" >   
+       	 	 #{att.id}
+   	 	</foreach>
+	</delete>
+</mapper>

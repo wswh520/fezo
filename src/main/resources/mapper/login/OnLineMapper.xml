@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fz.enroll.login.dao.OnLineDAO">
+	<resultMap type="OnLine" id="resultOnLine">
+		<id column="id" property="id" />
+		<result column="uid" property="uid" />
+		<result column="dt" property="dt" />
+		<association property="user" resultMap="resultUser" />
+	</resultMap>
+	<resultMap type="User" id="resultUser">
+		<result column="username" property="username" />
+		<result column="name" property="name" />
+		<result column="type" property="type" />
+		<result column="bj" property="bj" />
+		<result column="year" property="year" />
+	</resultMap>
+	
+	<select id="queryOnLineById" parameterType="java.lang.String"
+		resultMap="resultOnLine">
+		select a.id,a.uid,a.dt,b.username,b.name,b.type,b.bj,b.year
+			from tb_online a join tb_user b on a.uid=b.id
+			where a.id=#{_parameter}
+	</select>
+	<insert id="saveOnLine" parameterType="OnLine">
+		insert into tb_online(id,uid,dt)
+			values(#{id},#{uid},#{dt})
+	</insert>
+	<update id="updateOnLine">
+		update tb_online set uid=#{uid},dt=#{dt} where id=#{id}
+	</update>
+	<delete id="deleteOnLine" parameterType="java.lang.String">
+		delete from tb_online where id=#{_parameter}
+	</delete>
+	<delete id="deleteByUid" parameterType="int">
+		delete from tb_online where uid=#{_parameter}
+	</delete>
+	<delete id="deleteStudentOnLineByUid" parameterType="int">
+		delete from tb_online where uid=#{_parameter}
+	</delete>
+	<delete id="clearTimeoutSession" parameterType="long">
+		delete from tb_online where #{_parameter}>dt
+	</delete>
+</mapper>

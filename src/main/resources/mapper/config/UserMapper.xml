@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 注意存在逻辑删除的账号，status为2 -->
+<mapper namespace="com.fz.enroll.config.dao.TimeConfigDAO">
+	<resultMap type="TimeConfig" id="resulTimeConfig">
+		<id column="type" property="type" />
+		<result column="startTime" property="startTime" />
+		<result column="endTime" property="endTime" />
+	</resultMap>
+	
+	<select id="queryByType" parameterType="int" resultMap="resulTimeConfig">
+		select type,startTime,endTime from tb_timeconfig where type=#{_parameter}
+	</select>
+	
+	<insert id="saveOrUpdate" parameterType="TimeConfig">
+		insert into tb_timeconfig(type,startTime,endTime)
+			values(#{type},#{startTime},#{endTime})
+			 ON DUPLICATE KEY UPDATE startTime=#{startTime},endTime=#{endTime}
+			 <!-- 存在则更新：如果行作为新记录被插入，则受影响行的值为1；如果原有的记录被更新，则受影响行的值为2；如果原有记录未被修改，则受影响行的值为0。 -->
+	</insert>
+</mapper>

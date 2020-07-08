@@ -1,0 +1,15 @@
+清理2017年相关数据
+`tb_stuapply_history`删除2017年对应的信息
+	DELETE sh FROM tb_stuapply_history sh,tb_stuapply s WHERE sh.mid=s.id AND s.year=2017
+`tb_stuinfo`删除2017年对应的信息
+	DELETE si FROM tb_stuinfo si,tb_stuapply sa WHERE si.stuId=sa.id AND sa.year=2017
+`tb_stuvaccine`删除2017年对应的信息
+	DELETE info FROM tb_stuvaccine info,tb_stuapply sa WHERE info.stuId=sa.id AND sa.year=2017
+`tb_stuapply`删除2017年对应的信息
+	DELETE sa FROM tb_stuapply sa WHERE sa.year=2017
+`tb_year` 2017年的数据置0
+	UPDATE tb_year SET typeA=0,typeB=0,typeC=0 WHERE year=2017
+`tb_user` 清除没有`tb_stuapply`信息的家长(type为3)账号
+	DELETE info FROM tb_user info LEFT JOIN tb_stuapply sa ON info.id=sa.uid WHERE info.type=3 AND sa.uid IS NULL
+`tb_attachment`清除没有用户的的附件
+	DELETE info FROM tb_attachment info LEFT JOIN tb_user u ON info.uid=u.id WHERE u.id IS NULL

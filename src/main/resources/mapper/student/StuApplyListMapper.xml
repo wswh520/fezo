@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 注意存在逻辑删除的账号，status为2 -->
+<mapper namespace="com.fz.enroll.student.dao.StuApplyListDAO">
+	
+	<!-- 这里必须返回全字段，因为可能涉及到要存档 -->
+	<select id="query" parameterType="Map" resultType="StuApply">
+		select a.id,<include refid="stuApplyField" />,b.username as mobile,c.status as infoStatus,c.other10 as classNo,d.status as vaccineStatus from tb_stuapply a
+		join tb_user b on a.uid=b.id
+		left join tb_stuinfo c on a.id=c.stuId
+		left join tb_stuvaccine d on a.id=d.stuId
+		<where>
+			<if test="year!=null"> and a.year=#{year}</if>
+			<if test="dateOfBirthBegin!=null"> and (a.dateOfBirth>=#{dateOfBirthBegin} and #{dateOfBirthEnd}>a.dateOfBirth)</if>
+			<if test="type!=null"> and a.type=#{type}</if>
+			<if test="sex!=null"> and a.sex=#{sex}</if>
+			<if test="school!=null"> and a.other51=#{school}</if>
+			<if test="status!=null"> and a.status=#{status}</if>
+			<if test="keyword!=null">
+				and (a.name like CONCAT('%',#{keyword},'%') or a.cardNo like CONCAT('%',#{keyword},'%') or b.username like CONCAT('%',#{keyword},'%') or c.other10 like CONCAT('%',#{keyword},'%'))
+			</if>
+			<choose>
+				<when test="infoStatus==-1">and c.status is null</when><!-- 未填表 -->
+				<when test="infoStatus!=null">and c.status=#{infoStatus}</when>
+			</choose>
+			<choose>
+				<when test="vaccineStatus==-1">and d.status is null</when><!-- 未填表 -->
+				<when test="vaccineStatus!=null">and d.status=#{vaccineStatus}</when>
+			</choose>
+			<!-- and b.status=1 --><!-- NORMAL(1),//正常 -->
+		</where>
+		<choose>
+			<when test="orderField!=null">order by ${orderField}</when>
+			<otherwise>order by a.type asc,a.no asc</otherwise>
+		</choose>
+	</select>
+	
+	<update id="review" parameterType="StuApply">
+		update tb_stuapply set status=#{status},reviewer=#{reviewer},dateOfReview=#{dateOfReview},note=#{note},message=#{message}
+		where id=#{id} and year=#{year} and (status=3 or status=4 or status=5 or status=6)
+				<!--可以审核的前提是该表单的状态为以下其中一种：
+						SUBMIT_TWICE(3),//再次提交
+						REVIEW_PASS(4),//审核通过
+						REVIEW_REFUSE(5),//审核未通过
+						REVIEW_WAITING(6),//待录取-->
+	</update>
+	<update id="updateMsg" parameterType="StuApply">
+		update tb_stuapply set message=#{message} where id=#{id}
+	</update>
+	<!-- 批量审核-->
+	<insert id="batchReview" parameterType="Map">
+		update tb_stuapply set status=#{status},dateOfReview=#{dateOfReview}
+			where id in(
+				<foreach collection="ids" item="id" separator=",">
+					#{id}
+				</foreach>
+				) and year=#{year} and (status=3 or status=4 or status=5 or status=6)
+				<!--可以审核的前提是该表单的状态为以下其中一种：
+						SUBMIT_TWICE(3),//再次提交
+						REVIEW_PASS(4),//审核通过
+						REVIEW_REFUSE(5),//审核未通过
+						REVIEW_WAITING(6),//待录取-->
+	</insert>
+	<sql id="stuApplyField">
+		a.uid,a.year,a.status,a.type,no,
+		a.name,a.sex,a.dateOfBirth,a.addressOfBirth,a.birthplace,
+		a.nation,a.citizenship,a.cardType,a.cardNo,a.gatqw,
+		a.jkzt,a.reviewer,a.dateOfReview,a.note,a.message,
+		a.other1,a.other2,a.other3,a.other4,a.other5,
+		a.other6,a.other7,a.other8,a.other9,a.other10,
+		a.other11,a.other12,a.other13,a.other14,a.other15,
+		a.other16,a.other17,a.other18,a.other19,a.other20,
+		a.other21,a.other22,a.other23,a.other24,a.other25,
+		a.other26,a.other27,a.other28,a.other29,a.other30,
+		a.other31,a.other32,a.other33,a.other34,a.other35,a.other36,
+		a.other37,a.other38,a.other39,a.other40,a.other41,a.other42,
+		a.other43,a.other44,a.other45,a.other46,a.other47,
+		a.other48,a.other49,a.other50,a.other51
+	</sql>
+</mapper>
