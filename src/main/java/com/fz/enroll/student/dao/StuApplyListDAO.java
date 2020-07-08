@@ -20,4 +20,5 @@ public interface StuApplyListDAO extends BaseDAO<StuApply> {
 	public int review(StuApply entity);
 	public int updateMsg(StuApply entity);
 	public int batchReview(Map<String,Object> params);
+
 }

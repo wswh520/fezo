@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fz.enroll.student.dao.StuSmsInfoDAO">
+
+	<update id="sendSms" >
+		update tb_sms set status = 1 , time = DATE_FORMAT(NOW(),'%Y-%m-%d %H:%m:%s') where id=#{id}
+	</update>
+
+	<select id="findAll" resultType="StuSmsInfo">
+		select id as id,name as name,phone as phone,status as status,time as time from tb_sms
+	</select>
+
+</mapper>

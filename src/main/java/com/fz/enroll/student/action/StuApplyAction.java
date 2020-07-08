@@ -70,6 +70,11 @@ public class StuApplyAction {
 		stuApplyService.downloadStuApplyService(true,id,request,response);
 	}
 
+	@RequestMapping("downloadTestPdf/{id}")
+	public void downloadTestPdf(@PathVariable("id")String id,HttpServletRequest request,HttpServletResponse response) {
+		stuApplyService.downloadStuApplyService2(true,id,request,response);
+	}
+
 	@ResponseBody
 	@RequestMapping("historyList")
 	public Response doGetHistoryList(String id){
