@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.fz.enroll.entity.student.StuApply;
 import com.fz.enroll.entity.student.StuApplyHistory;
+import com.fz.enroll.entity.student.TbStuno;
 import com.fz.enroll.entity.student.Year;
 
 public interface StuApplyDAO {
@@ -45,5 +46,9 @@ public interface StuApplyDAO {
 	 * params data,time
 	 * */
 	//public int updateHistory(StuApplyHistory history);
+
+	public int saveTbStuno(TbStuno entity);
+
+	public String queryTbStuno();
 	
 }

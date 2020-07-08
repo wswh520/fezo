@@ -8,6 +8,7 @@ import java.nio.channels.FileChannel;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fz.enroll.file.dao.FileDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import com.fz.common.res.Response;
 import com.fz.common.res.ReturnCode;
 import com.fz.common.util.MD5;
 import com.fz.enroll.entity.file.FileMeta;
-import com.fz.enroll.file.dao.FileDAO;
 
 @Service("fileService")
 public class FileServiceImpl implements FileService {

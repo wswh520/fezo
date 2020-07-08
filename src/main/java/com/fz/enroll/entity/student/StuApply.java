@@ -61,15 +61,16 @@ public class StuApply extends BaseEntity {
 		return StuType.valueOf(this.getType());
 	}
 	public String getNoStr(){
-		if(this.getNo()==0){
-			return null;
-		}else if(this.getNo()<10){
-			return Utils.connectString(this.getYear(),this.getType(),"00",this.getNo());
-		}else if(this.getNo()<100){
-			return Utils.connectString(this.getYear(),this.getType(),"0",this.getNo());
-		}else{
-			return Utils.connectString(this.getYear(),this.getType(),this.getNo());
-		}
+//		if(this.getNo()==0){
+//			return null;
+//		}else if(this.getNo()<10){
+//			return Utils.connectString(this.getYear(),this.getType(),"00",this.getNo());
+//		}else if(this.getNo()<100){
+//			return Utils.connectString(this.getYear(),this.getType(),"0",this.getNo());
+//		}else{
+//			return Utils.connectString(this.getYear(),this.getType(),this.getNo());
+//		}
+		return this.getNo();
 	}
 	public BooleanEnum getSexStr(){
 		return BooleanEnum.valueOf(this.getSex());
@@ -100,7 +101,7 @@ public class StuApply extends BaseEntity {
 	private int year = DateUtils.getCurrentYear();//'招生年份，取当前年，不需要用户输入',
 	private int status = 1;//'状态：未提交、初次提交、再次提交、审核通过、审核未通过',
 	private int type = 1;//'类别：华师了弟、华师第三代、共建单位子弟',
-	private int no;//'报名编号',
+	private String no;//'报名编号',
 	private String name;//'学生姓名',
 	private String pinyin;//姓名拼音
 	private int sex = 1;//'性别',
@@ -200,12 +201,6 @@ public class StuApply extends BaseEntity {
 	}
 	public void setType(int type) {
 		this.type = type;
-	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
 	}
 	public String getName() {
 		return name;
@@ -601,5 +596,12 @@ public class StuApply extends BaseEntity {
 	public void setOther53(String other53) { this.other53 = other53; }
 	public String getOther54() { return other54; }
 	public void setOther54(String other54) { this.other54 = other54; }
-	
+
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
+	}
 }

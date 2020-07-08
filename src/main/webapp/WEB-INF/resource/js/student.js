@@ -351,6 +351,7 @@ function stuApplyOther44Click(isTrue){
 	}
 }
 function doSaveStuApply(isAdmin){
+	debugger;
 	var id = $.trim($("#ipt_id").val());
 	if(id==""||id=="0"){
 		var type = $("#form_stuApply").find("input:radio[name='type']:checked").val();
@@ -362,9 +363,9 @@ function doSaveStuApply(isAdmin){
 		}else if(type=="TYPEC"){
 			typeMsg = "您当前所选的报名类别是“C社会对口生源”，保存后报名类别将不可修改，是否继续保存？";
 		}
-		if(!confirm(typeMsg)){
-			return ;
-		}
+		// if(!confirm(typeMsg)){
+		// 	return ;
+		// }
 	}
 	var regex_mobile = /^1\d{10}$/;//手机号
 	var regex_card = /^[0-9a-zA-z\(\)]+$/;//证件号，香港身份证有括号
@@ -429,7 +430,7 @@ function doSaveStuApply(isAdmin){
 	}else if(cardType=="CARD_TYPE1"){
 		var checkCardNoRes = IdentifyCodeValid(cardNo);
 		if(!checkCardNoRes.pass){
-			alert(checkCardNoRes.msg);
+			// alert(checkCardNoRes.msg);
 			return ;
 		}
 	}else if(cardType=="CARD_TYPE7"){

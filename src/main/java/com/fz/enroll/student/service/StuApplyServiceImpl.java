@@ -2,15 +2,12 @@ package com.fz.enroll.student.service;
 
 import java.io.*;
 import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.SimpleDateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletOutputStream;
@@ -25,6 +22,8 @@ import com.artofsolving.jodconverter.openoffice.connection.SocketOpenOfficeConne
 import com.artofsolving.jodconverter.openoffice.converter.OpenOfficeDocumentConverter;
 import com.fz.common.util.MD5;
 import com.fz.common.util.Word2PdfUtil;
+import com.fz.enroll.entity.student.*;
+import com.fz.enroll.file.dao.FileDAO;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +38,6 @@ import sun.misc.BASE64Encoder;
 
 import com.alibaba.fastjson.JSON;
 import com.fz.base.service.BaseServiceUtils;
-import com.fz.common.listener.PropertyHolder;
 import com.fz.common.res.Response;
 import com.fz.common.res.ReturnCode;
 import com.fz.common.security.CurrentUser;
@@ -50,18 +48,12 @@ import com.fz.enroll.config.service.TimeConfigService;
 import com.fz.enroll.dto.user.UserAdd;
 import com.fz.enroll.entity.file.Attachment;
 import com.fz.enroll.entity.file.FileMeta;
-import com.fz.enroll.entity.student.StuApply;
-import com.fz.enroll.entity.student.StuApplyHistory;
-import com.fz.enroll.entity.student.StuInfo;
-import com.fz.enroll.entity.student.StuVaccine;
-import com.fz.enroll.entity.student.Year;
 import com.fz.enroll.enum0.AttOtype;
 import com.fz.enroll.enum0.BooleanEnum;
 import com.fz.enroll.enum0.StuApplyStatus;
 import com.fz.enroll.enum0.StuType;
 import com.fz.enroll.enum0.TimeConfigType;
 import com.fz.enroll.enum0.UserType;
-import com.fz.enroll.file.dao.FileDAO;
 import com.fz.enroll.file.service.AttachmentService;
 import com.fz.enroll.student.dao.StuApplyDAO;
 import com.fz.enroll.student.dao.StuInfoDAO;
@@ -87,7 +79,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 	private StuVaccineDAO stuVaccineDao;
 	@Autowired
 	private UserService userService;
-	
+
 	@Override
 	public Response loadService(String idStr) {
 		int id = 0;
@@ -171,8 +163,8 @@ public class StuApplyServiceImpl implements StuApplyService {
 			}
 			int uc = 0;
 			if(exist==null){
-				int no = this.getNo(entity.getYear(),entity.getType());
-				if(no==0){
+				String no = this.getNo(entity.getName());
+				if(StringUtils.isEmpty(no)){
 					TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();//回滚
 					res.setRetCode(ReturnCode.SERVER_INNER_ERROR);
 					res.setErrorMsg("报名号生成失败，请稍后重试！");
@@ -242,40 +234,103 @@ public class StuApplyServiceImpl implements StuApplyService {
 	 *   0-20号  第一场面试  8：30到指定校区
 	 *   21-40号 第二场面试  10：30到指定校区
 	 *   41号以后 第三场面试  14：30到指定校区
-	 * @param year
-	 * @param type
 	 * @return
 	 */
 	@Override
-	public int getNo(int year,int type){//获取报名号
-		Year entity = stuApplyDao.queryYear(year);
-		if(entity==null){
-			entity = new Year();
-			entity.setYear(year);
-			stuApplyDao.saveYear(entity);
-		}
-		if(type==StuType.TYPEA.val()){
-			int uc = stuApplyDao.incYearTypeA(entity);
-			if(uc>0){
-				return entity.getTypeA()+1;
-			}
-		}else if(type==StuType.TYPEB.val()){
-			int uc = stuApplyDao.incYearTypeB(entity);
-			if(uc>0){
-				return entity.getTypeB()+1;
-			}
-		}else if(type==StuType.TYPEC.val()){
-			int uc = stuApplyDao.incYearTypeC(entity);
-			if(uc>0){
-				return entity.getTypeC()+1;
-			}
-		}
-		return 0;
+	public String getNo(String name){//获取报名号
+//	@Override
+//	public int getNo(int year,int type){//获取报名号
+//		Year entity = stuApplyDao.queryYear(year);
+//		if(entity==null){
+//			entity = new Year();
+//			entity.setYear(year);
+//			stuApplyDao.saveYear(entity);
+//		}
+//		if(type==StuType.TYPEA.val()){
+//			int uc = stuApplyDao.incYearTypeA(entity);
+//			if(uc>0){
+//				return entity.getTypeA()+1;
+//			}
+//		}else if(type==StuType.TYPEB.val()){
+//			int uc = stuApplyDao.incYearTypeB(entity);
+//			if(uc>0){
+//				return entity.getTypeB()+1;
+//			}
+//		}else if(type==StuType.TYPEC.val()){
+//			int uc = stuApplyDao.incYearTypeC(entity);
+//			if(uc>0){
+//				return entity.getTypeC()+1;
+//			}
+//		}
+//		return 0;
 
 		//20200708
-
-		
+		String str = "";
+		//查询编号
+		String indexNo = stuApplyDao.queryTbStuno();
+		int no = 1;
+		if(!StringUtils.isEmpty(indexNo)){
+			no = Integer.parseInt(indexNo) + 1;
+		}
+		//取模（0:S，1:J，2:Z）
+		int school = Math.floorMod(no,3);
+		//座位号
+		DecimalFormat dft = new DecimalFormat("000");
+		String seatNo = String.valueOf(dft.format(Math.ceil((float)no/3)));
+		//学校
+		String schStr = "";
+		if(school == 1){
+			schStr = "J";
+		}else if(school == 2){
+			schStr = "Z";
+		}else{
+			schStr = "S";
+		}
+		if(no > 720){
+			//存储编号
+			String noIndex = schStr + "04" + seatNo;
+			saveTbStuno(no+"",noIndex,name);
+			return noIndex;
+		}
+		//考场
+		str = getSchool(no,schStr);
+		//存储编号
+		String noIndex = str + seatNo;
+		saveTbStuno(no+"",noIndex,name);
+		return noIndex;
 	}
+
+	//保存配置信息
+	private int saveTbStuno (String noIndex,String no,String name){
+		TbStuno entity = new TbStuno();
+		entity.setNoIndex(noIndex);
+		entity.setName(name);
+		entity.setNo(no);
+		return stuApplyDao.saveTbStuno(entity);
+	}
+
+	//获取考场
+	private String getSchool(int no,String scStr){
+		String str = "";
+		String schoolK = no % 12 + "";
+		//第一场
+		List st1 = Arrays.asList(new String[]{"1","2","3"});
+		//第二场
+		List st2 = Arrays.asList(new String[]{"4","5","6"});
+		//第三场
+		List st3 = Arrays.asList(new String[]{"7","8","9"});
+		if(st1.contains(schoolK)){
+			str += scStr + "01";
+		}else if(st2.contains(schoolK)){
+			str += scStr + "02";
+		}else if(st3.contains(schoolK)){
+			str += scStr + "03";
+		}else{
+			str += scStr + "04";
+		}
+		return str;
+	}
+
 	private Response checkOpAuth(StuApply exist){
 		Response res = new Response();
 		UserType utype = ThreadLocalUtils.getCurrentUser().getType();
@@ -1126,8 +1181,8 @@ public class StuApplyServiceImpl implements StuApplyService {
 			user.setPassword(cardNo.substring(cardNo.length()-6));
 		}
 		
-		int no = this.getNo(stuApply.getYear(), stuApply.getType());
-		if (no == 0) {
+		String no = this.getNo(stuApply.getName());
+		if (StringUtils.isEmpty(no)) {
 			res.setRetCode(ReturnCode.SERVER_INNER_ERROR);
 			res.setErrorMsg("报名号生成失败，请稍后重试！");
 			return res;

@@ -179,4 +179,12 @@
 	<!-- <update id="updateHistory" parameterType="StuApplyHistory">
 		update tb_stuapply_history set data=#{data},time=#{time} where uid=#{uid}
 	</update> -->
+	<select id="queryTbStuno" resultType="String">
+		SELECT no_index FROM tb_stuno ORDER BY no_index desc limit 1
+	</select>
+
+	<insert id="saveTbStuno" parameterType="com.fz.enroll.entity.student.TbStuno">
+		insert into tb_stuno(no_index,no,name)
+			values(#{noIndex},#{no},#{name})
+	</insert>
 </mapper>

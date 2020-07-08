@@ -77,11 +77,9 @@ public interface StuApplyService {
 	
 	/**
 	 * 获取对应的报名号
-	 * @param year
-	 * @param type
 	 * @return 
 	 */
-	public int getNo(int year,int type);
+	public String getNo(String name);
 	public Response forwardGradeServiceT(Integer id);
 
 	public void downloadStuApplyService2(boolean b, String id, HttpServletRequest request, HttpServletResponse response);
