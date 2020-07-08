@@ -172,7 +172,11 @@ public class StuApply extends BaseEntity {
 	private String other49 = "否";//是否孤儿
 	private String other50 = "否";//是否烈士或优抚子女
 	private String other51 = "南湖校区"; //校区入口
-	
+	//新增字段20200708
+	private String other52; //父亲最高学历
+	private String other53; //母亲最高学历
+	private String other54; //报名类别
+
 	public int getUid() {
 		return uid;
 	}
@@ -510,7 +514,7 @@ public class StuApply extends BaseEntity {
 	public void setOther36(String other36) {
 		this.other36 = other36;
 	}
-	
+
 	public String getOther41() {
 		return other41;
 	}
@@ -591,5 +595,11 @@ public class StuApply extends BaseEntity {
 	public void setOther50(String other50) { this.other50 = other50; }
 	public String getOther51() { return other51; }
 	public void setOther51(String other51) { this.other51 = other51; }
+	public String getOther52() { return other52; }
+	public void setOther52(String other52) { this.other52 = other52; }
+	public String getOther53() { return other53; }
+	public void setOther53(String other53) { this.other53 = other53; }
+	public String getOther54() { return other54; }
+	public void setOther54(String other54) { this.other54 = other54; }
 	
 }

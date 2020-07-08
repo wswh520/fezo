@@ -65,17 +65,21 @@ function initStuApplyAtt_upload(type) {
 		menus[4] = {"otype" : 14,"otypename" : "儿童出生证","otypeindex" : "TYPE_CHILDREN_BIRTH_CERTIFICATE"};
 		//menus[5] = {"otype" : 15,"otypename" : "父母户口页","otypeindex" : "TYPE_PARENT_ACCOUNT_PAGE"};
 		menus[5] = {"otype" : 16,"otypename" : "父亲户口页","otypeindex" : "TYPE_FATHER_ACCOUNT_PAGE"};
-		menus[6] = {"otype" : 17,"otypename" : "母亲户口页","otypeindex" : "TYPE_MOTHER_ACCOUNT_PAGE"};
+		menus[7] = {"otype" : 17,"otypename" : "母亲户口页","otypeindex" : "TYPE_MOTHER_ACCOUNT_PAGE"};
 		if (type == "TYPEA" || type == "TYPEB") {
-			menus[7] = {"otype" : 19,"otypename" : "华师教职工校园一卡通","otypeindex" : "TYPE_WORK_PROVE"};
+			// menus[7] = {"otype" : 19,"otypename" : "华师教职工校园一卡通","otypeindex" : "TYPE_WORK_PROVE"};
+			menus[9] = {"otype" : 19,"otypename" : "核算检测证明","otypeindex" : "TYPE_WORK_PROVE"};
 			if (type == "TYPEB") {
 				menus[8] = {"otype" : 18,"otypename" : "三代关系证明（华师教职工与儿童父母关系证明）","otypeindex" : "TYPE_THREE_GENERATION_RELATIONSHIP"};
 			}
 		}
+		menus[6] = {"otype" : 20,"otypename" : "父亲最高学历证明","otypeindex" : "TYPE_FATHER_ACCOUNT_LEARN_PAGE"};
+		menus[8] = {"otype" : 21,"otypename" : "母亲最高学历证明","otypeindex" : "TYPE_MOTHER_ACCOUNT_LEARN_PAGE"};
 	}
 	return menus;
 }
 function doUploadstuApplyAtt(otype) {
+	debugger;
 	var type = $("#ipt_stuApply_type").val();
 	var prefix = $("#ipt_prefix_" + otype).val();
 	if (prefix == "") {
@@ -175,6 +179,9 @@ function checkStuApplyPhoto() {// 检查新生的相关照片是否全部上传
 	menus2[0] = menus[0];
 	menus2[1] = menus[1];
 	menus2[2] = menus[3];
+	menus2[3] = menus[6];
+	menus2[4] = menus[8];
+	menus2[5] = menus[9];
 	for (var i = 0; i < menus2.length; i++) {
 		var name = $("#att_name_" + menus2[i].otype).val();
 		if (!name) {

@@ -961,6 +961,8 @@ public class StuApplyServiceImpl implements StuApplyService {
 					list.add(AttOtype.TYPE_THREE_GENERATION_RELATIONSHIP.val());// 三代关系证明
 				}
 			}
+			list.add(AttOtype.TYPE_FATHER_ACCOUNT_LEARN_PAGE.val());// 父亲最高学历证明
+			list.add(AttOtype.TYPE_MOTHER_ACCOUNT_LEARN_PAGE.val());// 母亲最高学历证明
 			params.put("otypes", list);
 		} else {
 			params.put("otypes", Arrays.asList(otype.val()));

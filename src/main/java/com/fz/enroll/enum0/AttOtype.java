@@ -21,6 +21,8 @@ public enum AttOtype {
 	TYPE_MOTHER_ACCOUNT_PAGE(17), // 母亲户口页
 	TYPE_THREE_GENERATION_RELATIONSHIP(18),// 三代关系证明
 	TYPE_WORK_PROVE(19),//华师教职工校园一卡通
+	TYPE_FATHER_ACCOUNT_LEARN_PAGE(20),//父亲最高学历证明
+	TYPE_MOTHER_ACCOUNT_LEARN_PAGE(21),//母亲最高学历证明
 //		①父母户口页
 //		②三代关系证明
 	;
