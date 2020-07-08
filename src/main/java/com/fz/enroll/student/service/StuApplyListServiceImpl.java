@@ -869,12 +869,12 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 	public Response sendSms(HttpServletRequest request) {
 		List<StuSmsInfo> smsInfos = stuSmsInfoDAO.findAll();
 		//进行遍历，发送短信
-		smsInfos.forEach(sms ->{
+		for (StuSmsInfo sms : smsInfos) {
 			int id = sms.getId();
 			String phone = sms.getPhone();
 			String param = "test";
 			sendSms(phone, param,id);
-		});
+		};
 		return new Response(ReturnCode.SUCCESS);
 	}
 
