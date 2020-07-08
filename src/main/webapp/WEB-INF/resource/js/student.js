@@ -3,6 +3,7 @@ var student_saveStuApplyUrl = ctx+"/stuApply/save/ajax";
 var student_submitStuApply2ReviewUrl = ctx+"/stuApply/submit2Review/ajax";
 var student_submitStuApply2ReviewTwiceUrl = ctx+"/stuApply/submit2ReviewTwice/ajax";
 var student_downloadStuApplyUrl = ctx+"/stuApply/downloadPdf/";
+var student_downloadStuApplyTestUrl = ctx+"/stuApply/downloadTestPdf/";
 var student_printStuApplyUrl = ctx+"/stuApply/print/";
 var student_stuApplyHistoryListUrl = ctx+"/stuApply/historyList/ajax";
 var student_stuApplyHistoryInfoUrl = ctx+"/stuApply/historyInfo/ajax";
@@ -60,7 +61,7 @@ var student_downloadStuGraInfoAttUrl = ctx+"/stuGraInfo/downloadAtt";
 /*function doLoadStuApplyStatus(){
 	$("#ipt_pageNo").unbind("click");
 	$("#div_display").html("加载中...");
-	
+
 	var params = {};
 	params.url = student_loadStuApplyUrl+"?_t="+new Date().getTime();
 	params.postData = {};
@@ -367,7 +368,7 @@ function doSaveStuApply(isAdmin){
 	}
 	var regex_mobile = /^1\d{10}$/;//手机号
 	var regex_card = /^[0-9a-zA-z\(\)]+$/;//证件号，香港身份证有括号
-	
+
 	var name = $.trim($("#ipt_name").val());
 	var dateOfBirth = $.trim($("#ipt_dateOfBirth").val());
 	var addressOfBirth = $.trim($("#ipt_addressOfBirth").val());
@@ -495,7 +496,7 @@ function doSaveStuApply(isAdmin){
 		alert("请至少将家长情况中除“校园一卡通号码”外的所有信息补充完整！");
 		return ;
 	}
-	
+
 	var sex = $("#form_stuApply").find("input:radio[name='sex']:checked").val();
 	var sexCheck = {"TRUE":"1,3,5,7,9,儿子,孙子,外孙子,非亲属,其他","FALSE":"0,2,4,6,8,女儿,孙女,外孙女,非亲属,其他"};
 
@@ -554,7 +555,7 @@ function submit2Review(){
 	if(!checkStuApplyPhoto()){//验证新生的相关图片是否上传完整
 		return;
 	}
-	
+
 	if(!confirm("您确定要将表单提交吗，提交后表单将暂时锁定，不可修改！")){
 		return ;
 	}
@@ -583,7 +584,7 @@ function submit2ReviewTwice(){
 	if(!checkStuApplyPhoto()){//验证新生的相关图片是否上传完整
 		return;
 	}
-	
+
 	if(!confirm("您确定要将表单提交吗，本次提交后表单内容将“永久锁定”！")){
 		return ;
 	}
@@ -616,7 +617,20 @@ function showDownloadConfirm(id){
 	params.submitTxt = "马上下载";
 	params.cancelTxt = "暂不下载";
 	showDialogConfirm380(params);
-	
+
+	$("#dialog_380").find("select").seleFn();
+}
+//打印报名表
+function showDownloadTestPdf(id){
+	var params = {};
+	params.submitMethod = doDownloadTest;
+	params.submitData = {id:id};
+	params.modelId = "model_stuInfoDownloadExplain";
+	params.title = "下载提示";
+	params.submitTxt = "马上下载";
+	params.cancelTxt = "暂不下载";
+	showDialogConfirm380(params);
+
 	$("#dialog_380").find("select").seleFn();
 }
 function showPrintConfirm(id){
@@ -628,12 +642,16 @@ function showPrintConfirm(id){
 	params.submitTxt = "马上打印";
 	params.cancelTxt = "暂不打印";
 	showDialogConfirm380(params);
-	
+
 	$("#dialog_380").find("select").seleFn();
 }
 function doDownload(evt){
 	$("#dialog_confirm_380").hide();
 	window.open(student_downloadStuApplyUrl+evt.data.id);
+}
+function doDownloadTest(evt){
+	$("#dialog_confirm_380").hide();
+	window.open(student_downloadStuApplyTestUrl+evt.data.id);
 }
 function doPrint(evt){
 	var isIE = (document.all) ? true : false;
