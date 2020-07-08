@@ -269,7 +269,7 @@
 {@if statusStr!="SUBMIT_NONE"}
 		<button id="btn_print_1" onclick="javascript:showDownloadConfirm('$J{id}');" class="Btn" type="button">下载后打印</button>
 		<button id="btn_print_2" onclick="javascript:showPrintConfirm('$J{id}');" class="Btn" type="button">在线打印</button>
-		<button id="btn_print_3" onclick="javascript:{window.open('${ctx}/resource/华师附小打印帮助.pdf');};" class="Btn" type="button">打印须知</button>
+		<button id="btn_print_3" onclick="javascript:{window.open('${ctx}/resource/钟家村小学打印帮助.pdf');};" class="Btn" type="button">打印须知</button>
 {@/if}
 {@if statusStr=="SUBMIT_ONCE"}<!--2016-6-23-->
 		<button id="btn_modify_5" onclick="javascript:showStuApplyDetail('$J{id}',true);" class="Btn" type="button">修改</button>

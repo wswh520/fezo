@@ -24,7 +24,7 @@
 				<td width="100">学校标识码</td>
 				<td>2142001636</td>
 				<td width="100">学校名称</td>
-				<td >华师附小</td>
+				<td >钟家村小学</td>
 				<td>班级</td>
 				<td>$J{bj}</td>
 				<td>籍贯</td>

@@ -8,7 +8,7 @@
 			<li class="right"></li>
 			<li class="left"><a href="${ctx}/">首页</a></li>
 			<li>基本功能</li>
-			<li class="last">华师附小新生入学登记</li>
+			<li class="last">钟家村小学新生入学登记</li>
 		</ul>
 	</div>
 	<div class="right">
@@ -28,7 +28,7 @@
 {@if statusStr!="SUBMIT_NONE"}
 		<button id="btn_print_1" onclick="javascript:showDownloadConfirm('$J{id}');" class="Btn" type="button">下载后打印</button>
 		<button id="btn_print_2" onclick="javascript:showPrintConfirm('$J{id}');" class="Btn" type="button">在线打印</button>
-		<button id="btn_print_3" onclick="javascript:{window.open('${ctx}/resource/华师附小打印帮助.pdf');};" class="Btn" type="button">打印须知</button>
+		<button id="btn_print_3" onclick="javascript:{window.open('${ctx}/resource/钟家村小学打印帮助.pdf');};" class="Btn" type="button">打印须知</button>
 {@/if}
 {@if currentYear!=year&&statusStr!="REVIEW_PASS"}<!--2016-6-23-->
 	<button onclick="javascript:forwardGrade('$J{id}',true);"  class="Btn" type="button">申请转$J{currentYear}级</button>
@@ -65,7 +65,7 @@
 	{@/if}
 		<button id="btn_doModify" onclick="javascritp:doSaveStuInfo(false);" style="display:none;" class="Btn" type="button">保存修改</button>
 		<button id="btn_cancelModify" onclick="javascritp:doCancelStuInfoModify();" style="display:none;" class="Btn" type="button">取消</button>
-		<button onclick="javascript:{window.open('${ctx}/resource/doc/华师附小新生入学学生基本信息表填表说明.pdf');};" class="Btn" type="button">填表说明</button>
+		<button onclick="javascript:{window.open('${ctx}/resource/doc/钟家村小学新生入学学生基本信息表填表说明.pdf');};" class="Btn" type="button">填表说明</button>
 		<button onclick="javascript:{window.open('${ctx}/resource/doc/行政区划代码查询表.xls');};" class="Btn" type="button">行政区划代码查询表</button>
 {@else if statusStr=="SUBMIT_NONE"}
 {@/if}
@@ -152,7 +152,7 @@
 	<div class="item" style="height: auto;">
 		<p>&nbsp;&nbsp;&nbsp;1、请确认您的电脑安装有PDF阅读器；</p>
 		<p>&nbsp;&nbsp;&nbsp;2、下载后不得对文档进行任何仿制和修改；</p>
-		<p>&nbsp;&nbsp;&nbsp;3、本文档共有4页，请将第一页《2017年华师附小新生入学基本信息登记表（一）》和第二页《家长诚信承诺书》正反打印在一页A4纸上；将第三页《2017年华师附小新生入学招生审核登记表（二）》和第四页正反打印在一页A4纸上；</p>
+		<p>&nbsp;&nbsp;&nbsp;3、本文档共有4页，请将第一页《2017年钟家村小学新生入学基本信息登记表（一）》和第二页《家长诚信承诺书》正反打印在一页A4纸上；将第三页《2017年钟家村小学新生入学招生审核登记表（二）》和第四页正反打印在一页A4纸上；</p>
 	</div>
 </script>
 <script id="model_stuInfoDownloadExplain" type="text/template">

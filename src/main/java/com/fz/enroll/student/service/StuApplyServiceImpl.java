@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.HtmlUtils;
 
@@ -110,9 +113,9 @@ public class StuApplyServiceImpl implements StuApplyService {
 		stuApply = stuApply!=null?stuApply:new StuApply();
 		
 		Response checkRes = this.checkOpAuth(stuApply);
-		if(checkRes.getRetCode()!=ReturnCode.SUCCESS){
-			stuApply.setLocked(true);
-		}
+//		if(checkRes.getRetCode()!=ReturnCode.SUCCESS){
+//			stuApply.setLocked(true);
+//		}
 		
 		Response res = new Response(ReturnCode.SUCCESS);
 		res.setData(stuApply);
@@ -152,6 +155,19 @@ public class StuApplyServiceImpl implements StuApplyService {
 				return res;
 			}else if(exist==null){
 				exist = stuApplyDao.queryByUid(entity.getUid());
+			}
+			// 20200708 身份证号码校验，控制报名学生出生年月在2013年9月2号至 2014年8月31号
+			String cardNo = entity.getCardNo();
+			String reg = "[\u4e00-\u9fa5]";
+			Pattern pat = Pattern.compile(reg);
+			String dateOfBirth =pat.matcher(entity.getDateOfBirthStr()).replaceAll("");
+			if(!StringUtils.isEmpty(cardNo) && !StringUtils.isEmpty(dateOfBirth)){
+				int i = cardNo.indexOf(dateOfBirth+"");
+				if(i <= 0){
+					res.setRetCode(ReturnCode.SERVER_INNER_ERROR);
+					res.setErrorMsg("报名学生出生年月在2013年9月2号至2014年8月31号");
+					return res;
+				}
 			}
 			int uc = 0;
 			if(exist==null){

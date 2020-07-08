@@ -7,6 +7,7 @@ var stuApply_downloadAttUrl = ctx + "/stuApply/downloadAtt/";
 /** ******************新生入学图片(包括照片等)**************************** */
 
 function doloadStuApplyAtt(id, type) {
+	debugger;
 	$("#div_stuApplyAtt").html("加载中...");
 	var userType = $("#ipt_userType").val();
 	var status = $("#ipt_statusStr").val();

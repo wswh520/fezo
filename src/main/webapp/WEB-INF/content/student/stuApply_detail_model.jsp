@@ -7,7 +7,7 @@
 <div class="clear"></div>
 <div class="base_title">
 	<em></em>
-	<strong>$J{year}年华师附小新生入学登记表</strong>
+	<strong>$J{year}年钟家村小学新生入学登记表</strong>
 	<strong style="float:right;color:red">
 		申请状态：{@if id==0}未填表
 		{@else if statusStr=="SUBMIT_NONE"}未提交
@@ -66,17 +66,8 @@
 				{@else}
 				<ul>
 					<li>
-						<input id="typeStrId" name="type" value="$J{typeStr}" type="hidden" class="inp" />
-						{@if typeStr=="TYPEA"}报名类别：A华师第二代生源
-						{@else if typeStr=="TYPEB"}报名类别：B华师第三代生源
-						{@else if typeStr=="TYPEC"}报名类别：C社会对口生源
-						{@/if}
-					</li>
-					<li style="line-height:24px">
-						<input name="other51" value="$J{other51}" type="hidden" class="inp" />
-						{@if other51=="南湖校区"}报名校区：南湖校区
-						{@else if other51=="桂子山校区"}报名校区：桂子山校区
-						{@/if}
+						<input id="other54" name="other54" value="$J{other54}" type="hidden" class="inp" />
+						$J{other54}
 					</li>
 				</ul>
 				{@/if}

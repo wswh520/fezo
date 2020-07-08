@@ -3,7 +3,7 @@
 
 	<div class="base_title">
 		<em></em>
-		<strong>华师附小毕业信息登记表</strong>
+		<strong>钟家村小学毕业信息登记表</strong>
 		<strong style="float:right;color:red">
 			核对状态：{@if statusStr=="SUBMIT_NONE"}未核对
 			{@else if statusStr=="SUBMIT_ONCE"}待复核
@@ -28,7 +28,7 @@
 				<td width="100">学校标识码</td>
 				<td>2142001636</td>
 				<td width="100">学校名称</td>
-				<td >华师附小</td>
+				<td >钟家村小学</td>
 				<td>班级</td>
 				<td>$J{bj}</td>
 				<td>籍贯</td>

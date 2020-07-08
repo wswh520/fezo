@@ -18,7 +18,7 @@
 </head>
 <body class="login_index">
 	<div  style="margin-left: 335px;margin-top: 100px;">
-		<div style="text-decoration;font-size: 50px; color: black; ">华师附小</div>
+		<div style="text-decoration;font-size: 50px; color: black; ">钟家村小学</div>
 	</div>
 	<div class="Main clearfix">
 		<div class="indexColumnOne clearfix pdtb10">
