@@ -39,7 +39,7 @@
 		<%--<a class="file_down" href="${ctx}/resource/华师附小新生入学招生系统用户须知.pdf" target="_blank"><i>&nbsp;</i>下载帮助文档</a>
 		<a class="file_down" href="${ctx}/resource/华师附小招生系统使用说明.pdf" target="_blank"><i>&nbsp;</i>下载家长用户操作流程</a>--%>
 		<!--<div class="logo"><a href="javascript:void(0);"><img src="${ctx}/resource/img/login_logo.png" /></a></div>-->
-		<div class="logo" style="font-size: 25px;color: black;">华师附小新生网上登记系统</div>
+		<div class="logo" style="font-size: 25px;color: black;">钟家村小学新生网上登记系统</div>
 	</div>
 	<!--Header Over--> 
 	<!--Main Start-->
@@ -74,17 +74,17 @@
 			<!--loginbox--> 
 		</div>
 	</div>
-	<ul class="add-ul">
-		<li>2019年6月8-12日 华师教职工子弟（含第三代）和洪山区人民政府划片入学生源注册、登记</li>
-		<li>桂子山校区现场审核时间：2019年6月15日上午9：30-12：00；下午2：00-4：30 附小北教学楼一楼</li>
-		<li>南湖校区现场审核时间：2019年6月19日上午9：30-12：00；下午2：00-4：30 附小南湖校区综合楼一楼</li>
-		<li>桂子山校区招收2012年9月1日—2013年8月31日之间出生的华师教职工第二代、第三代子弟。</li>
-		<li>南湖校区招收2012年9月1日—2013年8月31日之间出生，洪山区人民政府2019年划片对口入学的生源。</li>
-		<div class="clearfix"></div>
-	</ul>
+<%--	<ul class="add-ul">--%>
+<%--		<li>2019年6月8-12日 华师教职工子弟（含第三代）和洪山区人民政府划片入学生源注册、登记</li>--%>
+<%--		<li>桂子山校区现场审核时间：2019年6月15日上午9：30-12：00；下午2：00-4：30 附小北教学楼一楼</li>--%>
+<%--		<li>南湖校区现场审核时间：2019年6月19日上午9：30-12：00；下午2：00-4：30 附小南湖校区综合楼一楼</li>--%>
+<%--		<li>桂子山校区招收2012年9月1日—2013年8月31日之间出生的华师教职工第二代、第三代子弟。</li>--%>
+<%--		<li>南湖校区招收2012年9月1日—2013年8月31日之间出生，洪山区人民政府2019年划片对口入学的生源。</li>--%>
+<%--		<div class="clearfix"></div>--%>
+<%--	</ul>--%>
 	<div class=" IndexFooter">
 		<div class="FooterCon clearfix pdtb10">
-			<p class="tc">Copyright &copy; 华中师范大学附属小学 </p>
+			<p class="tc">Copyright &copy; 钟家村小学 </p>
 		</div>
 	</div>
 </body>
