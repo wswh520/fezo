@@ -42,9 +42,8 @@ public class StuApplyAction {
 	@ResponseBody
 	@RequestMapping("save")
 	public Response doSave(StuApplyAdd entity) {
-//		Response res = stuApplyService.saveService(entity.convert2Entity());
-//		return res;
-		return new Response(ReturnCode.SERVER_INNER_ERROR);
+		Response res = stuApplyService.saveService(entity.convert2Entity());
+		return res;
 	}
 	
 	@ResponseBody
