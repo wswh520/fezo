@@ -18,9 +18,11 @@
 {@if !locked}
 		<button id="btn_showModify" onclick="javascritp:showStuApplyModify(1);" class="Btn" type="button"><i class="icon icon-Modify"></i>修改</button>
 	{@if statusStr=="SUBMIT_NONE"}
-		<button id="btn_submit2Review" onclick="javascritp:submit2Review();" class="Btn" type="button">提交</button>
+<%--		<button id="btn_submit2Review" onclick="javascritp:submit2Review();" class="Btn" type="button">提交</button>--%>
+		<button id="btn_submit2Review" onclick="javascritp:submit2Reviewpromise();" class="Btn" type="button">提交</button>
 	{@else if statusStr=="SUBMIT_ONCE"}
-		<button id="btn_submit2Review" onclick="javascritp:submit2ReviewTwice();" class="Btn" type="button">再次提交</button>
+<%--		<button id="btn_submit2Review" onclick="javascritp:submit2ReviewTwice();" class="Btn" type="button">再次提交</button>--%>
+		<button id="btn_submit2Review" onclick="javascritp:submit2ReviewTwicewpromise();" class="Btn" type="button">再次提交</button>
 	{@/if}
 		<button id="btn_doModify" onclick="javascritp:doSaveStuApply(false);" style="display:none;" class="Btn" type="button">保存修改</button>
 		<button id="btn_cancelModify" onclick="javascritp:doCancelStuApplyModify();" style="display:none;" class="Btn" type="button">取消</button>
@@ -166,5 +168,11 @@
 	<div class="item" style="height: auto;">
 		<p>&nbsp;&nbsp;&nbsp;1、请确认当前浏览器为IE浏览器，并按提示安装相关的打印组件，您的电脑连接着工作中的打印机；</p>
 		<p>&nbsp;&nbsp;&nbsp;2、如果无法在线打印，请“下载后打印”；</p>
+	</div>
+</script>
+<script id="model_promise" type="text/template">
+	<div class="item" style="height: auto;">
+		<p style="text-align: center">&nbsp;&nbsp;&nbsp;家长承诺书</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;郑重承诺：本人保证在网上提交的所有信息、证明材料、证件，真实准确，若因提供的信息、材料、证件不真实造成的取消报名资格、取消录取资格等一切后果承担全部责任。</p>
 	</div>
 </script>

@@ -81,9 +81,8 @@
 		</select>
 		<select id="sel_type" onchange="javascript:toPage(1);">
 			<option value="">报名类别</option>
-			<option value="TYPEA">A华师第二代生源</option>
-			<option value="TYPEB">B华师第三代生源</option>
-			<option value="TYPEC">C社会对口生源</option>
+			<option value="外教班">外教班</option>
+			<option value="普通班">普通班</option>
 		</select>
 		<select id="sel_sex" onchange="javascript:toPage(1);">
 			<option value="">性别</option>
@@ -177,10 +176,11 @@
 				<td id="ele_name_$J{ele.id}">$J{ele.name}</td>
 				<td>{@if ele.sexStr=="TRUE"}男{@else}女{@/if}</td>
 				<td>
-					{@if ele.typeStr=="TYPEA"}A华师第二代生源
-					{@else if ele.typeStr=="TYPEB"}B华师第三代生源
-					{@else if ele.typeStr=="TYPEC"}C社会对口生源
-					{@/if}
+					$J{ele.other54}
+<%--					{@if ele.typeStr=="TYPEA"}A华师第二代生源--%>
+<%--					{@else if ele.typeStr=="TYPEB"}B华师第三代生源--%>
+<%--					{@else if ele.typeStr=="TYPEC"}C社会对口生源--%>
+<%--					{@/if}--%>
 				</td>
 				<td>
 					{@if ele.statusStr=="SUBMIT_NONE"}未提交
@@ -399,9 +399,8 @@
 						<label class="sele-label label-nick">报名类别：</label>
 						<select id="sel_type">
 							<option value="">全部</option>
-							<option value="TYPEA">A华师第二代生源</option>
-							<option value="TYPEB">B华师第三代生源</option>
-							<option value="TYPEC">C社会对口生源</option>
+							<option value="外教班">外教班</option>
+							<option value="普通班">普通班</option>
 						</select>
 					</div>
 					<div class="item">

@@ -12,6 +12,7 @@ import com.fz.common.util.HttpUtils;
 import com.fz.enroll.entity.student.StuSmsInfo;
 import com.fz.enroll.enum0.*;
 import com.fz.enroll.student.dao.*;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
@@ -61,10 +62,10 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 	}
 	
 	@Override
-	public Map<String,Object> createQueryParams(ExportOrder order,String keyword,String year,String ageScopeStr,String type,String sex,
+	public Map<String,Object> createQueryParams(ExportOrder order,String keyword,String year,String ageScopeStr,String other54,String sex,
 			String status,String infoStatus,String vaccineStatus,String school){
 		ageScopeStr = Utils.emptyToNull(ageScopeStr);
-		type = Utils.emptyToNull(type);
+//		type = Utils.emptyToNull(type);
 		sex = Utils.emptyToNull(sex);
 		school = Utils.emptyToNull(school);
 		status = Utils.emptyToNull(status);
@@ -88,9 +89,9 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 			params.put("dateOfBirthBegin", DateUtils.getTimeByYear0831(yearInt-ageScope.end()));
 			params.put("dateOfBirthEnd", DateUtils.getTimeByYear0831(yearInt-ageScope.begin()));
 		}
-		if(type!=null){
-			params.put("type", StuType.valueOf(type).val());
-		}
+//		if(type!=null){
+//			params.put("type", StuType.valueOf(type).val());
+//		}
 		if(sex!=null){
 			params.put("sex", BooleanEnum.valueOf(sex).val());
 		}
@@ -111,11 +112,9 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 		if(vaccineStatus!=null){
 			params.put("vaccineStatus", StuApplyStatus.valueOf(vaccineStatus).val());
 		}
-//		//获取用户登录信息
-//		UserType utype = ThreadLocalUtils.getCurrentUser().getType();
-//		if(utype==UserType.RECRUIT_TEACHER){//招生老师
-//			params.put("userType", "RECRUIT_TEACHER");
-//		}
+		if(StringUtils.isNotBlank(other54)){
+			params.put("other54", other54);
+		}
 		return params;
 	}
 	
