@@ -2,8 +2,10 @@
 <%@ include file="/common/taglibs.jsp"%>
 <%@page import="com.fz.common.security.CurrentUser"%>
 <%@page import="com.fz.common.security.ThreadLocalUtils"%>
+<%@ page import="com.fz.enroll.enum0.UserType" %>
 <%
 	CurrentUser user = ThreadLocalUtils.getCurrentUser();
+	UserType utype = ThreadLocalUtils.getCurrentUser().getType();
 %>
 
 <script id="model_stuApplyListDisplay" type="text/template">
@@ -55,6 +57,14 @@
 			</ul>
 			</div>
 		</div>
+		<!-- 招生老师才有权限-->
+		<% if (utype==UserType.RECRUIT_TEACHER){%>
+		<div style="display:inline-block;">
+			<div class="Btn btn-group" style="background:none; padding:0;">
+				<button id="btn_print_4" onclick="javascript:stuApplyListSendSms('$J{id}');" class="Btn" type="button">${userType}面试通过通知</button>
+			</div>
+		</div>
+		<% } %>
 	</div>
 	<div id="div_back" class="left" style="display:none;"></div>
 	<div id="div_sel" class="left">
@@ -491,4 +501,9 @@
 		</div>
 	</div>
 </div>
+</script>
+<script id="model_stuInfoDownloadExplain1" type="text/template">
+	<div class="item" style="height: auto;">
+		<p>&nbsp确认发送面试通过短信；</p>
+	</div>
 </script>

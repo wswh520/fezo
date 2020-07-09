@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fz.common.security.ThreadLocalUtils;
 import com.fz.common.util.HttpUtils;
 import com.fz.enroll.entity.student.StuSmsInfo;
+import com.fz.enroll.enum0.*;
 import com.fz.enroll.student.dao.*;
 import org.apache.http.HttpResponse;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -32,12 +34,6 @@ import com.fz.enroll.config.service.TimeConfigService;
 import com.fz.enroll.entity.student.StuApply;
 import com.fz.enroll.entity.student.StuInfo;
 import com.fz.enroll.entity.student.StuVaccine;
-import com.fz.enroll.enum0.AgeScope;
-import com.fz.enroll.enum0.BooleanEnum;
-import com.fz.enroll.enum0.ExportOrder;
-import com.fz.enroll.enum0.StuApplyStatus;
-import com.fz.enroll.enum0.StuType;
-import com.fz.enroll.enum0.TimeConfigType;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
@@ -115,6 +111,11 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 		if(vaccineStatus!=null){
 			params.put("vaccineStatus", StuApplyStatus.valueOf(vaccineStatus).val());
 		}
+//		//获取用户登录信息
+//		UserType utype = ThreadLocalUtils.getCurrentUser().getType();
+//		if(utype==UserType.RECRUIT_TEACHER){//招生老师
+//			params.put("userType", "RECRUIT_TEACHER");
+//		}
 		return params;
 	}
 	
