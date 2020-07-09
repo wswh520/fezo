@@ -534,6 +534,33 @@ public class StuApplyServiceImpl implements StuApplyService {
 		Map<String,String> dataMap = new HashMap<String,String>();
 		dataMap.put("cardNo",stuApply.getCardNo());
 		dataMap.put("name", stuApply.getName());
+		String no = stuApply.getNo();
+		dataMap.put("no", " "+no);
+		if(no.startsWith("J")){
+			dataMap.put("addr", "钟家村寄宿学校（汉阳区北城路28号）");
+		}else if(no.startsWith("Z")){
+			dataMap.put("addr", "钟家村小学（西村路2号）");
+		}else if(no.startsWith("S")){
+			dataMap.put("addr", "钟家村小学三里坡校区（马鹦路143号）");
+		}
+		Integer num = Integer.valueOf(no.substring(3));
+		if(num <= 20){
+			dataMap.put("test", " 1");
+			dataMap.put("time1", "上午");
+			dataMap.put("time2", " 8:30");
+		}else if(num <= 40){
+			dataMap.put("test", " 2");
+			dataMap.put("time1", "上午");
+			dataMap.put("time2", " 10:30");
+		}else if(num > 40){
+			dataMap.put("test", " 3");
+			dataMap.put("time1", "上午");
+			dataMap.put("time2", " 14:30");
+		}
+
+		dataMap.put("wait", no.substring(2,3));
+		dataMap.put("class","  就读方式："+ stuApply.getOther54());
+
 		if(stuApply.getSex()==BooleanEnum.TRUE.val()){
 			dataMap.put("sex", "男");
 		}else{
