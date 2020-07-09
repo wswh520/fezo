@@ -75,9 +75,4 @@ public class LoginAction {
 		return res;
 	}
 
-	@RequestMapping("downloadTestPdf/{id}")
-	public void downloadTestPdf(@PathVariable("id")String id,HttpServletRequest request,HttpServletResponse response) {
-		stuApplyService.downloadStuApplyService2(true,id,request,response);
-	}
-
 }
