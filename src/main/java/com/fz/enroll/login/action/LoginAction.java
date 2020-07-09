@@ -62,16 +62,4 @@ public class LoginAction {
 //		return "redirect:login/tips";
 	}
 
-	/**
-	 * 发送短信接口
-	 * @param request
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping("sendSms")
-	public Response sendSms(HttpServletRequest request){
-		Response res = stuApplyListService.sendSms(request);
-		return res;
-	}
-
 }
