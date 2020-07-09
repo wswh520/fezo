@@ -173,7 +173,7 @@
 	</update>
 	<!-- 转当本年对应的年级 -->
 	<update id="forwardGrade" parameterType="StuApply">
-		update tb_stuapply set no=#{no},year=#{year},status=#{status},message=#{message}
+		update tb_stuapply set year=#{year},status=#{status},message=#{message}
 		where id=#{id} and uid=#{uid} and status!=4<!-- REVIEW_PASS(4),//拟录取、毕业生信息需要二次审核 -->
 	</update>
 	<!-- <update id="updateHistory" parameterType="StuApplyHistory">
