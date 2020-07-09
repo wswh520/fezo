@@ -4,6 +4,7 @@ var student_submitStuApply2ReviewUrl = ctx+"/stuApply/submit2Review/ajax";
 var student_submitStuApply2ReviewTwiceUrl = ctx+"/stuApply/submit2ReviewTwice/ajax";
 var student_downloadStuApplyUrl = ctx+"/stuApply/downloadPdf/";
 var student_downloadStuApplyTestUrl = ctx+"/stuApply/downloadTestPdf/";
+var student_stuApplyListSendSmsUrl = ctx+"/stuApplyList/sendSms/";
 var student_printStuApplyUrl = ctx+"/stuApply/print/";
 var student_stuApplyHistoryListUrl = ctx+"/stuApply/historyList/ajax";
 var student_stuApplyHistoryInfoUrl = ctx+"/stuApply/historyInfo/ajax";
@@ -551,7 +552,33 @@ function doSaveStuApply(isAdmin){
 	};
 	ajaxJSON(params);
 }
+
+function submit2Reviewpromise(){
+	//弹出提示框 20200709
+	var params = {};
+	params.submitMethod = promise;
+	// params.submitData = {id:id};
+	params.modelId = "model_promise";
+	// params.title = "下载提示";
+	// params.submitTxt = "马上下载";
+	// params.cancelTxt = "暂不下载";
+	showDialogConfirm380(params);
+}
+function submit2ReviewTwicewpromise(){
+	//弹出提示框 20200709
+	var params = {};
+	params.submitMethod = promiseTwice;
+	// params.submitData = {id:id};
+	params.modelId = "model_promise";
+	// params.title = "下载提示";
+	// params.submitTxt = "马上下载";
+	// params.cancelTxt = "暂不下载";
+	showDialogConfirm380(params);
+}
+
 function submit2Review(){
+
+	$("#dialog_confirm_380").hide();
 
 	if(!checkStuApplyPhoto()){//验证新生的相关图片是否上传完整
 		return;
@@ -581,6 +608,7 @@ function submit2Review(){
 	ajaxJSON(params);
 }
 function submit2ReviewTwice(){
+	$("#dialog_confirm_380").hide();
 
 	if(!checkStuApplyPhoto()){//验证新生的相关图片是否上传完整
 		return;
@@ -634,6 +662,20 @@ function showDownloadTestPdf(id){
 
 	$("#dialog_380").find("select").seleFn();
 }
+//面试通过通知
+function stuApplyListSendSms(id){
+	debugger;
+	var params = {};
+	params.submitMethod = sendSms;
+	params.submitData = {id:id};
+	params.modelId = "model_stuInfoDownloadExplain1";
+	params.title = "提示";
+	params.submitTxt = "确认";
+	params.cancelTxt = "取消";
+	showDialogConfirm380(params);
+
+	$("#dialog_380").find("select").seleFn();
+}
 function showPrintConfirm(id){
 	var params = {};
 	params.submitMethod = doPrint;
@@ -650,9 +692,34 @@ function doDownload(evt){
 	$("#dialog_confirm_380").hide();
 	window.open(student_downloadStuApplyUrl+evt.data.id);
 }
+function promise(evt){
+	// window.open(student_downloadStuApplyUrl+evt.data.id);
+	submit2Review();
+}
+function promiseTwice() {
+	submit2ReviewTwice();
+}
 function doDownloadTest(evt){
 	$("#dialog_confirm_380").hide();
 	window.open(student_downloadStuApplyTestUrl+evt.data.id);
+}
+function sendSms(evt){
+	$("#dialog_confirm_380").hide();
+	var params = {};
+	params.url = student_stuApplyListSendSmsUrl+"?_t="+new Date().getTime();
+	params.postType = "get";
+	params.error = "失败";
+	params.mustCallBack = false;//是否必须回调
+	params.callBack = function (json){
+		console.log(json);
+		if(json.retCode==CODE_SUCCESS){
+			alert("发送成功！");
+		}else{
+			alert(json.errorMsg);
+		}
+	};
+	ajaxJSON(params);
+	// window.open(student_stuApplyListSendSmsUrl);
 }
 function doPrint(evt){
 	var isIE = (document.all) ? true : false;
@@ -1271,7 +1338,7 @@ function doToPage_stuApplyList(){
 	var keyword = $("#ipt_keyword").val();
 	var year = $("#sel_year").val();
 	var ageScope = $("#sel_ageScope").val();
-	var type = $("#sel_type").val();
+	var other54 = $("#sel_type").val();
 	var sex = $("#sel_sex").val();
 	var status = $("#sel_status").val();
 	var infoStatus = $("#sel_infoStatus").val();
@@ -1280,7 +1347,7 @@ function doToPage_stuApplyList(){
 	
 	var params = {};
 	params.url = student_loadStuApplyListUrl+"?_t="+new Date().getTime();
-	params.postData = {pageNo:pageNo,keyword:keyword,year:year,ageScope:ageScope,type:type,sex:sex,status:status,infoStatus:infoStatus,vaccineStatus:vaccineStatus,school:school};
+	params.postData = {pageNo:pageNo,keyword:keyword,year:year,ageScope:ageScope,other54:other54,sex:sex,status:status,infoStatus:infoStatus,vaccineStatus:vaccineStatus,school:school};
 	params.postType = "get";
 	params.error = "加载失败";
 	params.mustCallBack = false;//是否必须回调

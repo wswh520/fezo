@@ -15,7 +15,7 @@
 		<where>
 			<if test="year!=null"> and a.year=#{year}</if>
 			<if test="dateOfBirthBegin!=null"> and (a.dateOfBirth>=#{dateOfBirthBegin} and #{dateOfBirthEnd}>a.dateOfBirth)</if>
-			<if test="type!=null"> and a.type=#{type}</if>
+			<if test="other54!=null"> and a.other54=#{other54}</if>
 			<if test="sex!=null"> and a.sex=#{sex}</if>
 			<if test="school!=null"> and a.other51=#{school}</if>
 			<if test="status!=null"> and a.status=#{status}</if>
@@ -78,6 +78,6 @@
 		a.other31,a.other32,a.other33,a.other34,a.other35,a.other36,
 		a.other37,a.other38,a.other39,a.other40,a.other41,a.other42,
 		a.other43,a.other44,a.other45,a.other46,a.other47,
-		a.other48,a.other49,a.other50,a.other51
+		a.other48,a.other49,a.other50,a.other51,a.other52,a.other53,a.other54
 	</sql>
 </mapper>

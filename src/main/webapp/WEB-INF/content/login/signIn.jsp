@@ -61,7 +61,7 @@
 	
 	<div class=" IndexFooter">
 		<div class="FooterCon clearfix pdtb10">
-			<p class="tc">Copyright &copy; 华中师范大学附属小学 </p>
+			<p class="tc">Copyright &copy; 钟家村小学 </p>
 		</div>
 	</div>
 </body>

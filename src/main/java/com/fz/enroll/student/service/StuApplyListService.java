@@ -16,14 +16,14 @@ public interface StuApplyListService extends QueryBaseService<StuApply> {
 	 * 
 	 * @param keyword	根据：学生姓名、身份证号码、家长注册时的手机号码进行查找
 	 * @param ageScope	年龄范围
-	 * @param type	类别
+//	 * @param type	类别
 	 * @param sex	性别
 	 * @param status	状态
 	 * @param status	学籍信息表状态
 	 * @param status	预防接种表状态
 	 * @return
 	 */
-	public Map<String,Object> createQueryParams(ExportOrder order,String keyword,String year,String ageScope,String type,String sex,
+	public Map<String,Object> createQueryParams(ExportOrder order,String keyword,String year,String ageScope,String other54,String sex,
 													String status,String infoStatus,String vaccineStatus,String school);
 	
 	public Response reviewService(StuApply entity);

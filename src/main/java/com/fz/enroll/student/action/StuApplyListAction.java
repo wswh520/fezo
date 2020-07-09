@@ -36,13 +36,14 @@ public class StuApplyListAction extends QueryBaseAction<StuApply> {
 		String keyword = request.getParameter("keyword");
 		String year = request.getParameter("year");
 		String ageScope = request.getParameter("ageScope");
-		String type = request.getParameter("type");
+//		String type = request.getParameter("type");
 		String sex = request.getParameter("sex");
 		String status = request.getParameter("status");
 		String infoStatus = request.getParameter("infoStatus");
 		String vaccineStatus = request.getParameter("vaccineStatus");
 		String school = request.getParameter("school");
-		return stuApplyListService.createQueryParams(null,keyword, year, ageScope, type, sex, status, infoStatus, vaccineStatus, school);
+		String other54 = request.getParameter("other54");
+		return stuApplyListService.createQueryParams(null,keyword, year, ageScope, other54, sex, status, infoStatus, vaccineStatus, school);
 	}
 	
 	@ResponseBody

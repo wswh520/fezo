@@ -50,8 +50,7 @@ public class LoginAction {
 	@RequestMapping("login_in")
 	public @ResponseBody Response doLogin(String username,String password,boolean rememberMe,
 			HttpServletRequest request,HttpServletResponse response) {
-		//Response res = loginService.loginService(username, password==null?null:MD5.md5MatchToPHP(password), rememberMe,  request, response);
-		Response res = loginService.loginService(username, password, rememberMe,  request, response);
+		Response res = loginService.loginService(username, password==null?null:MD5.md5MatchToPHP(password), rememberMe,  request, response);
 		return res;
 	}
 

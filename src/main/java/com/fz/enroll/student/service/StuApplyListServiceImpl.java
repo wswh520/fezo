@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fz.common.security.ThreadLocalUtils;
 import com.fz.common.util.HttpUtils;
 import com.fz.enroll.entity.student.StuSmsInfo;
+import com.fz.enroll.enum0.*;
 import com.fz.enroll.student.dao.*;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
@@ -32,12 +35,6 @@ import com.fz.enroll.config.service.TimeConfigService;
 import com.fz.enroll.entity.student.StuApply;
 import com.fz.enroll.entity.student.StuInfo;
 import com.fz.enroll.entity.student.StuVaccine;
-import com.fz.enroll.enum0.AgeScope;
-import com.fz.enroll.enum0.BooleanEnum;
-import com.fz.enroll.enum0.ExportOrder;
-import com.fz.enroll.enum0.StuApplyStatus;
-import com.fz.enroll.enum0.StuType;
-import com.fz.enroll.enum0.TimeConfigType;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
@@ -65,10 +62,10 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 	}
 	
 	@Override
-	public Map<String,Object> createQueryParams(ExportOrder order,String keyword,String year,String ageScopeStr,String type,String sex,
+	public Map<String,Object> createQueryParams(ExportOrder order,String keyword,String year,String ageScopeStr,String other54,String sex,
 			String status,String infoStatus,String vaccineStatus,String school){
 		ageScopeStr = Utils.emptyToNull(ageScopeStr);
-		type = Utils.emptyToNull(type);
+//		type = Utils.emptyToNull(type);
 		sex = Utils.emptyToNull(sex);
 		school = Utils.emptyToNull(school);
 		status = Utils.emptyToNull(status);
@@ -92,9 +89,9 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 			params.put("dateOfBirthBegin", DateUtils.getTimeByYear0831(yearInt-ageScope.end()));
 			params.put("dateOfBirthEnd", DateUtils.getTimeByYear0831(yearInt-ageScope.begin()));
 		}
-		if(type!=null){
-			params.put("type", StuType.valueOf(type).val());
-		}
+//		if(type!=null){
+//			params.put("type", StuType.valueOf(type).val());
+//		}
 		if(sex!=null){
 			params.put("sex", BooleanEnum.valueOf(sex).val());
 		}
@@ -114,6 +111,9 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 		}
 		if(vaccineStatus!=null){
 			params.put("vaccineStatus", StuApplyStatus.valueOf(vaccineStatus).val());
+		}
+		if(StringUtils.isNotBlank(other54)){
+			params.put("other54", other54);
 		}
 		return params;
 	}

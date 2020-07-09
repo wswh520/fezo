@@ -115,7 +115,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 	}
 	
 	@Override
-	public Response saveService(StuApply entity){
+	public synchronized Response saveService(StuApply entity){
 		if(entity==null){//entity不为null则认为entity中存在且只存在所需要参数
 			return new Response(ReturnCode.SERVER_INNER_ERROR);
 		}
@@ -1208,13 +1208,13 @@ public class StuApplyServiceImpl implements StuApplyService {
 			user.setPassword(cardNo.substring(cardNo.length()-6));
 		}
 		
-		String no = this.getNo(stuApply.getName());
-		if (StringUtils.isEmpty(no)) {
-			res.setRetCode(ReturnCode.SERVER_INNER_ERROR);
-			res.setErrorMsg("报名号生成失败，请稍后重试！");
-			return res;
-		}
-		stuApply.setNo(no);
+//		String no = this.getNo(stuApply.getName());
+//		if (StringUtils.isEmpty(no)) {
+//			res.setRetCode(ReturnCode.SERVER_INNER_ERROR);
+//			res.setErrorMsg("报名号生成失败，请稍后重试！");
+//			return res;
+//		}
+//		stuApply.setNo(no);
 		int uc = stuApplyDao.forwardGrade(stuApply);
 		if (uc <= 0) {
 			BaseServiceUtils.setRollbackOnly();
