@@ -91,21 +91,9 @@ public class test {
 //        String password = "123456";
 //        System.out.println(MD5.getMD5String(password));
 
-        // TODO Auto-generated method stub
-        new ThreadFezo().start();
 
-        new ThreadFezo().start();
-        new ThreadFezo().start();
-        new ThreadFezo().start();
-        new ThreadFezo().start();
-        new ThreadFezo().start();
-        new ThreadFezo().start();
-        new ThreadFezo().start();
 
 
     }
 
-    public void test(){
-
-    }
 }

@@ -115,7 +115,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 	}
 	
 	@Override
-	public Response saveService(StuApply entity){
+	public synchronized Response saveService(StuApply entity){
 		if(entity==null){//entity不为null则认为entity中存在且只存在所需要参数
 			return new Response(ReturnCode.SERVER_INNER_ERROR);
 		}
