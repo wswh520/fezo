@@ -276,7 +276,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 		int school = Math.floorMod(no,3);
 		//座位号
 		DecimalFormat dft = new DecimalFormat("000");
-		String seatNo = String.valueOf(dft.format(Math.ceil((float)no/3)));
+		String seatNo = String.valueOf(dft.format(Math.ceil((float)no/12)));
 		//学校
 		String schStr = "";
 		if(school == 1){
