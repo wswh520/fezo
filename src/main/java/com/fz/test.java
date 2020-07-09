@@ -21,7 +21,7 @@ public class test {
 
 
 
-        int no = 17;
+        int no = 721;
         String str = "";
         //学校
         int school = Math.floorMod(no,3);
@@ -73,10 +73,17 @@ public class test {
 
         //座位号
         DecimalFormat dft = new DecimalFormat("000");
-        String seatNo = String.valueOf(dft.format(Math.ceil((float)no/3)));
+        String seatNo = String.valueOf(dft.format(Math.ceil((float)no/12)));
         System.out.println(str + seatNo);
 
         if(no > 720){
+            if(school == 1){
+                str = "J04";
+            }else if(school == 2){
+                str = "Z04";
+            }else{
+                str = "S04";
+            }
             System.out.println(str + seatNo);
         }
 
