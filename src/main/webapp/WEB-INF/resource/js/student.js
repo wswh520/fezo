@@ -576,6 +576,18 @@ function submit2ReviewTwicewpromise(){
 	showDialogConfirm380(params);
 }
 
+function submit2ReviewTwicewpromise2(){
+	//弹出提示框 20200709
+	var params = {};
+	params.submitMethod = promiseTwice2;
+	// params.submitData = {id:id};
+	params.modelId = "model_promise2";
+	// params.title = "下载提示";
+	// params.submitTxt = "马上下载";
+	// params.cancelTxt = "暂不下载";
+	showDialogConfirm380(params);
+}
+
 function submit2Review(){
 
 	$("#dialog_confirm_380").hide();
@@ -596,6 +608,7 @@ function submit2Review(){
 	params.mustCallBack = false;//是否必须回调
 	params.callBack = function (json){
 		if(json.retCode==CODE_SUCCESS){
+			submit2ReviewTwicewpromise2();
 			doLoadStuApply();
 		}else{
 			if(json.errorMsg==null){
@@ -626,6 +639,7 @@ function submit2ReviewTwice(){
 	params.mustCallBack = false;//是否必须回调
 	params.callBack = function (json){
 		if(json.retCode==CODE_SUCCESS){
+			submit2ReviewTwicewpromise2();
 			doLoadStuApply();
 		}else{
 			if(json.errorMsg==null){
@@ -698,6 +712,9 @@ function promise(evt){
 }
 function promiseTwice() {
 	submit2ReviewTwice();
+}
+function promiseTwice2() {
+	$("#dialog_confirm_380").hide();
 }
 function doDownloadTest(evt){
 	$("#dialog_confirm_380").hide();

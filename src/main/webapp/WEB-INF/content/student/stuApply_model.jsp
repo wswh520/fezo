@@ -176,3 +176,9 @@
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;郑重承诺：本人保证在网上提交的所有信息、证明材料、证件，真实准确，若因提供的信息、材料、证件不真实造成的取消报名资格、取消录取资格等一切后果承担全部责任。</p>
 	</div>
 </script>
+<script id="model_promise2" type="text/template">
+	<div class="item" style="height: auto;">
+		<p>&nbsp;&nbsp;&nbsp;1、武汉籍学生 需提供 义务教育通知书；</p>
+		<p>&nbsp;&nbsp;&nbsp;2、外市学生可暂缓提交；</p>
+	</div>
+</script>
