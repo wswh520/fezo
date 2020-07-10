@@ -18,7 +18,7 @@
 </head>
 <body class="login_index">
 	<div  style="margin-left: 335px;margin-top: 100px;">
-		<div style="text-decoration;font-size: 50px; color: black; ">钟家村小学</div>
+		<div style="text-decoration;font-size: 50px; color: black; ">钟家村寄宿学校</div>
 	</div>
 	<div class="Main clearfix">
 		<div class="indexColumnOne clearfix pdtb10">
@@ -34,7 +34,7 @@
 	
 	<div class=" IndexFooter">
 		<div class="FooterCon clearfix pdtb10">
-			<p class="tc">Copyright &copy; 钟家村小学 </p>
+			<p class="tc">Copyright &copy; 钟家村寄宿学校 </p>
 		</div>
 	</div>
 </body>

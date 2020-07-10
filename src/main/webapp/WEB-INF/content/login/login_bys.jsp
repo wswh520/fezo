@@ -20,7 +20,7 @@
 <!--Header Start-->
 <div class="IndexHeader clearfix">
     <a class="file_down" href="javascript:void(0)" onclick="{window.open('${ctx}/resource/doc/校编学号查询表.xls');};" ><i>&nbsp;</i>校编学号查询表</a>
-    <div class="logo"><a href="javascript:void(0);" style="text-decoration;font-size: 30px; color: black; ">钟家村小学毕业生信息核对系统</a></div>
+    <div class="logo"><a href="javascript:void(0);" style="text-decoration;font-size: 30px; color: black; ">钟家村寄宿学校毕业生信息核对系统</a></div>
 </div>
 <!--Header Over-->
 <!--Main Start-->
@@ -56,7 +56,7 @@
 
 <div class=" IndexFooter">
     <div class="FooterCon clearfix pdtb10">
-        <p class="tc">Copyright &copy; 钟家村小学 </p>
+        <p class="tc">Copyright &copy; 钟家村寄宿学校 </p>
     </div>
 </div>
 </body>

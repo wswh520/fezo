@@ -608,7 +608,7 @@ function submit2Review(){
 	params.mustCallBack = false;//是否必须回调
 	params.callBack = function (json){
 		if(json.retCode==CODE_SUCCESS){
-			submit2ReviewTwicewpromise2();
+			// submit2ReviewTwicewpromise2();
 			doLoadStuApply();
 		}else{
 			if(json.errorMsg==null){
@@ -639,7 +639,7 @@ function submit2ReviewTwice(){
 	params.mustCallBack = false;//是否必须回调
 	params.callBack = function (json){
 		if(json.retCode==CODE_SUCCESS){
-			submit2ReviewTwicewpromise2();
+			// submit2ReviewTwicewpromise2();
 			doLoadStuApply();
 		}else{
 			if(json.errorMsg==null){

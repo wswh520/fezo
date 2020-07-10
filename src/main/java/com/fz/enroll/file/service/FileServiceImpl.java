@@ -23,7 +23,7 @@ import com.fz.enroll.entity.file.FileMeta;
 @Service("fileService")
 public class FileServiceImpl implements FileService {
 	private static final Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
-	private static final long att_limit = 1024*1024L;//1M
+	private static final long att_limit = 1024*1024L*3;//1M
 	
 	@Autowired
 	private FileDAO fileDao;

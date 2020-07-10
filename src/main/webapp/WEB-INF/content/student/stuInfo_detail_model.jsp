@@ -22,7 +22,7 @@
 		<thead>
 			<tr>
 				<th width="20%" colspan="2">学校名称</th>
-				<th width="30%">钟家村小学</th>
+				<th width="30%">钟家村寄宿学校</th>
 				<th width="20%" colspan="2">学校标识码</th>
 				<th width="30%">2142001636</th>
 			</tr>

@@ -69,13 +69,14 @@ function initStuApplyAtt_upload(type) {
 		menus[7] = {"otype" : 17,"otypename" : "母亲户口页","otypeindex" : "TYPE_MOTHER_ACCOUNT_PAGE"};
 		if (type == "TYPEA" || type == "TYPEB") {
 			// menus[7] = {"otype" : 19,"otypename" : "华师教职工校园一卡通","otypeindex" : "TYPE_WORK_PROVE"};
-			menus[9] = {"otype" : 19,"otypename" : "核算检测证明","otypeindex" : "TYPE_WORK_PROVE"};
+			menus[9] = {"otype" : 19,"otypename" : "核酸检测证明","otypeindex" : "TYPE_WORK_PROVE"};
 			if (type == "TYPEB") {
 				menus[8] = {"otype" : 18,"otypename" : "三代关系证明（华师教职工与儿童父母关系证明）","otypeindex" : "TYPE_THREE_GENERATION_RELATIONSHIP"};
 			}
 		}
 		menus[6] = {"otype" : 20,"otypename" : "父亲最高学历证明","otypeindex" : "TYPE_FATHER_ACCOUNT_LEARN_PAGE"};
 		menus[8] = {"otype" : 21,"otypename" : "母亲最高学历证明","otypeindex" : "TYPE_MOTHER_ACCOUNT_LEARN_PAGE"};
+		menus[10] = {"otype" : 22,"otypename" : "入学通知书","otypeindex" : "TYPE_WORK_SCHOOL_PROVE"};
 	}
 	return menus;
 }

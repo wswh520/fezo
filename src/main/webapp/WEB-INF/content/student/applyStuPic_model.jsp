@@ -3,14 +3,18 @@
 
 <script id="model_stuApplyAtt" type="text/template">
 <div class="item" style="color:red;margin:15px 0px -24px 0px;">
-	注：图片每张不得超过1M，上传比较缓慢的情况下请记得等一张上传完后再上传下一张。
+	注：图片每张不得超过3M，上传比较缓慢的情况下请记得等一张上传完后再上传下一张。
 </div>
 <input id="ipt_stuApply_type" value="$J{type}" type="hidden" />
 {@each data as it }
 <div id="apply_otypeInfo_photo_$J{it.otype}">
 <div class="base_title">
 	<em></em>
-	<strong>$J{it.otypename}</strong>
+	<strong>$J{it.otypename}
+	{@if it.otypename == '入学通知书'}
+	（暂未领取义务教育入学通知书的家长可暂缓提交）
+	{@/if}
+	</strong>
 </div>
 <div id="apply_modify_photo_$J{it.otype}" class="item" style="margin-left: 50px;height:auto;">
 {@if !it.id }
@@ -21,8 +25,8 @@
 	<input id="att_stuApply_type" value="$J{type}" type="hidden" />
 	<!--<input id="att_oid_$J{it.otype}" name="oid" value="$J{it.oid}" type="hidden" />-->
 	<div class="item" style="padding-top: 15px;">
-		<label class="sele-label ">请重命名图片：</label>
-		<input id="ipt_prefix_$J{it.otype}" type="text" class="inp"  placeholder="图片名称"  name="prefix"/>
+<%--		<label class="sele-label ">请重命名图片：</label>--%>
+		<input id="ipt_prefix_$J{it.otype}" type="hidden" class="inp" value="$J{it.otypename}"  name="prefix"/>
 		<label class="sele-label" >请选择图片文件：</label>
 		<span id="span_import_pic" class="sele-label">
 			<input id="input_pic_$J{it.otype}" type="file" name="file" accept="image/*"/ style="width: 174px;padding-top: 5px;"/></span>
@@ -82,8 +86,9 @@
 	<input  id="att_otype_$J{otype}" name="otype" value="$J{otypeindex}" type="hidden" />
 	<!--<input id="att_oid_$J{otype}" name="oid" value="$J{oid}" type="hidden" />-->
 	<div class="item" style="padding-top: 15px;">
-		<label class="sele-label ">请重命名图片：</label>
-		<input id="ipt_prefix_$J{otype}" type="text" class="inp"  placeholder="图片名称"  name="prefix"/>
+<%--		<label class="sele-label ">请重命名图片：</label>--%>
+	<input id="ipt_prefix_$J{it.otype}" type="hidden" class="inp" value="$J{it.otypename}"  name="prefix"/>
+<%--		<input id="ipt_prefix_$J{otype}" type="text" class="inp"  placeholder="图片名称"  name="prefix"/>--%>
 		<label class="sele-label" >请选择图片文件：</label>
 		<span id="span_import_pic" class="sele-label">
 			<input id="input_pic_$J{otype}" type="file" name="file" accept="image/*"/ style="width: 174px;padding-top: 5px;"/></span>

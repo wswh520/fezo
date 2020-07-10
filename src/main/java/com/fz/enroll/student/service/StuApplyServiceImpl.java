@@ -221,8 +221,8 @@ public class StuApplyServiceImpl implements StuApplyService {
 	 * 报名号规则：
 	 * 1 第一个字母 为  校区缩写
 	 *   J  钟家村寄宿学校（汉阳区北城路28号）
-	 *   Z  钟家村小学（西村路2号）
-	 *   S  钟家村小学三里坡校区（马鹦路143号）
+	 *   Z  钟家村寄宿学校（西村路2号）
+	 *   S  钟家村寄宿学校三里坡校区（马鹦路143号）
 	 * 2 每个学校分别有4个考场，报名人员根据填报顺序依次安排至3个学校的4个考场中
 	 *   如  第一名报名的，报名号为  J01001
 	 *       第二名报名的，报名号为  Z01001
@@ -539,9 +539,9 @@ public class StuApplyServiceImpl implements StuApplyService {
 		if(no.startsWith("J")){
 			dataMap.put("addr", "钟家村寄宿学校（汉阳区北城路28号）");
 		}else if(no.startsWith("Z")){
-			dataMap.put("addr", "钟家村小学（西村路2号）");
+			dataMap.put("addr", "钟家村寄宿学校（西村路2号）");
 		}else if(no.startsWith("S")){
-			dataMap.put("addr", "钟家村小学三里坡校区（马鹦路143号）");
+			dataMap.put("addr", "钟家村寄宿学校三里坡校区（马鹦路143号）");
 		}
 		Integer num = Integer.valueOf(no.substring(3));
 		if(num <= 20){
@@ -1119,6 +1119,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 			}
 			list.add(AttOtype.TYPE_FATHER_ACCOUNT_LEARN_PAGE.val());// 父亲最高学历证明
 			list.add(AttOtype.TYPE_MOTHER_ACCOUNT_LEARN_PAGE.val());// 母亲最高学历证明
+			list.add(AttOtype.TYPE_WORK_SCHOOL_PROVE.val());// 入学通知书
 			params.put("otypes", list);
 		} else {
 			params.put("otypes", Arrays.asList(otype.val()));

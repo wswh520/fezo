@@ -36,10 +36,10 @@
 <body class="login_index">
 	<!--Header Start-->
 	<div class="IndexHeader clearfix">
-		<%--<a class="file_down" href="${ctx}/resource/钟家村小学新生入学招生系统用户须知.pdf" target="_blank"><i>&nbsp;</i>下载帮助文档</a>
-		<a class="file_down" href="${ctx}/resource/钟家村小学招生系统使用说明.pdf" target="_blank"><i>&nbsp;</i>下载家长用户操作流程</a>--%>
+		<%--<a class="file_down" href="${ctx}/resource/钟家村寄宿学校新生入学招生系统用户须知.pdf" target="_blank"><i>&nbsp;</i>下载帮助文档</a>
+		<a class="file_down" href="${ctx}/resource/钟家村寄宿学校招生系统使用说明.pdf" target="_blank"><i>&nbsp;</i>下载家长用户操作流程</a>--%>
 		<!--<div class="logo"><a href="javascript:void(0);"><img src="${ctx}/resource/img/login_logo.png" /></a></div>-->
-		<div class="logo" style="font-size: 25px;color: black;">钟家村小学新生网上登记系统</div>
+		<div class="logo" style="font-size: 25px;color: black;">钟家村寄宿学校新生网上登记系统</div>
 	</div>
 	<!--Header Over--> 
 	<!--Main Start-->
@@ -84,7 +84,7 @@
 <%--	</ul>--%>
 	<div class=" IndexFooter">
 		<div class="FooterCon clearfix pdtb10">
-			<p class="tc">Copyright &copy; 钟家村小学 </p>
+			<p class="tc">Copyright &copy; 钟家村寄宿学校 </p>
 		</div>
 	</div>
 </body>

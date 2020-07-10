@@ -7,7 +7,7 @@
 <div class="clear"></div>
 <div class="base_title">
 	<em></em>
-	<strong>$J{year}年钟家村小学新生入学登记表</strong>
+	<strong>$J{year}年钟家村寄宿学校新生入学登记表</strong>
 	<strong style="float:right;color:red">
 		申请状态：{@if id==0}未填表
 		{@else if statusStr=="SUBMIT_NONE"}未提交

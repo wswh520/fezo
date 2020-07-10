@@ -24,7 +24,7 @@
 			</ul>
 		</div>
 		<div class="logo" style="width:25%;">
-			<span>钟家村小学</span>
+			<span>钟家村寄宿学校</span>
 		</div>
 	</div>
 	<input type="hidden" id="ipt_userType" value="<%=user.getType() %>")>
