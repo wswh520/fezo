@@ -391,12 +391,12 @@ function doSaveStuApply(isAdmin){
 	var other14 = $.trim($("#ipt_other14").val());
 	var other15 = $.trim($("#ipt_other15").val());
 	var other16 = $.trim($("#ipt_other16").val());
-    var other17 = $.trim($("#ipt_other17").val());
+    // var other17 = $.trim($("#ipt_other17").val());
 	var other18 = $.trim($("#ipt_other18").val());
 	var other19 = $.trim($("#ipt_other19").val());
 	var other20 = $.trim($("#ipt_other20").val());
 	var other21 = $.trim($("#ipt_other21").val());
-    var other22 = $.trim($("#ipt_other22").val());
+    // var other22 = $.trim($("#ipt_other22").val());
     var other27 = $.trim($("#ipt_other27").val());
     var other28 = $.trim($("#ipt_other28").val());
     var other41 = $.trim($("#ipt_other41").val());
@@ -468,21 +468,21 @@ function doSaveStuApply(isAdmin){
 		alert("父亲联系电话输入错误！");
 		return ;
 	}
-	if (type=="TYPEA") {
-		if (other17=="" && other22=="") {
-            alert("校园一卡通号码必须要填最少一个！");
-            return ;
-		}
-	} else if (type=="TYPEB") {
-        if (other17=="" && other22=="" && other41=="") {
-            alert("校园一卡通号码必须要填最少一个！");
-            return ;
-        }
-        if (other27=="" || other28=="") {
-            alert("请将“(外)祖父、母”相关的所有信息补充完整");
-            return ;
-		}
-	}
+	// if (type=="TYPEA") {
+	// 	if (other17=="" && other22=="") {
+    //         alert("校园一卡通号码必须要填最少一个！");
+    //         return ;
+	// 	}
+	// } else if (type=="TYPEB") {
+    //     if (other17=="" && other22=="" && other41=="") {
+    //         alert("校园一卡通号码必须要填最少一个！");
+    //         return ;
+    //     }
+    //     if (other27=="" || other28=="") {
+    //         alert("请将“(外)祖父、母”相关的所有信息补充完整");
+    //         return ;
+	// 	}
+	// }
 	if(other21!=""&&!regex_mobile.test(other21)){
 		alert("母亲联系电话输入错误！");
 		return ;
@@ -930,12 +930,12 @@ function doSaveStuInfo(isAdmin){
 	//学生个人联系信息
 	var other15 = $.trim($("#ipt_other15").val());//现住址
 	var other16 = $.trim($("#ipt_other16").val());//通信地址
-	var other17 = $.trim($("#ipt_other17").val());//家庭地址
+	// var other17 = $.trim($("#ipt_other17").val());//家庭地址
 	var other18 = $.trim($("#ipt_other18").val());//联系电话
 	var other19 = $.trim($("#ipt_other19").val());//邮政编码
 	var other20 = $.trim($("#ipt_other20").val());//电子信箱
 	if(other15==""||other16==""
-			||other17==""||other18==""
+			||other18==""
 			||other19==""||other20==""){
 		alert("请将“学生个人联系信息”补充完整!");
 		return ;
@@ -950,20 +950,20 @@ function doSaveStuInfo(isAdmin){
 		return ;
 	}
 	//学生个人扩展信息
-	var other22 = $("#form_stuInfo").find("input:radio[name='other22']:checked").val();//是否独生子女
+	// var other22 = $("#form_stuInfo").find("input:radio[name='other22']:checked").val();//是否独生子女
 	var other23 = $("#form_stuInfo").find("input:radio[name='other23']:checked").val();//是否受过学前教育
 	var other26 = $("#form_stuInfo").find("input:radio[name='other26']:checked").val();//是否孤儿
 	var other27 = $("#form_stuInfo").find("input:radio[name='other27']:checked").val();//是否烈士或优抚子女
 	var other28 = $.trim($("#sel_other28").val());//随班就读
 	var other29 = $.trim($("#sel_other29").val());//残疾类型
 	var other32 = $("#form_stuInfo").find("input:radio[name='other32']:checked").val();//是否享受一补
-	if(other22==null||other23==null
-			||other26==null||other27==null
-			||other28==""||other29==""
-			||other32==null){
-		alert("请将“学生个人扩展信息”补充完整，正常儿童请选择“非随班就读”与“无残疾”!");
-		return ;
-	}
+	// if(other22==null||other23==null
+	// 		||other26==null||other27==null
+	// 		||other28==""||other29==""
+	// 		||other32==null){
+	// 	alert("请将“学生个人扩展信息”补充完整，正常儿童请选择“非随班就读”与“无残疾”!");
+	// 	return ;
+	// }
 	var other29Check = {"非随班就读":"无残疾","视力残疾随班就读":"视力残疾","听力残疾随班就读":"听力残疾","智力残疾随班就读":"智力残疾","其他残疾随班就读":"言语残疾,肢体残疾,精神残疾,多重残疾,其他残疾"};
 	if(other29Check[other28].indexOf(other29)<0){
 		alert("“随班就读”与“残疾类型”选择不符！");

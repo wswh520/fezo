@@ -178,8 +178,8 @@ function initLeftMenu_patriarch(){
 		menus[i] = {"menu":"base","name":"基本功能","children":[]};
 //		menus[i].children[0] = {"menu":"stuApplyStatus","name":"状态查询","callback":"doLoadStuApplyStatus"};
 		menus[i].children[1] = {"menu":"stuApply","name":"入学登记","callback":"doLoadStuApply"};
-		menus[i].children[2] = {"menu":"stuInfo","name":"学籍表信息录入","callback":"doLoadStuInfo"};
-		menus[i].children[3] = {"menu":"stuVaccine","name":"预防接种登记","callback":"doLoadStuVaccine"};
+		// menus[i].children[2] = {"menu":"stuInfo","name":"学籍表信息录入","callback":"doLoadStuInfo"};
+		// menus[i].children[3] = {"menu":"stuVaccine","name":"预防接种登记","callback":"doLoadStuVaccine"};
 		menus[i].children[4] = {"menu":"pwd","name":"密码修改","callback":"doLoadPwd"};
 		i++;
 	}

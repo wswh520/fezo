@@ -308,7 +308,7 @@
 			<th width="10%">职务</th>
 			<th width="15%">联系电话</th>
 			<th width="8%">最高学历</th>
-			<th class="xyykt_phon" width="15%">校园一卡通号码</th>
+<%--			<th class="xyykt_phon" width="15%">校园一卡通号码</th>--%>
 		</tr>
 		<tr>
 			<td>父亲</td>
@@ -317,7 +317,7 @@
 			<td><input id="ipt_other15" name="other15" value="$J{other15}" style="width: 90%;" type="text" class="inp" /></td>
 			<td><input id="ipt_other16" name="other16" value="$J{other16}" style="width: 95%;" type="text" class="inp" /></td>
 			<td><input id="ipt_other52" name="other52" value="$J{other52}" style="width: 90%;" type="text" class="inp" /></td>
-			<td class="xyykt_phon"><input id="ipt_other17" name="other17" value="$J{other17}" style="width: 95%;" type="text" class="inp" /></td>
+<%--			<td class="xyykt_phon"><input id="ipt_other17" name="other17" value="$J{other17}" style="width: 95%;" type="text" class="inp" /></td>--%>
 		</tr>
 		<tr>
 			<td>母亲</td>
@@ -326,7 +326,7 @@
 			<td><input id="ipt_other20" name="other20" value="$J{other20}" style="width: 90%;" type="text" class="inp" /></td>
 			<td><input id="ipt_other21" name="other21" value="$J{other21}" style="width: 95%;" type="text" class="inp" /></td>
 			<td><input id="ipt_other53" name="other53" value="$J{other53}" style="width: 90%;" type="text" class="inp" /></td>
-			<td class="xyykt_phon"><input id="ipt_other22" name="other22" value="$J{other22}" style="width: 95%;" type="text" class="inp" /></td>
+<%--			<td class="xyykt_phon"><input id="ipt_other22" name="other22" value="$J{other22}" style="width: 95%;" type="text" class="inp" /></td>--%>
 		</tr>
 		</tbody>
 	</table>
@@ -392,14 +392,14 @@
 			</tr>
 		</tbody>
 	</table> --%>
-	<table class="table table-bordered table-striped stuInfo">
-		<tbody>
-		<tr>
-			<th id="th_note_name" width="10%">备注</th>
-			<td width="90%"><input name="other36" placeholder="请说明相关情况：" value="$J{other36}" style="width: 98%;" type="text" class="inp" /></td>
-		</tr>
-		</tbody>
-	</table>
+<%--	<table class="table table-bordered table-striped stuInfo">--%>
+<%--		<tbody>--%>
+<%--		<tr>--%>
+<%--			<th id="th_note_name" width="10%">备注</th>--%>
+<%--			<td width="90%"><input name="other36" placeholder="请说明相关情况：" value="$J{other36}" style="width: 98%;" type="text" class="inp" /></td>--%>
+<%--		</tr>--%>
+<%--		</tbody>--%>
+<%--	</table>--%>
 	<table class="table table-bordered table-striped stuInfo">
 		<tbody>
 		<tr style="display: none">
@@ -416,17 +416,17 @@
 				<label><input onclick="javascript:stuApplyOther44Click(false);" name="other44" {@if other44=="否"}checked="checked"{@/if} type="radio" value="否" />否</label>
 			</td>
 		</tr>
-		<tr id="tr_other45" style="{@if other43=='是'||other44=='否'}display:none;{@/if}">
-			<td width="10%">报名平台</td>
-			<td>
-				<input style="display: none" id="ipt_other45" name="other45" value="$J{other45}" style="width: 60px;" type="text" class="inp" />
-				<label style="display: none">省 </label>
-				<input style="display: none" id="ipt_other46" name="other46" value="$J{other46}" style="width: 60px;" type="text" class="inp" />
-				<label style="display: none">市</label>
-				<input id="ipt_other47" name="other47" value="$J{other47}" style="width: 98%;" type="text" class="inp" placeholder="例如：洪山区新生入学服务平台" />
-				<label style="display: none">区(县) </label>
-			</td>
-		</tr>
+<%--		<tr id="tr_other45" style="{@if other43=='是'||other44=='否'}display:none;{@/if}">--%>
+<%--			<td width="10%">报名平台</td>--%>
+<%--			<td>--%>
+<%--				<input style="display: none" id="ipt_other45" name="other45" value="$J{other45}" style="width: 60px;" type="text" class="inp" />--%>
+<%--				<label style="display: none">省 </label>--%>
+<%--				<input style="display: none" id="ipt_other46" name="other46" value="$J{other46}" style="width: 60px;" type="text" class="inp" />--%>
+<%--				<label style="display: none">市</label>--%>
+<%--				<input id="ipt_other47" name="other47" value="$J{other47}" style="width: 98%;" type="text" class="inp" placeholder="例如：洪山区新生入学服务平台" />--%>
+<%--				<label style="display: none">区(县) </label>--%>
+<%--			</td>--%>
+<%--		</tr>--%>
 		</tbody>
 	</table>
 	<span id="ele_statusStr_$J{id}" style="display:none;">$J{statusStr}</span>
