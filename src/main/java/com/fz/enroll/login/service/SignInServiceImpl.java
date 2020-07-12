@@ -1,5 +1,6 @@
 package com.fz.enroll.login.service;
 
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,8 @@ public class SignInServiceImpl implements SignInService {
 		}
 		user.setUsername(user.getUsername().toLowerCase());//账号不区分大小写
 		user.setType(UserType.PATRIARCH.val());
-		user.setCtime(System.currentTimeMillis());
+//		user.setCtime(System.currentTimeMillis());
+		user.setCtime(new Date());
 		return user;
 	}
 }

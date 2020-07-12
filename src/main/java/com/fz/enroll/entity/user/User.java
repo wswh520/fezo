@@ -5,6 +5,11 @@ import com.fz.common.util.DateUtils;
 import com.fz.enroll.entity.BaseEntity;
 import com.fz.enroll.enum0.UserStatus;
 import com.fz.enroll.enum0.UserType;
+import org.apache.log4j.helpers.DateTimeDateFormat;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class User extends BaseEntity {
 	
@@ -21,7 +26,7 @@ public class User extends BaseEntity {
 	 */
 	private Integer status;
 	private long dtime;
-	private long ctime;
+	private Date ctime;
 	private String bj;
 	private Integer year;
 	
@@ -91,11 +96,11 @@ public class User extends BaseEntity {
 		this.dtime = dtime;
 	}
 
-	public long getCtime() {
+	public Date getCtime() {
 		return ctime;
 	}
 
-	public void setCtime(long ctime) {
+	public void setCtime(Date ctime) {
 		this.ctime = ctime;
 	}
 
@@ -125,7 +130,9 @@ public class User extends BaseEntity {
 		return "";
 	}
 	public String getCtimeStr(){
-		return ctime>0?DateUtils.timeToString(ctime, "yyyy-MM-dd HH:mm:ss"):"不详";
+		SimpleDateFormat formatter  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		return ctime!=null?DateUtils.timeToString(ctime, "yyyy-MM-dd HH:mm:ss"):"不详";
+		return ctime!=null?formatter.format(ctime):"不详";
 	}
 
 }

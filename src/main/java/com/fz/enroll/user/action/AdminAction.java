@@ -9,6 +9,8 @@ import com.fz.common.util.MD5;
 import com.fz.enroll.entity.user.User;
 import com.fz.enroll.enum0.UserType;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminAction extends UserAction {
@@ -26,7 +28,8 @@ public class AdminAction extends UserAction {
 		user.setPassword(MD5.getMD5String("admin"));
 		user.setName("平台管理员");
 		user.setType(UserType.SUPER.val());
-		user.setCtime(System.currentTimeMillis());
+//		user.setCtime(System.currentTimeMillis());
+		user.setCtime(new Date());
     	Response res = this.getService().saveService(user);
     	return res;
     }

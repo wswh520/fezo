@@ -1,5 +1,6 @@
 package com.fz.enroll.dto.user;
 
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import com.fz.common.util.MD5;
@@ -58,7 +59,8 @@ public class UserAdd {
 		}
 		user.setUsername(user.getUsername().toLowerCase());//账号不区分大小写
 		user.setType(type.val());
-		user.setCtime(System.currentTimeMillis());
+//		user.setCtime(System.currentTimeMillis());
+		user.setCtime(new Date());
 		
 		return user;
 	}
