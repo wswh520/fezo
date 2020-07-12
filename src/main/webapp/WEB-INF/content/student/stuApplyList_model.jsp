@@ -150,8 +150,8 @@
 				<th width="15%">身份证号</th>
 				<th width="11%">出生日期</th>
 				<th width="9%">家长手机号</th>
-				<th width="6%">学籍表</th>
-				<th width="6%">预防表</th>
+<%--				<th width="6%">学籍表</th>--%>
+<%--				<th width="6%">预防表</th>--%>
 				<th width="10%">&nbsp;</th>
 			</tr></thead>
 			<tbody>
@@ -195,18 +195,18 @@
 				<td>$J{ele.dateOfBirthStr}</td>
 				<!--<td>$J{ele.mobile}</td>-->
 				<td>$J{ele.other16}</td>
-				<td>
-					{@if ele.infoStatusStr==null}未填写
-					{@else if ele.infoStatusStr=="SUBMIT_NONE"}未提交
-					{@else if ele.infoStatusStr=="SUBMIT_ONCE"}已提交
-					{@/if}
-				</td>
-				<td>
-					{@if ele.vaccineStatusStr==null}未填写
-					{@else if ele.vaccineStatusStr=="SUBMIT_NONE"}未提交
-					{@else if ele.vaccineStatusStr=="SUBMIT_ONCE"}已提交
-					{@/if}
-				</td>
+<%--				<td>--%>
+<%--					{@if ele.infoStatusStr==null}未填写--%>
+<%--					{@else if ele.infoStatusStr=="SUBMIT_NONE"}未提交--%>
+<%--					{@else if ele.infoStatusStr=="SUBMIT_ONCE"}已提交--%>
+<%--					{@/if}--%>
+<%--				</td>--%>
+<%--				<td>--%>
+<%--					{@if ele.vaccineStatusStr==null}未填写--%>
+<%--					{@else if ele.vaccineStatusStr=="SUBMIT_NONE"}未提交--%>
+<%--					{@else if ele.vaccineStatusStr=="SUBMIT_ONCE"}已提交--%>
+<%--					{@/if}--%>
+<%--				</td>--%>
 				<td>
 					<span id="ele_statusStr_$J{ele.id}" style="display:none;">$J{ele.statusStr}</span>
 					<span id="ele_reviewer_$J{ele.id}" style="display:none;">$J{ele.reviewer}</span>
