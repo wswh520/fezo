@@ -2,12 +2,12 @@
 <%@ include file="/common/taglibs.jsp"%>
 
 <%--<div class="left"><strong style="color:red;font-size: 16px;">温馨提示：2019年6月8-12日为华师二代三代子弟及洪山区划片生源填报时间，其他未尽事宜请关注附小网站通知。--%>
-<%--	<br />填表须知：请您及时将《入学登记表》《学籍表》《预防接种登记表》三表填完、提交(提交之后信息将无法修改)、再次提交。直到《入学登记表》状态为：审核中，其他两表状态为：已提交。请您在2019年6月15（桂子山校区）、19日（南湖校区）、20日（南湖校区）到指定校区进行现场审查。--%>
+<%--	<br />填表须知：请您及时将《学生报名表表》《学籍表》《预防接种登记表》三表填完、提交(提交之后信息将无法修改)、再次提交。直到《学生报名表表》状态为：审核中，其他两表状态为：已提交。请您在2019年6月15（桂子山校区）、19日（南湖校区）、20日（南湖校区）到指定校区进行现场审查。--%>
 <%--</strong></div>--%>
 <div class="clear"></div>
 <div class="base_title">
 	<em></em>
-	<strong>$J{year}年钟家村寄宿学校新生入学登记表</strong>
+	<strong>$J{year}年钟家村寄宿学校新生学生报名表表</strong>
 	<strong style="float:right;color:red">
 		申请状态：{@if id==0}未填表
 		{@else if statusStr=="SUBMIT_NONE"}未提交
@@ -74,7 +74,9 @@
 			</td>
 			<td>2</td>
 			<td>网上报名号</td>
-			<td>{@if noStr==null||noStr==""}提示：报名号由系统自动生成，请家长牢记！{@else}$J{noStr}{@/if}</td>
+			<td>
+<%--				{@if noStr==null||noStr==""}提示：报名号由系统自动生成，请家长牢记！{@else}$J{noStr}{@/if}--%>
+			</td>
 		</tr>
 		{@if id==0}
 		<tr id="doCho">

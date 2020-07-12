@@ -119,32 +119,33 @@ function doLoadStuApply(){
 				doloadStuApplyAtt(json.data.id,json.data.typeStr);
 				$("#div_stuApply_cover").css({"height":$("#form_stuApply").height(),"width":$("#form_stuApply").width()});
 			}
-			if(json.data.statusStr=="SUBMIT_NONE" && json.data.currentYear == json.data.year ){//2016-6-22
-				alert("尊敬的家长，请先填写“入学登记”，点击提交后，" +
-						"才能填写“信息录入”和“预防接种登记”。填写完毕后,请检查信息的准确性，" +
-						"点击“提交”将暂时锁定信息，如果不需要检查了，可以再次点击“提交”，"+
-						"将永久锁定表格信息，此后将不再允许修改。请注意：三张表格填写完整并且" +
-						"永久锁定后，教师才能开始审核");
-			}
+			// if(json.data.statusStr=="SUBMIT_NONE" && json.data.currentYear == json.data.year ){//2016-6-22
+			// 	alert("尊敬的家长，请先填写“学生报名表”，点击提交后，" +
+			// 			"才能填写“信息录入”和“预防接种登记”。填写完毕后,请检查信息的准确性，" +
+			// 			"点击“提交”将暂时锁定信息，如果不需要检查了，可以再次点击“提交”，"+
+			// 			"将永久锁定表格信息，此后将不再允许修改。请注意：三张表格填写完整并且" +
+			// 			"永久锁定后，教师才能开始审核");
+			// }
 			if(json.data.statusStr != "REVIEW_PASS" && json.data.currentYear != json.data.year){
 				$("#div_stuApply_iptHint").show();
 			}
 			if(json.data.currentYear == json.data.year){
 				if(json.data.statusStr=="SUBMIT_NONE"){
-					alert("请您及时完成《入学登记表》的填写并提交，以免影响审核！");
+					alert("请您及时完成《学生报名表》的填写并提交，以免影响审核！");
 				}else if(json.data.statusStr=="SUBMIT_ONCE"){
-					alert("请您再次核对《入学登记表》中的信息，核对无误后请再次提交，以免影响审核！");
-				}else if(json.data.statusStr=="SUBMIT_TWICE"){
-					if(json.data.infoStatusStr==null){
-						alert("请您及时完成《学籍表》的填写并提交，以免影响审核！");
-					}else if(json.data.infoStatusStr=="SUBMIT_NONE"){
-						alert("请您及时完成《学籍表》的填写并提交，以免影响审核！");
-					}else if(json.data.vaccineStatusStr==null){
-						alert("请您及时完成《预防表》的填写并提交，以免影响审核！");
-					}else if(json.data.vaccineStatusStr=="SUBMIT_NONE"){
-						alert("请您及时完成《预防表》的填写并提交，以免影响审核！");
-					}
+					alert("请您再次核对《学生报名表》中的信息，核对无误后请再次提交，以免影响审核！");
 				}
+				// else if(json.data.statusStr=="SUBMIT_TWICE"){
+				// 	if(json.data.infoStatusStr==null){
+				// 		alert("请您及时完成《学籍表》的填写并提交，以免影响审核！");
+				// 	}else if(json.data.infoStatusStr=="SUBMIT_NONE"){
+				// 		alert("请您及时完成《学籍表》的填写并提交，以免影响审核！");
+				// 	}else if(json.data.vaccineStatusStr==null){
+				// 		alert("请您及时完成《预防表》的填写并提交，以免影响审核！");
+				// 	}else if(json.data.vaccineStatusStr=="SUBMIT_NONE"){
+				// 		alert("请您及时完成《预防表》的填写并提交，以免影响审核！");
+				// 	}
+				// }
 			}
 			if(json.data.message && json.data.message!=""){
 				alert(json.data.message);
@@ -431,7 +432,7 @@ function doSaveStuApply(isAdmin){
 	}else if(cardType=="CARD_TYPE1"){
 		var checkCardNoRes = IdentifyCodeValid(cardNo);
 		if(!checkCardNoRes.pass){
-			// alert(checkCardNoRes.msg);
+			alert(checkCardNoRes.msg);
 			return ;
 		}
 	}else if(cardType=="CARD_TYPE7"){
@@ -759,7 +760,7 @@ function showStuApplyHistoryList(id){
 			var params = {};
 			params.modelId = "model_stuApplyHistoryList";
 			params.modelData = json;
-			params.title = "【"+name+"】的入学登记表历史存档";
+			params.title = "【"+name+"】的学生报名表表历史存档";
 			showDialogView380(params);
 		}else{
 			if(json.errorMsg==null){
@@ -1342,7 +1343,7 @@ function submitStuVaccine(){
 	ajaxJSON(params);
 }
 
-/********************招生老师操作（入学登记表）*****************************/
+/********************招生老师操作（学生报名表表）*****************************/
 function doLoadStuApplyList(){
 	useModel("model_stuApplyListDisplay","div_display",{year:getCurrentYear()});
 	$("#ipt_pageNo").unbind("click");

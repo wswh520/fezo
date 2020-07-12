@@ -46,7 +46,7 @@ public class StuVaccineServiceImpl implements StuVaccineService {
 				//||stuApply.getStatus()!=StuApplyStatus.REVIEW_PASS.val()
 				){
 			Response res = new Response(ReturnCode.SERVER_INNER_ERROR);
-			res.setErrorMsg("入学登记表尚未审核通过！");
+			res.setErrorMsg("学生报名表表尚未审核通过！");
 			return res;
 		}
 		
@@ -89,7 +89,7 @@ public class StuVaccineServiceImpl implements StuVaccineService {
 					//||stuApply.getStatus()!=StuApplyStatus.REVIEW_PASS.val()
 					){
 				res.setRetCode(ReturnCode.SERVER_INNER_ERROR);
-				res.setErrorMsg("入学登记表尚未填写！");//审核通过
+				res.setErrorMsg("学生报名表表尚未填写！");//审核通过
 				return res;
 			}
 			entity.setStuId(stuApply.getId());

@@ -5,7 +5,7 @@ import com.fz.enroll.entity.BaseEntity;
 
 public class StuApplyHistory extends BaseEntity {
 
-	private int mid;//入学登记表ID
+	private int mid;//学生报名表表ID
 	private int uid;//操作人ID
 	private String data;//数据内容JSON格式
 	private long time;//存档时间

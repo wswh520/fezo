@@ -180,7 +180,7 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 		ServletOutputStream fos = null;
 		HSSFWorkbook wb = new HSSFWorkbook();
 		try{
-			String filename = year+"入学登记信息";
+			String filename = year+"学生报名表信息";
 			boolean isIE6 = request.getHeader("User-Agent")==null?false:request.getHeader("User-Agent").indexOf("MSIE")>0;
 			if(isIE6){
 				response.setHeader( "Content-Disposition", "attachment;filename=" + 
@@ -190,7 +190,7 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 				response.setHeader("Content-disposition", "attachment;filename="+ indexName);
 			}
 			fos = response.getOutputStream();
-			HSSFSheet s = wb.createSheet("入学登记信息");
+			HSSFSheet s = wb.createSheet("学生报名表信息");
 			
 			this.doExportApply(s, this.createQueryParams(order,keyword,String.valueOf(year),ageScope, type, sex, status, infoStatus, vaccineStatus, school));
 			

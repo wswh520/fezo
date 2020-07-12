@@ -388,7 +388,7 @@ public class StuGraInfoListServiceImpl extends QueryBaseServiceImpl<GraStuInfo> 
 				response.setHeader("Content-disposition", "attachment;filename="+ indexName);
 			}
 			fos = response.getOutputStream();
-			HSSFSheet sheetOut = wbOut.createSheet("入学登记信息");
+			HSSFSheet sheetOut = wbOut.createSheet("学生报名表信息");
 			Map<String,Integer> username_indexMap = new HashMap<String,Integer>();
 			List<String> usernameList = this.copyBaseData(sheetBase, sheetOut,username_indexMap);
 			

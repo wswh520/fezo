@@ -8,10 +8,10 @@ function doLoadTimeConfig_signIn(){
 	doShowTimeConfig("SIGN_IN","注册时段(家长可注册)");
 }
 function doLoadTimeConfig_applyInput(){
-	doShowTimeConfig("APPLY_INPUT","填表时段(家长第一次填写入学登记表)");
+	doShowTimeConfig("APPLY_INPUT","填表时段(家长第一次填写学生报名表表)");
 }
 function doLoadTimeConfig_applyModify(){
-	doShowTimeConfig("APPLY_MODIFY","改表时段(家长第二次填写入学登记表)");
+	doShowTimeConfig("APPLY_MODIFY","改表时段(家长第二次填写学生报名表表)");
 }
 function doLoadTimeConfig_infoInput(){
 	doShowTimeConfig("INFO_INPUT","信息录入时段(家长填写学籍表)");

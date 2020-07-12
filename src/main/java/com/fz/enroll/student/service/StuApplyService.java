@@ -17,7 +17,7 @@ public interface StuApplyService {
 
 	public Response loadService(String id);
 	/**
-	 * 修改入学登记信息
+	 * 修改学生报名表信息
 	 * 		1、家长只能在两个相应的时间段内修改对应状态的自己的信息
 									SUBMIT_NONE(1),//未提交
 									SUBMIT_ONCE(2),//初次提交
@@ -45,7 +45,7 @@ public interface StuApplyService {
 	public Response getHistoryInfoService(String idStr);
 	public Response initPinyinService();
 	/**
-	 * 查询附件列表，目前仅供新生入学登记使用(包括老师账号)
+	 * 查询附件列表，目前仅供新生学生报名表使用(包括老师账号)
 	 * @param params {oid、otypes:类型列表, type}
 	 * @return 
 	 */

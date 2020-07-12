@@ -16,7 +16,7 @@ public interface AttachmentService {
 
 	public Response loadService(Integer oid,AttOtype otype);
 	/**
-	 * 查询附件列表，目前仅供新生入学登记使用(包括老师账号)
+	 * 查询附件列表，目前仅供新生学生报名表使用(包括老师账号)
 	 * @param params {oid/uid、oid、otypes:类型列表}
 	 * @return List<Attachment>
 	 */

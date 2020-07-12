@@ -4957,7 +4957,7 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Creator>Administrator</a:Creator>
 <a:ModificationDate>1466755022</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
-<a:Comment>学生申请表（新生入学登记表）</a:Comment>
+<a:Comment>学生申请表（新生学生报名表表）</a:Comment>
 <a:TotalSavingCurrency/>
 <c:Columns>
 <o:Column Id="o73">
@@ -7155,7 +7155,7 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Creator>Administrator</a:Creator>
 <a:ModificationDate>1434109423</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
-<a:Comment>入学登记表ID</a:Comment>
+<a:Comment>学生报名表表ID</a:Comment>
 <a:DataType>int(11)</a:DataType>
 <a:Length>11</a:Length>
 <a:Column.Mandatory>1</a:Column.Mandatory>

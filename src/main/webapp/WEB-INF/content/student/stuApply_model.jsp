@@ -8,7 +8,7 @@
 			<li class="right"></li>
 			<li class="left"><a href="${ctx}/">首页</a></li>
 			<li>基本功能</li>
-			<li class="last">钟家村寄宿学校新生入学登记</li>
+			<li class="last">钟家村寄宿学校新生学生报名表</li>
 		</ul>
 	</div>
 	<div class="right">

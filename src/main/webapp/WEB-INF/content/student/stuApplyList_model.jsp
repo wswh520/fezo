@@ -15,7 +15,7 @@
 			<li class="right"></li>
 			<li class="left"><a href="${ctx}/">首页</a></li>
 			<li>基本功能</li>
-			<li class="last">入学登记表</li>
+			<li class="last">学生报名表表</li>
 		</ul>
 	</div>
 	<div id="div_search" class="right">

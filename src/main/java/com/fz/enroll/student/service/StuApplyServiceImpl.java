@@ -588,7 +588,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 			return ;
 		}
 
-		String docName = stuApply.getName()+"的入学登记表.pdf";
+		String docName = stuApply.getName()+"的学生报名表表.pdf";
 		String xmlName = "";
 		if (stuApply.getTypeStr().alias().startsWith("A")) {
 			xmlName = "stu_apply_A.xml";
