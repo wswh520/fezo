@@ -760,7 +760,7 @@ function showStuApplyHistoryList(id){
 			var params = {};
 			params.modelId = "model_stuApplyHistoryList";
 			params.modelData = json;
-			params.title = "【"+name+"】的学生报名表表历史存档";
+			params.title = "【"+name+"】的学生报名表历史存档";
 			showDialogView380(params);
 		}else{
 			if(json.errorMsg==null){
@@ -1343,7 +1343,7 @@ function submitStuVaccine(){
 	ajaxJSON(params);
 }
 
-/********************招生老师操作（学生报名表表）*****************************/
+/********************招生老师操作（学生报名表）*****************************/
 function doLoadStuApplyList(){
 	useModel("model_stuApplyListDisplay","div_display",{year:getCurrentYear()});
 	$("#ipt_pageNo").unbind("click");

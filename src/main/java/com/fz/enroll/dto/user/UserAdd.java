@@ -36,7 +36,7 @@ public class UserAdd {
 
 		String pwd = Utils.emptyToNull(this.getPassword());
 		if (pwd == null && UserType.isTecherUser(type.val())){
-		    pwd = "ls123456";//老师用户设置默认密码
+		    pwd = "123456";//老师用户设置默认密码
         }
 
 		user.setPassword(pwd);
