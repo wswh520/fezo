@@ -539,9 +539,9 @@ public class StuApplyServiceImpl implements StuApplyService {
 		if(no.startsWith("J")){
 			dataMap.put("addr", "钟家村寄宿学校（汉阳区北城路28号）");
 		}else if(no.startsWith("Z")){
-			dataMap.put("addr", "钟家村寄宿学校（西村路2号）");
+			dataMap.put("addr", "钟家村小学（西桥路3号）");
 		}else if(no.startsWith("S")){
-			dataMap.put("addr", "钟家村寄宿学校三里坡校区（马鹦路143号）");
+			dataMap.put("addr", "钟家村小学三里坡校区（马鹦路143号）");
 		}
 		Integer num = Integer.valueOf(no.substring(3));
 		if(num <= 20){
