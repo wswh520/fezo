@@ -7,7 +7,7 @@
 <div class="clear"></div>
 <div class="base_title">
 	<em></em>
-	<strong>$J{year}年钟家村寄宿学校新生学生报名表</strong>
+	<strong>$J{year}年钟家村寄宿学校新生报名表</strong>
 	<strong style="float:right;color:red">
 		申请状态：{@if id==0}未填表
 		{@else if statusStr=="SUBMIT_NONE"}未提交
@@ -330,6 +330,15 @@
 			<td><input id="ipt_other53" name="other53" value="$J{other53}" style="width: 90%;" type="text" class="inp" /></td>
 <%--			<td class="xyykt_phon"><input id="ipt_other22" name="other22" value="$J{other22}" style="width: 95%;" type="text" class="inp" /></td>--%>
 		</tr>
+<%--		<tr>--%>
+<%--			<td>监护人</td>--%>
+<%--			<td><input id="ipt_other18" name="other18" value="$J{other18}" style="width: 90%;" type="text" class="inp" /></td>--%>
+<%--			<td><input id="ipt_other19" name="other19" value="$J{other19}" style="width: 95%;" type="text" class="inp" /></td>--%>
+<%--			<td><input id="ipt_other20" name="other20" value="$J{other20}" style="width: 90%;" type="text" class="inp" /></td>--%>
+<%--			<td><input id="ipt_other21" name="other21" value="$J{other21}" style="width: 95%;" type="text" class="inp" /></td>--%>
+<%--			<td><input id="ipt_other53" name="other53" value="$J{other53}" style="width: 90%;" type="text" class="inp" /></td>--%>
+<%--			&lt;%&ndash;			<td class="xyykt_phon"><input id="ipt_other22" name="other22" value="$J{other22}" style="width: 95%;" type="text" class="inp" /></td>&ndash;%&gt;--%>
+<%--		</tr>--%>
 		</tbody>
 	</table>
 	<table id="table_b" style="display:none;" class="table table-bordered table-striped stuInfo">

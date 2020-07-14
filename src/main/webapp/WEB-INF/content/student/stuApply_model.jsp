@@ -8,13 +8,30 @@
 			<li class="right"></li>
 			<li class="left"><a href="${ctx}/">首页</a></li>
 			<li>基本功能</li>
-			<li class="last">钟家村寄宿学校新生学生报名表</li>
+			<li class="last">钟家村寄宿学校新生报名表</li>
 		</ul>
 	</div>
 	<div class="right">
 		<button id="btn_refresh" onclick="javascript:doLoadStuApply();" class="Btn" type="button"><i class="icon icon-Repeat"></i>刷新</button>
 	</div>
-	<div class="left">
+<%--	<strong style="float:right" >--%>
+<%--		技术支持：</br>--%>
+<%--		彭工：17762500504</br>--%>
+<%--		服务时间：上午9：00-11：30；下午2：00-4：30</br>--%>
+<%--		备注：仅负责解决网站技术问题，招生政策详见招生简章。--%>
+<%--	</strong>--%>
+<%--	<p>技术支持：</p>--%>
+<%--	<p>彭工：17762500504</p>--%>
+<%--	<p>服务时间：上午9：00-11：30；下午2：00-4：30</p>--%>
+<%--	<p>备注：仅负责解决网站技术问题，招生政策详见招生简章。</p>--%>
+
+<%--	<strong style="float:right" >--%>
+<%--		技术支持：</br>--%>
+<%--		彭工：17762500504</br>--%>
+<%--		服务时间：上午9：00-11：30；下午2：00-4：30</br>--%>
+<%--		备注：仅负责解决网站技术问题，招生政策详见招生简章。--%>
+<%--	</strong>--%>
+	<strong class="left">
 {@if !locked}
 		<button id="btn_showModify" onclick="javascritp:showStuApplyModify(1);" class="Btn" type="button"><i class="icon icon-Modify"></i>修改</button>
 	{@if statusStr=="SUBMIT_NONE"}
