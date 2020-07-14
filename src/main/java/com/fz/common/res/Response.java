@@ -6,6 +6,7 @@ public class Response {
 	private String errorMsg;
 	private Object data;
 	private Object other;
+	private String name;
 	
 	public Response(){}
 	
@@ -51,6 +52,14 @@ public class Response {
 
 	public void setOther(Object other) {
 		this.other = other;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

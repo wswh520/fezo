@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fz.common.security.CurrentUser;
 import com.fz.common.security.ThreadLocalUtils;
 import com.fz.common.util.HttpUtils;
 import com.fz.enroll.entity.student.StuSmsInfo;
@@ -114,6 +115,10 @@ public class StuApplyListServiceImpl extends QueryBaseServiceImpl<StuApply>
 		}
 		if(StringUtils.isNotBlank(other54)){
 			params.put("other54", other54);
+		}
+		CurrentUser user = ThreadLocalUtils.getCurrentUser();
+		if(user != null){
+			params.put("name", user.getName());
 		}
 		return params;
 	}

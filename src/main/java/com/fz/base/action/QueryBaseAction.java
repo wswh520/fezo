@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.fz.common.security.CurrentUser;
+import com.fz.common.security.ThreadLocalUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,6 +22,10 @@ public abstract class QueryBaseAction<Entity> {
 	@RequestMapping("load")
 	public Response doLoad(String pageNo,HttpServletRequest request) {
 		Response res = this.getService().loadService(pageNo,this.getParams(request));
+		CurrentUser user = ThreadLocalUtils.getCurrentUser();
+		if(user != null){
+			res.setName(user.getName());
+		}
 		return res;
 	}
 }

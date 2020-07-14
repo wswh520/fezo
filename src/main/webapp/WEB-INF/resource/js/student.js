@@ -59,6 +59,7 @@ var student_loadStuGraInfoAttUrl	= ctx+"/stuGraInfo/loadAtt/ajax";
 var student_uploadStuGraInfoAttUrl	= ctx+"/stuGraInfo/uploadAtt/ajax";
 var student_delStuGraInfoAttUrl = ctx+"/stuGraInfo/delAtt/ajax";
 var student_downloadStuGraInfoAttUrl = ctx+"/stuGraInfo/downloadAtt";
+var username;
 /*function doLoadStuApplyStatus(){
 	$("#ipt_pageNo").unbind("click");
 	$("#div_display").html("加载中...");
@@ -1372,6 +1373,7 @@ function doToPage_stuApplyList(){
 	params.callBack = function (json){
 		if(json.retCode==CODE_SUCCESS){
 			json.data.currentYear = getCurrentYear();
+			username = json.name;
 			useModel("model_stuApplyList","div_display_list",json.data);
 		}
 	};
@@ -1578,6 +1580,8 @@ function showReview(id){
 	var status = $("#ele_statusStr_"+id).html();
 	var reviewer = $("#ele_reviewer_"+id).html();
 	var dateOfReview = $("#ele_dateOfReviewStr_"+id).html();
+	// var dateOfReview = today();
+	// alert(dateOfReview);
 	var note = $("#ele_note_"+id).html();
 	var message = $("#ele_message_"+id).html();
 	var params = {};
@@ -1586,8 +1590,25 @@ function showReview(id){
 	params.modelData = {id:id,status:status,reviewer:reviewer,dateOfReview:dateOfReview,note:note,message:message};
 	params.title = "审核学生【"+name+"】";
 	showDialog380(params);
+	$("#review_ipt_dateOfReview").val(today());
+	$("#review_ipt_reviewer").val(username);
 	
 	$("#dialog_380").find("select").seleFn();
+}
+function today(){
+	var today=new Date();
+	var h=today.getFullYear();
+	var m=today.getMonth()+1;
+	var d=today.getDate();
+	var hh=today.getHours();
+	var mm=today.getMinutes();
+	var ss=today.getSeconds();
+	m= m<10?"0"+m:m;
+	d= d<10?"0"+d:d;
+	hh = hh < 10 ? "0" + hh:hh;
+	mm = mm < 10 ? "0" +  mm:mm;
+	ss = ss < 10 ? "0" + ss:ss;
+	return h+"-"+m+"-"+d+" "+hh+":"+mm+":"+ss;
 }
 function doReview(){
 	var id = $.trim($("#review_ipt_id").val());

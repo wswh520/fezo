@@ -3,6 +3,7 @@
 <%@page import="com.fz.common.security.CurrentUser"%>
 <%@page import="com.fz.common.security.ThreadLocalUtils"%>
 <%@ page import="com.fz.enroll.enum0.UserType" %>
+<%@ page import="java.util.Date" %>
 <%
 	CurrentUser user = ThreadLocalUtils.getCurrentUser();
 	UserType utype = ThreadLocalUtils.getCurrentUser().getType();
@@ -344,12 +345,14 @@
 	<input id="review_ipt_id" value="$J{id}" type="hidden" />
 	<div class="item">
 		<label class="sele-label label-nick">审核人：</label>
-		<input id="review_ipt_reviewer" value="$J{reviewer}" type="text" class="inp" style="width: 174px;" />
+<%--		<input id="review_ipt_reviewer" value="$J{reviewer}" type="text" class="inp" style="width: 174px;" />--%>
+		<input id="review_ipt_reviewer" type="text" class="inp" style="width: 174px;" />
 		<label class="sele-label red">* 必填项</label>
 	</div>
 	<div class="item">
 		<label class="sele-label label-nick">审核日期：</label>
-		<input id="review_ipt_dateOfReview" value="$J{dateOfReview}" style="cursor:pointer;width:146px;" readonly="readonly" type="text" class="inp Wdate" onFocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy年MM月dd日',alwaysUseStartDate:true})" maxlength="10" />
+<%--		<input id="review_ipt_dateOfReview" value="$J{dateOfReview}" style="cursor:pointer;width:146px;" readonly="readonly" type="text" class="inp Wdate" onFocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy年MM月dd日',alwaysUseStartDate:true})" maxlength="10" />--%>
+		<input id="review_ipt_dateOfReview" style="cursor:pointer;width:146px;" readonly="readonly" type="text" class="inp Wdate" onFocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy年MM月dd日',alwaysUseStartDate:true})" maxlength="10" />
 		<label class="sele-label red">* 必填项</label>
 	</div>
 	<div class="item">
