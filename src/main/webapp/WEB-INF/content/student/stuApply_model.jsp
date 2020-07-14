@@ -25,12 +25,12 @@
 <%--	<p>服务时间：上午9：00-11：30；下午2：00-4：30</p>--%>
 <%--	<p>备注：仅负责解决网站技术问题，招生政策详见招生简章。</p>--%>
 
-<%--	<strong style="float:right" >--%>
-<%--		技术支持：</br>--%>
-<%--		彭工：17762500504</br>--%>
-<%--		服务时间：上午9：00-11：30；下午2：00-4：30</br>--%>
-<%--		备注：仅负责解决网站技术问题，招生政策详见招生简章。--%>
-<%--	</strong>--%>
+	<strong style="float: right;height: 15px;margin-right: 522px;margin-top: -12px;" >
+		技术支持：</br>
+		彭工：17762500504</br>
+		服务时间：上午9：00-11：30；下午2：00-4：30</br>
+		备注：仅负责解决网站技术问题，招生政策详见招生简章。
+	</strong>
 	<strong class="left">
 {@if !locked}
 		<button id="btn_showModify" onclick="javascritp:showStuApplyModify(1);" class="Btn" type="button"><i class="icon icon-Modify"></i>修改</button>
@@ -53,6 +53,7 @@
 {@if currentYear!=year&&statusStr!="REVIEW_PASS"}<!--2016-6-23-->
 	<button onclick="javascript:forwardGrade('$J{id}',true);"  class="Btn" type="button">申请转$J{currentYear}级</button>
 {@/if}
+	</strong>
 	</div>
 	<div class="clear"></div>
 	<jsp:include flush="true" page="/WEB-INF/content/student/stuApply_detail_model.jsp" />
