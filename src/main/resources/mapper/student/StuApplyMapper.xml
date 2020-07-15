@@ -85,7 +85,12 @@
 			other51=#{other51},
 			other52=#{other52},
 			other53=#{other53},
-			other54=#{other54}
+			other54=#{other54},
+			other55=#{other55},
+			other56=#{other56},
+			other57=#{other57},
+			other58=#{other58},
+			other59=#{other59}
 		</set>
 		where uid=#{uid} and status=#{status}
 	</update>
@@ -128,7 +133,8 @@
 		other31,other32,other33,other34,other35,other36,
 		other37,other38,other39,other40,other41,other42,
 		other43,other44,other45,other46,other47,
-		other48,other49,other50,other51,other52,other53,other54
+		other48,other49,other50,other51,other52,other53,other54,
+		other55,other56,other57,other58,other59
 	</sql>
 	<sql id="stuApplyValue">
 		#{uid},#{year},#{status},#{type},#{no},
@@ -144,7 +150,8 @@
 		#{other31},#{other32},#{other33},#{other34},#{other35},#{other36},
 		#{other37},#{other38},#{other39},#{other40},#{other41},#{other42},
 		#{other43},#{other44},#{other45},#{other46},#{other47},
-		#{other48},#{other49},#{other50},#{other51},#{other52},#{other53},#{other54}
+		#{other48},#{other49},#{other50},#{other51},#{other52},#{other53},#{other54},
+		#{other55},#{other56},#{other57},#{other58},#{other59}
 	</sql>
 	
 	<select id="queryYear" parameterType="int" resultType="Year">
@@ -174,7 +181,7 @@
 	<!-- 转当本年对应的年级 -->
 	<update id="forwardGrade" parameterType="StuApply">
 		update tb_stuapply set year=#{year},status=#{status},message=#{message}
-		where id=#{id} and uid=#{uid} and status!=4<!-- REVIEW_PASS(4),//拟录取、毕业生信息需要二次审核 -->
+		where id=#{id} and uid=#{uid} and status!=4<!-- REVIEW_PASS(4),//通过、毕业生信息需要二次审核 -->
 	</update>
 	<!-- <update id="updateHistory" parameterType="StuApplyHistory">
 		update tb_stuapply_history set data=#{data},time=#{time} where uid=#{uid}

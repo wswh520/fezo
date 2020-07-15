@@ -95,35 +95,35 @@
 			<option value="SUBMIT_NONE">未提交</option>
 			<option value="SUBMIT_ONCE">已提交1次</option>
 			<option value="SUBMIT_TWICE">待审核</option>
-			<option value="REVIEW_PASS">拟录取</option>
-			<option value="REVIEW_REFUSE">不予录取</option>
-			<option value="REVIEW_WAITING">待录取</option>
+			<option value="REVIEW_PASS">通过</option>
+			<option value="REVIEW_REFUSE">不通过</option>
+<%--			<option value="REVIEW_WAITING">待通过</option>--%>
 		</select>
-		<select id="sel_infoStatus" onchange="javascript:toPage(1);">
-			<option value="">学籍表状态</option>
-			<option value="TABLE_EMPTY">未填表</option>
-			<option value="SUBMIT_NONE">未提交</option>
-			<option value="SUBMIT_ONCE">已提交</option>
-		</select>
-		<select id="sel_vaccineStatus" onchange="javascript:toPage(1);">
-			<option value="">预防表状态</option>
-			<option value="TABLE_EMPTY">未填表</option>
-			<option value="SUBMIT_NONE">未提交</option>
-			<option value="SUBMIT_ONCE">已提交</option>
-		</select>
-		<select id="sel_school" onchange="javascript:toPage(1);">
-			<% if (user.getUid()==4699){%>					<%--冷丹 只能看南湖校区的报名--%>
-				<option value="NANHU">校区</option>
-				<option value="NANHU">南湖校区</option>
-			<% }else if (user.getUid()==4684) { %>			<%--刘峥 只能看桂子山校区的报名--%>
-				<option value="GUIZISHAN">校区</option>
-				<option value="GUIZISHAN">桂子山校区</option>
-			<% }else { %>
-				<option value="">校区</option>
-				<option value="NANHU">南湖校区</option>
-				<option value="GUIZISHAN">桂子山校区</option>
-			<% } %>
-		</select>
+<%--		<select id="sel_infoStatus" onchange="javascript:toPage(1);">--%>
+<%--			<option value="">学籍表状态</option>--%>
+<%--			<option value="TABLE_EMPTY">未填表</option>--%>
+<%--			<option value="SUBMIT_NONE">未提交</option>--%>
+<%--			<option value="SUBMIT_ONCE">已提交</option>--%>
+<%--		</select>--%>
+<%--		<select id="sel_vaccineStatus" onchange="javascript:toPage(1);">--%>
+<%--			<option value="">预防表状态</option>--%>
+<%--			<option value="TABLE_EMPTY">未填表</option>--%>
+<%--			<option value="SUBMIT_NONE">未提交</option>--%>
+<%--			<option value="SUBMIT_ONCE">已提交</option>--%>
+<%--		</select>--%>
+<%--		<select id="sel_school" onchange="javascript:toPage(1);">--%>
+<%--			<% if (user.getUid()==4699){%>					&lt;%&ndash;冷丹 只能看南湖校区的报名&ndash;%&gt;--%>
+<%--				<option value="NANHU">校区</option>--%>
+<%--				<option value="NANHU">南湖校区</option>--%>
+<%--			<% }else if (user.getUid()==4684) { %>			&lt;%&ndash;刘峥 只能看桂子山校区的报名&ndash;%&gt;--%>
+<%--				<option value="GUIZISHAN">校区</option>--%>
+<%--				<option value="GUIZISHAN">桂子山校区</option>--%>
+<%--			<% }else { %>--%>
+<%--				<option value="">校区</option>--%>
+<%--				<option value="NANHU">南湖校区</option>--%>
+<%--				<option value="GUIZISHAN">桂子山校区</option>--%>
+<%--			<% } %>--%>
+<%--		</select>--%>
 	</div>
 	<div class="clear"></div>
 	<div id="div_display_list"></div>
@@ -135,9 +135,9 @@
 			<thead><tr id="tr_batchReview" style="display: none;">
 				<td colspan="11">
 					<span id="span_selCount"></span>
-					<input onclick="javascript:doBatchReview('REVIEW_PASS','拟录取');" type="button" value="拟录取" class="Btn" />
-					<input onclick="javascript:doBatchReview('REVIEW_REFUSE','不予录取');" type="button" value="不予录取" class="Btn" />
-					<input onclick="javascript:doBatchReview('REVIEW_WAITING','待录取');" type="button" value="待录取" class="Btn" />
+					<input onclick="javascript:doBatchReview('REVIEW_PASS','通过');" type="button" value="通过" class="Btn" />
+					<input onclick="javascript:doBatchReview('REVIEW_REFUSE','不通过');" type="button" value="不通过" class="Btn" />
+<%--					<input onclick="javascript:doBatchReview('REVIEW_WAITING','待通过');" type="button" value="待通过" class="Btn" />--%>
 				</td>
 			</tr>
 			<tr>
@@ -187,9 +187,9 @@
 					{@if ele.statusStr=="SUBMIT_NONE"}未提交
 					{@else if ele.statusStr=="SUBMIT_ONCE"}{@if locked}审核中{@else}未再次提交{@/if}
 					{@else if ele.statusStr=="SUBMIT_TWICE"}审核中
-					{@else if ele.statusStr=="REVIEW_PASS"}拟录取
-					{@else if ele.statusStr=="REVIEW_REFUSE"}不予录取
-					{@else if ele.statusStr=="REVIEW_WAITING"}待录取
+					{@else if ele.statusStr=="REVIEW_PASS"}通过
+					{@else if ele.statusStr=="REVIEW_REFUSE"}不通过
+<%--					{@else if ele.statusStr=="REVIEW_WAITING"}待通过--%>
 					{@/if}
 				</td>
 				<td id="ele_cardNo_$J{ele.id}">$J{ele.cardNo}</td>
@@ -263,9 +263,9 @@
 			<tr id="tr_batchReview_2" style="display: none;">
 				<td colspan="11">
 					<span id="span_selCount_2"></span>
-					<input onclick="javascript:doBatchReview('REVIEW_PASS','拟录取');" type="button" value="拟录取" class="Btn" />
-					<input onclick="javascript:doBatchReview('REVIEW_REFUSE','不予录取');" type="button" value="不予录取" class="Btn" />
-					<input onclick="javascript:doBatchReview('REVIEW_WAITING','待录取');" type="button" value="待录取" class="Btn" />
+					<input onclick="javascript:doBatchReview('REVIEW_PASS','通过');" type="button" value="通过" class="Btn" />
+					<input onclick="javascript:doBatchReview('REVIEW_REFUSE','不通过');" type="button" value="不通过" class="Btn" />
+<%--					<input onclick="javascript:doBatchReview('REVIEW_WAITING','待通过');" type="button" value="待通过" class="Btn" />--%>
 				</td>
 			</tr>
 			</tbody>
@@ -358,9 +358,11 @@
 	<div class="item">
 		<label class="sele-label label-nick">审核结果：</label>
 		<select id="review_sel_status">
-			<option {@if status=="REVIEW_PASS"}selected="selected"{@/if} value="REVIEW_PASS">拟录取</option>
-			<option {@if status=="REVIEW_REFUSE"}selected="selected"{@/if} value="REVIEW_REFUSE">不予录取</option>
-			<option {@if status=="REVIEW_WAITING"}selected="selected"{@/if} value="REVIEW_WAITING">待录取</option>
+<%--			<option {@if status=="REVIEW_PASS"}selected="selected"{@/if} value="REVIEW_PASS">通过</option>--%>
+<%--			<option {@if status=="REVIEW_REFUSE"}selected="selected"{@/if} value="REVIEW_REFUSE">不通过</option>--%>
+<%--			<option {@if status=="REVIEW_WAITING"}selected="selected"{@/if} value="REVIEW_WAITING">待通过</option>--%>
+			<option {@if status=="REVIEW_REFUSE"}selected="selected"{@/if} value="REVIEW_REFUSE">不通过</option>
+			<option {@if status=="REVIEW_PASS"}selected="selected"{@/if} value="REVIEW_PASS">通过</option>
 		</select>
 		<label class="sele-label red">* 必填项</label>
 	</div>
@@ -421,27 +423,27 @@
 							<option value="SUBMIT_NONE">未提交</option>
 							<option value="SUBMIT_ONCE">已提交1次</option>
 							<option value="SUBMIT_TWICE">待审核</option>
-							<option value="REVIEW_PASS">拟录取</option>
-							<option value="REVIEW_REFUSE">不予录取</option>
-							<option value="REVIEW_WAITING">待录取</option>
+							<option value="REVIEW_PASS">通过</option>
+							<option value="REVIEW_REFUSE">不通过</option>
+<%--							<option value="REVIEW_WAITING">待通过</option>--%>
 						</select>
 					</div>
-					<div class="item">
-						<label class="sele-label label-nick">校区：</label>
-						<select id="sel_school">
-							<% if (user.getUid()==4699){%>					<%--冷丹 只能看南湖校区的报名--%>
-								<option value="NANHU">全部</option>
-								<option value="NANHU">南湖校区</option>
-							<% }else if (user.getUid()==4684) { %>			<%--刘峥 只能看桂子山校区的报名--%>
-								<option value="GUIZISHAN">全部</option>
-								<option value="GUIZISHAN">桂子山校区</option>
-							<% }else { %>
-								<option value="">全部</option>
-								<option value="NANHU">南湖校区</option>
-								<option value="GUIZISHAN">桂子山校区</option>
-							<% } %>
-						</select>
-					</div>
+<%--					<div class="item">--%>
+<%--						<label class="sele-label label-nick">校区：</label>--%>
+<%--						<select id="sel_school">--%>
+<%--							<% if (user.getUid()==4699){%>					&lt;%&ndash;冷丹 只能看南湖校区的报名&ndash;%&gt;--%>
+<%--								<option value="NANHU">全部</option>--%>
+<%--								<option value="NANHU">南湖校区</option>--%>
+<%--							<% }else if (user.getUid()==4684) { %>			&lt;%&ndash;刘峥 只能看桂子山校区的报名&ndash;%&gt;--%>
+<%--								<option value="GUIZISHAN">全部</option>--%>
+<%--								<option value="GUIZISHAN">桂子山校区</option>--%>
+<%--							<% }else { %>--%>
+<%--								<option value="">全部</option>--%>
+<%--								<option value="NANHU">南湖校区</option>--%>
+<%--								<option value="GUIZISHAN">桂子山校区</option>--%>
+<%--							<% } %>--%>
+<%--						</select>--%>
+<%--					</div>--%>
 					<div class="item">
 						<label class="sele-label label-nick">&nbsp;</label>
 						<input onclick="javascript:doExport();" type="button" value="导出" class="Btn" />

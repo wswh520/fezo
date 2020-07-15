@@ -13,14 +13,14 @@
 		{@else if statusStr=="SUBMIT_NONE"}未提交
 		{@else if statusStr=="SUBMIT_ONCE"}{@if locked}审核中{@else}未再次提交{@/if}
 		{@else if statusStr=="SUBMIT_TWICE"}审核中
-		{@else if statusStr=="REVIEW_PASS"}拟录取
-		{@else if statusStr=="REVIEW_REFUSE"}不予录取
-		{@else if statusStr=="REVIEW_WAITING"}待录取
+		{@else if statusStr=="REVIEW_PASS"}通过
+		{@else if statusStr=="REVIEW_REFUSE"}不通过
+		{@else if statusStr=="REVIEW_WAITING"}待通过
 		{@/if}
 	</strong>
 </div>
 <div id="div_stuApply_iptHint" style="display:none;">
-	<p><strong style="color:red;">尊敬的家长：您好！由于您的孩子是$J{year}年报名尚未被录取的，如果您想为孩子报名$J{currentYear}级，请点击“申请转$J{currentYear}级”按钮。</strong></p>
+	<p><strong style="color:red;">尊敬的家长：您好！由于您的孩子是$J{year}年报名尚未被通过的，如果您想为孩子报名$J{currentYear}级，请点击“申请转$J{currentYear}级”按钮。</strong></p>
 	<p><strong style="color:red;display:none;">注意：如果孩子的身份证号已经重新注册，请前往学校提交更正账号申请。若账户没有更正或者账户更正不成功，登记信息时会提示“身份证件号已被登记”字样！</strong></p>
 </div>
 <form id="form_stuApply" class="bs-docs-example">
@@ -303,7 +303,7 @@
 	<table class="table table-bordered table-striped stuInfo">
 		<tbody>
 		<tr>
-			<th width="2%" rowspan="3">监护人信息</th>
+			<th width="2%" rowspan="5">监护人信息</th>
 			<th width="5%">关系</th>
 			<th width="10%">姓名</th>
 			<th id="th_comp_dept" width="30%">工作单位(院系或部门)</th>
@@ -329,6 +329,18 @@
 			<td><input id="ipt_other21" name="other21" value="$J{other21}" style="width: 95%;" type="text" class="inp" /></td>
 			<td><input id="ipt_other53" name="other53" value="$J{other53}" style="width: 90%;" type="text" class="inp" /></td>
 <%--			<td class="xyykt_phon"><input id="ipt_other22" name="other22" value="$J{other22}" style="width: 95%;" type="text" class="inp" /></td>--%>
+		</tr>
+		<tr>
+			<td rowspan="2">监护人</td>
+			<td><input id="ipt_other55" name="other55" value="$J{other55}" style="width: 90%;" type="text" class="inp" /></td>
+			<td><input id="ipt_other56" name="other56" value="$J{other56}" style="width: 95%;" type="text" class="inp" /></td>
+			<td><input id="ipt_other57" name="other57" value="$J{other57}" style="width: 90%;" type="text" class="inp" /></td>
+			<td><input id="ipt_other58" name="other58" value="$J{other58}" style="width: 95%;" type="text" class="inp" /></td>
+			<td><input id="ipt_other59" name="other59" value="$J{other59}" style="width: 90%;" type="text" class="inp" /></td>
+			<%--			<td class="xyykt_phon"><input id="ipt_other22" name="other22" value="$J{other22}" style="width: 95%;" type="text" class="inp" /></td>--%>
+		</tr>
+		<tr>
+			<td colspan="7" style="color:#CCC">如监护人与学生非父母关系，请填写此栏</td>
 		</tr>
 		</tbody>
 	</table>

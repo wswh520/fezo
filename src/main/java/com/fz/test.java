@@ -4,15 +4,18 @@ import com.fz.common.util.MD5;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 //        String str = "2014年07月14日";
 //        String reg = "[\u4e00-\u9fa5]";
 //        Pattern pat = Pattern.compile(reg);
@@ -92,6 +95,15 @@ public class test {
 //        System.out.println(MD5.getMD5String(password));
 
 
+        String time = "2020-07-14 12:00:00";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//注意月份是MM
+        Date date = simpleDateFormat.parse(time);
+        Date now = new Date();
+        if(date.after(now)){
+            System.out.println(111);
+        }else{
+            System.out.println(222);
+        }
 
 
     }

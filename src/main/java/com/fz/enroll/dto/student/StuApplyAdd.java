@@ -109,6 +109,11 @@ public class StuApplyAdd {
 			entity.setOther52(Utils.emptyToNull(this.getOther52()));
 			entity.setOther53(Utils.emptyToNull(this.getOther53()));
 			entity.setOther54(Utils.emptyToNull(this.getOther54()));
+			entity.setOther55(Utils.emptyToNull(this.getOther55()));
+			entity.setOther56(Utils.emptyToNull(this.getOther56()));
+			entity.setOther57(Utils.emptyToNull(this.getOther57()));
+			entity.setOther58(Utils.emptyToNull(this.getOther58()));
+			entity.setOther59(Utils.emptyToNull(this.getOther59()));
 			
 			return entity;
 		} catch (Exception e) {
@@ -200,6 +205,12 @@ public class StuApplyAdd {
 	private String other52;//父亲最高学历
 	private String other53;//母亲最高学历
 	private String other54; //报名类别
+	//新增监护人信息
+	private String other55; //监护人姓名
+	private String other56; //监护人工作单位(院系或部门)
+	private String other57; //监护人职务
+	private String other58; //监护人联系电话
+	private String other59; //监护人最高学历
 	
 	public String getId() {
 		return id;
@@ -577,4 +588,44 @@ public class StuApplyAdd {
 	public void setOther53(String other53) { this.other53 = other53; }
 	public String getOther54() { return other54; }
 	public void setOther54(String other54) { this.other54 = other54; }
+
+	public String getOther55() {
+		return other55;
+	}
+
+	public void setOther55(String other55) {
+		this.other55 = other55;
+	}
+
+	public String getOther56() {
+		return other56;
+	}
+
+	public void setOther56(String other56) {
+		this.other56 = other56;
+	}
+
+	public String getOther57() {
+		return other57;
+	}
+
+	public void setOther57(String other57) {
+		this.other57 = other57;
+	}
+
+	public String getOther58() {
+		return other58;
+	}
+
+	public void setOther58(String other58) {
+		this.other58 = other58;
+	}
+
+	public String getOther59() {
+		return other59;
+	}
+
+	public void setOther59(String other59) {
+		this.other59 = other59;
+	}
 }

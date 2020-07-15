@@ -389,15 +389,15 @@ function doSaveStuApply(isAdmin){
 	var other8 = $.trim($("#ipt_other8").val());
 	var other9 = $.trim($("#ipt_other9").val());
 	var other12 = $.trim($("#ipt_other12").val());
-	var other13 = $.trim($("#ipt_other13").val());
-	var other14 = $.trim($("#ipt_other14").val());
-	var other15 = $.trim($("#ipt_other15").val());
-	var other16 = $.trim($("#ipt_other16").val());
+	// var other13 = $.trim($("#ipt_other13").val());
+	// var other14 = $.trim($("#ipt_other14").val());
+	// var other15 = $.trim($("#ipt_other15").val());
+	// var other16 = $.trim($("#ipt_other16").val());
     // var other17 = $.trim($("#ipt_other17").val());
-	var other18 = $.trim($("#ipt_other18").val());
-	var other19 = $.trim($("#ipt_other19").val());
-	var other20 = $.trim($("#ipt_other20").val());
-	var other21 = $.trim($("#ipt_other21").val());
+	// var other18 = $.trim($("#ipt_other18").val());
+	// var other19 = $.trim($("#ipt_other19").val());
+	// var other20 = $.trim($("#ipt_other20").val());
+	// var other21 = $.trim($("#ipt_other21").val());
     // var other22 = $.trim($("#ipt_other22").val());
     var other27 = $.trim($("#ipt_other27").val());
     var other28 = $.trim($("#ipt_other28").val());
@@ -466,10 +466,10 @@ function doSaveStuApply(isAdmin){
 		alert("邮箱地址输入错误！");
 		return ;
 	}
-	if(other16!=""&&!regex_mobile.test(other16)){
-		alert("父亲联系电话输入错误！");
-		return ;
-	}
+	// if(other16!=""&&!regex_mobile.test(other16)){
+	// 	alert("父亲联系电话输入错误！");
+	// 	return ;
+	// }
 	// if (type=="TYPEA") {
 	// 	if (other17=="" && other22=="") {
     //         alert("校园一卡通号码必须要填最少一个！");
@@ -485,21 +485,21 @@ function doSaveStuApply(isAdmin){
     //         return ;
 	// 	}
 	// }
-	if(other21!=""&&!regex_mobile.test(other21)){
-		alert("母亲联系电话输入错误！");
-		return ;
-	}
-	if((other13==""
-			||other14==""
-			||other15==""
-			||other16=="")
-		||(other18==""
-				||other19==""
-				||other20==""
-				||other21=="")){
-		alert("请至少将家长情况中除“校园一卡通号码”外的所有信息补充完整！");
-		return ;
-	}
+	// if(other21!=""&&!regex_mobile.test(other21)){
+	// 	alert("母亲联系电话输入错误！");
+	// 	return ;
+	// }
+	// if((other13==""
+	// 		||other14==""
+	// 		||other15==""
+	// 		||other16=="")
+	// 	||(other18==""
+	// 			||other19==""
+	// 			||other20==""
+	// 			||other21=="")){
+	// 	alert("请至少将家长情况中除“校园一卡通号码”外的所有信息补充完整！");
+	// 	return ;
+	// }
 
 	var sex = $("#form_stuApply").find("input:radio[name='sex']:checked").val();
 	var sexCheck = {"TRUE":"1,3,5,7,9,儿子,孙子,外孙子,非亲属,其他","FALSE":"0,2,4,6,8,女儿,孙女,外孙女,非亲属,其他"};
@@ -667,16 +667,23 @@ function showDownloadConfirm(id){
 }
 //打印报名表
 function showDownloadTestPdf(id){
-	var params = {};
-	params.submitMethod = doDownloadTest;
-	params.submitData = {id:id};
-	params.modelId = "model_stuInfoDownloadExplain";
-	params.title = "下载提示";
-	params.submitTxt = "马上下载";
-	params.cancelTxt = "暂不下载";
-	showDialogConfirm380(params);
+	debugger;
+	var date = new Date("2020-07-18 12:00:00");
+	var date1 = new Date();
+	if (date.getTime() - date1.getTime() < 0) {
+		var params = {};
+		params.submitMethod = doDownloadTest;
+		params.submitData = {id:id};
+		params.modelId = "model_stuInfoDownloadExplain";
+		params.title = "下载提示";
+		params.submitTxt = "马上下载";
+		params.cancelTxt = "暂不下载";
+		showDialogConfirm380(params);
 
-	$("#dialog_380").find("select").seleFn();
+		$("#dialog_380").find("select").seleFn();
+	} else {
+		submit2ReviewTwicewpromise2();
+	}
 }
 //面试通过通知
 function stuApplyListSendSms(id){
@@ -1608,7 +1615,8 @@ function today(){
 	hh = hh < 10 ? "0" + hh:hh;
 	mm = mm < 10 ? "0" +  mm:mm;
 	ss = ss < 10 ? "0" + ss:ss;
-	return h+"-"+m+"-"+d+" "+hh+":"+mm+":"+ss;
+	// return h+"-"+m+"-"+d+" "+hh+":"+mm+":"+ss;
+	return h+"年"+m+"月"+d+"日";
 }
 function doReview(){
 	var id = $.trim($("#review_ipt_id").val());
@@ -1625,6 +1633,7 @@ function doReview(){
 		alert("请选择审核日期！");
 		return ;
 	}
+	alert(dateOfReview);
 	
 	var params = {};
 	params.url = student_stuApplyReviewUrl+"?_t="+new Date().getTime();

@@ -13,7 +13,7 @@ public interface StuApplyListDAO extends BaseDAO<StuApply> {
 				SUBMIT_TWICE(3),//再次提交
 				REVIEW_PASS(4),//审核通过
 				REVIEW_REFUSE(5),//审核未通过
-				REVIEW_WAITING(6),//待录取
+				REVIEW_WAITING(6),//待通过
 	 * @param entity
 	 * @return
 	 */

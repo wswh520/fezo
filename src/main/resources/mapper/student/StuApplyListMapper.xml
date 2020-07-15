@@ -45,7 +45,7 @@
 						SUBMIT_TWICE(3),//再次提交
 						REVIEW_PASS(4),//审核通过
 						REVIEW_REFUSE(5),//审核未通过
-						REVIEW_WAITING(6),//待录取-->
+						REVIEW_WAITING(6),//待通过-->
 	</update>
 	<update id="updateMsg" parameterType="StuApply">
 		update tb_stuapply set message=#{message} where id=#{id}
@@ -62,7 +62,7 @@
 						SUBMIT_TWICE(3),//再次提交
 						REVIEW_PASS(4),//审核通过
 						REVIEW_REFUSE(5),//审核未通过
-						REVIEW_WAITING(6),//待录取-->
+						REVIEW_WAITING(6),//待通过-->
 	</insert>
 	<sql id="stuApplyField">
 		a.uid,a.year,a.status,a.type,no,

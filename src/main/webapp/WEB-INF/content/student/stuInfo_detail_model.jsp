@@ -11,7 +11,7 @@
 			{@/if}
 		</strong>
 	</div>
-	<div id="div_stuInfo_iptHint" style="display:none;"><!-- 学校拟录取您的孩子为2017级新生， -->
+	<div id="div_stuInfo_iptHint" style="display:none;"><!-- 学校通过您的孩子为2017级新生， -->
 		<strong style="color:red">尊敬的家长：您好！为了顺利注册孩子的学籍，请您拿出孩子的户口，对照户口填写以下72项信息，填完后认真核对，确认无误后再提交。一旦提交，家长无法自行修改。如需修改，请前往学校提交更正申请，并附上户口复印件才能修改！</strong>
 	</div>
 	<form id="form_stuInfo" class="bs-docs-example">

@@ -120,7 +120,7 @@
 			<if test="mudhN!=null">,mudh=#{mudhN}</if>
 			<if test="sylbN!=null">,sylb=#{sylbN}</if>
 		</set>
-		where id=#{id} and (status=2 or status=4)<!-- SUBMIT_ONCE(2),//初次提交 ；REVIEW_PASS(4),//拟录取、毕业生信息需要二次审核-->
+		where id=#{id} and (status=2 or status=4)<!-- SUBMIT_ONCE(2),//初次提交 ；REVIEW_PASS(4),//通过、毕业生信息需要二次审核-->
 	</update>
 	
 	<sql id="graStuInfoField">
