@@ -277,7 +277,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>enroll_hsfx</finalName>
+		<finalName>enroll</finalName>
 		<plugins>
 			<plugin>
 				<!--<groupId>org.mortbay.jetty</groupId>
