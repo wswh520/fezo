@@ -288,6 +288,7 @@ public class StuApplyServiceImpl implements StuApplyService {
 		}
 		if(no > 720){
 			//存储编号
+			seatNo = String.valueOf(dft.format(Math.ceil((float)(no-720)/3)));
 			String noIndex = schStr + "04" + seatNo;
 			saveTbStuno(no+"",noIndex,name);
 			return noIndex;
