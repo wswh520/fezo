@@ -3,10 +3,7 @@ package com.fz.enroll.student.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.fz.enroll.entity.student.StuApply;
-import com.fz.enroll.entity.student.StuApplyHistory;
-import com.fz.enroll.entity.student.TbStuno;
-import com.fz.enroll.entity.student.Year;
+import com.fz.enroll.entity.student.*;
 
 public interface StuApplyDAO {
 
@@ -29,7 +26,7 @@ public interface StuApplyDAO {
 	public int incYearTypeA(Year entity);
 	public int incYearTypeB(Year entity);
 	public int incYearTypeC(Year entity);
-	
+	public StuApplyVo findTest(int id);
 	public List<StuApply> query2InitPinyin(int offset);
 	public void initPinyin(StuApply entity);
 	

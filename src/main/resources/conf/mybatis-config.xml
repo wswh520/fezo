@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias alias="User" type="com.fz.enroll.entity.user.User"/>
 		<typeAlias alias="StuSmsInfo" type="com.fz.enroll.entity.student.StuSmsInfo"/>
+		<typeAlias alias="StuApplyVo" type="com.fz.enroll.entity.student.StuApplyVo"/>
 		<typeAlias alias="OnLine" type="com.fz.enroll.entity.user.OnLine"/>
 		<typeAlias alias="TimeConfig" type="com.fz.enroll.entity.config.TimeConfig"/>
 		<typeAlias alias="StuApply" type="com.fz.enroll.entity.student.StuApply"/>

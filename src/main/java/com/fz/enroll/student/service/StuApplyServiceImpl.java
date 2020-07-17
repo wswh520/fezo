@@ -519,54 +519,22 @@ public class StuApplyServiceImpl implements StuApplyService {
 		try{
 			id = Integer.valueOf(idStr);
 		}catch(Exception e){}
-		StuApply stuApply = null;
-		if(id!=0){
-			stuApply = stuApplyDao.queryById(id);
-		}else{
-			stuApply = stuApplyDao.queryByUid(Utils.getCurrentUid());
-		}
+		StuApplyVo stuApply = null;
+		stuApply = stuApplyDao.findTest(id);
 		CurrentUser cuser = ThreadLocalUtils.getCurrentUser();
-		if(stuApply==null
-				||(cuser.getType()==UserType.PATRIARCH&&stuApply.getUid()!=cuser.getUid())){
-			response.setStatus(404);
-			return ;
-		}
 		String xmlName = "stu_test.xml";
 		Map<String,String> dataMap = new HashMap<String,String>();
 		dataMap.put("cardNo",stuApply.getCardNo());
 		dataMap.put("name", stuApply.getName());
 		String no = stuApply.getNo();
 		dataMap.put("no", " "+no);
-		if(no.startsWith("J")){
-			dataMap.put("addr", "钟家村寄宿学校（汉阳区北城路28号）");
-		}else if(no.startsWith("Z")){
-			dataMap.put("addr", "钟家村小学（西桥路3号）");
-		}else if(no.startsWith("S")){
-			dataMap.put("addr", "钟家村小学三里坡校区（马鹦路143号）");
-		}
-		Integer num = Integer.valueOf(no.substring(3));
-		if(num <= 20){
-			dataMap.put("test", " 1");
-			dataMap.put("time1", "上午");
-			dataMap.put("time2", " 8:30");
-		}else if(num <= 40){
-			dataMap.put("test", " 2");
-			dataMap.put("time1", "上午");
-			dataMap.put("time2", " 10:30");
-		}else if(num > 40){
-			dataMap.put("test", " 3");
-			dataMap.put("time1", "上午");
-			dataMap.put("time2", " 14:30");
-		}
-
-		dataMap.put("wait", no.substring(2,3));
+		dataMap.put("addr", stuApply.getXiaoqu());
+		dataMap.put("test", " "+stuApply.getJiaoshi());
+		dataMap.put("time1", stuApply.getTime1());
+		dataMap.put("time2"," "+ stuApply.getTime2());
+		dataMap.put("wait", stuApply.getChangci());
 		dataMap.put("class","  就读方式："+ stuApply.getOther54());
-
-		if(stuApply.getSex()==BooleanEnum.TRUE.val()){
-			dataMap.put("sex", "男");
-		}else{
-			dataMap.put("sex", "女");
-		}
+		dataMap.put("sex", stuApply.getSex());
 		this.doDownload(pdf,docName, xmlName, dataMap,request,response);
 	}
 	
