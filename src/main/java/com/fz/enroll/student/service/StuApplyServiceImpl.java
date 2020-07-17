@@ -519,8 +519,10 @@ public class StuApplyServiceImpl implements StuApplyService {
 		try{
 			id = Integer.valueOf(idStr);
 		}catch(Exception e){}
+		System.out.println(id);
 		StuApplyVo stuApply = null;
 		stuApply = stuApplyDao.findTest(id);
+		System.out.println(stuApply);
 		CurrentUser cuser = ThreadLocalUtils.getCurrentUser();
 		String xmlName = "stu_test.xml";
 		Map<String,String> dataMap = new HashMap<String,String>();
@@ -529,10 +531,10 @@ public class StuApplyServiceImpl implements StuApplyService {
 		String no = stuApply.getNo();
 		dataMap.put("no", " "+no);
 		dataMap.put("addr", stuApply.getXiaoqu());
-		dataMap.put("test", " "+stuApply.getJiaoshi());
+		dataMap.put("test", " "+stuApply.getChangci());
 		dataMap.put("time1", stuApply.getTime1());
 		dataMap.put("time2"," "+ stuApply.getTime2());
-		dataMap.put("wait", stuApply.getChangci());
+		dataMap.put("wait", stuApply.getJiaoshi());
 		dataMap.put("class","  就读方式："+ stuApply.getOther54());
 		dataMap.put("sex", stuApply.getSex());
 		this.doDownload(pdf,docName, xmlName, dataMap,request,response);
