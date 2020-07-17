@@ -32,7 +32,7 @@
 			a.time2
 		from tb_stuno a,
 		   tb_stuapply b
-		where a.no = b.no and a.id=#{_parameter}
+		where a.no = b.no and b.id=#{_parameter}
 	</select>
 	
 	<update id="update" parameterType="StuApply">
