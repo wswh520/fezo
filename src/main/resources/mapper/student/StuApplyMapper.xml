@@ -16,6 +16,24 @@
 	<select id="queryByUnique" parameterType="StuApply" resultType="StuApply">
 		select id,<include refid="stuApplyField" /> from tb_stuapply where cardNo=#{cardNo} and cardType=#{cardType}
 	</select>
+	<!-- add by wgr -->
+	<select id="findTest"  parameterType="int"  resultType="StuApplyVo">
+		select a.name ,
+			case when b.sex = 0 then '女'
+			   when b.sex = 1 then '男'
+			end sex ,
+			b.cardNo ,
+			a.no,
+			b.other54,
+			 a.xiaoqu ,
+			a.jiaoshi ,
+			a.changci,
+			a.time1 ,
+			a.time2
+		from tb_stuno a,
+		   tb_stuapply b
+		where a.no = b.no and b.id=#{_parameter}
+	</select>
 	
 	<update id="update" parameterType="StuApply">
 		update tb_stuapply
